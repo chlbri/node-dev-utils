@@ -1,3 +1,3 @@
-import { defineConfig } from '@bemedev/rolldown-config';
+import { defineConfig } from './src/rolldown-config';
 
 export default defineConfig.bemedev();

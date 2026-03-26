@@ -1,5 +1,5 @@
-import { aliasTs } from '@bemedev/vitest-alias';
-import { exclude } from '@bemedev/vitest-exclude';
+import { aliasTs } from './src/vitest-alias';
+import { exclude } from './src/vitest-exclude';
 import { defineConfig } from 'vitest/config';
 import tsconfig from './tsconfig.json';
 

@@ -86,15 +86,25 @@
       "limit": "10 KB"
     }
   ],
+  "dependencies": {
+    "@bemedev/sleep": "^0.1.2",
+    "@bemedev/types": "^0.4.2",
+    "cmd-ts": "^0.13.0",
+    "edit-json-file": "^1.8.1",
+    "rollup-plugin-circular-dependencies": "^2.0.1",
+    "rollup-plugin-node-externals": "^8.1.2",
+    "rollup-plugin-tsc-alias": "^1.1.4",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "shelljs": "^0.10.0",
+    "sort-keys": "^5.1.0",
+    "tsc-alias": "^1.8.16"
+  },
   "devDependencies": {
-    "@bemedev/build-tests": "^0.1.2",
     "@bemedev/fsf": "^1.0.1",
-    "@bemedev/rolldown-config": "^0.4.2",
-    "@bemedev/vitest-alias": "^0.0.3",
-    "@bemedev/vitest-exclude": "^0.1.1",
-    "@bemedev/vitest-extended": "^1.5.3",
     "@size-limit/file": "^12.0.1",
+    "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
+    "@types/shelljs": "^0.10.0",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "3.2.4",
     "glob": "^13.0.6",
