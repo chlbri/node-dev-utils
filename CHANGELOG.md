@@ -5,6 +5,24 @@
 <details>
 <summary>
 
+## **[0.1.1] - 27/03/2026** => _16:56_
+
+</summary>
+
+- Add `exports` sub-path entries in `package.json` for all modules
+  (`.`, `./build-tests`, `./rolldown`, `./vitest-alias`,
+  `./vitest-exclude`, `./vitest-extended`)
+- Fix import path in rolldown-config fixtures to use new `./rolldown`
+  sub-path export
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.1.0] - 27/03/2026** => _13:47_
 
 </summary>
