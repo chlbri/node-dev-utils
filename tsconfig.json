@@ -1,7 +1,7 @@
 {
   "include": ["src/**/*"],
   "compilerOptions": {
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "es2024", "esnext"],
     "importHelpers": true,
     "target": "ESNext",
     "declaration": true,

@@ -49,17 +49,17 @@
     "ci:admin": "pnpm run rm && pnpm run upgrade:fast && pnpm run ci",
     "config": "pnpm install",
     "config:off": "pnpm run config --offline",
-    "config:vitest": "pnpm add -D @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4",
+    "config:vitest": "pnpm add @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4",
     "_lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "lint": "pnpm run fmt && pnpm run lint:fix",
     "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
     "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
     "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt && build-tests post",
+    "posttest": "pnpm run fmt && node ./lib/build-tests/cli/index.js post",
     "prepare": "husky",
     "prepublishOnly": "",
-    "pretest": "pnpm run build && build-tests pre",
+    "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "rinit": "pnpm run rm && pnpm run config",
@@ -92,6 +92,8 @@
   "dependencies": {
     "@bemedev/sleep": "^0.1.2",
     "@bemedev/types": "^0.4.2",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "3.2.4",
     "cmd-ts": "^0.13.0",
     "edit-json-file": "^1.8.1",
     "rollup-plugin-circular-dependencies": "^2.0.1",
@@ -100,7 +102,8 @@
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "shelljs": "^0.10.0",
     "sort-keys": "^5.1.0",
-    "tsc-alias": "^1.8.16"
+    "tsc-alias": "^1.8.16",
+    "vitest": "3.2.4"
   },
   "devDependencies": {
     "@bemedev/fsf": "^1.0.1",
@@ -108,8 +111,6 @@
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "3.2.4",
     "glob": "^13.0.6",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
@@ -122,7 +123,6 @@
     "rolldown": "1.0.0-rc.12",
     "size-limit": "^12.0.1",
     "tslib": "^2.8.1",
-    "typescript": "^6.0.2",
-    "vitest": "^3.2.4"
+    "typescript": "^6.0.2"
   }
 }

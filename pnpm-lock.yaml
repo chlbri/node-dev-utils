@@ -14,6 +14,12 @@ importers:
       '@bemedev/types':
         specifier: ^0.4.2
         version: 0.4.2
+      '@vitest/coverage-v8':
+        specifier: ^3.2.4
+        version: 3.2.4(vitest@3.2.4)
+      '@vitest/ui':
+        specifier: 3.2.4
+        version: 3.2.4(vitest@3.2.4)
       cmd-ts:
         specifier: ^0.13.0
         version: 0.13.0
@@ -41,6 +47,9 @@ importers:
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
+      vitest:
+        specifier: 3.2.4
+        version: 3.2.4(@types/node@25.5.0)(@vitest/ui@3.2.4)(lightningcss@1.32.0)
     devDependencies:
       '@bemedev/fsf':
         specifier: ^1.0.1
@@ -57,12 +66,6 @@ importers:
       '@types/shelljs':
         specifier: ^0.10.0
         version: 0.10.0
-      '@vitest/coverage-v8':
-        specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4)
-      '@vitest/ui':
-        specifier: 3.2.4
-        version: 3.2.4(vitest@3.2.4)
       glob:
         specifier: ^13.0.6
         version: 13.0.6
@@ -102,9 +105,6 @@ importers:
       typescript:
         specifier: ^6.0.2
         version: 6.0.2
-      vitest:
-        specifier: ^3.2.4
-        version: 3.2.4(@types/node@25.5.0)(@vitest/ui@3.2.4)(lightningcss@1.32.0)
 
 packages:
 

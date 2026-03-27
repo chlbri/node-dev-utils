@@ -22,8 +22,7 @@ export const pack: Pack_F = async () => {
 
   const out1 = sh
     .exec(`pnpm pack --pack-destination ../${TARBALL_FOLDER}`)
-    .toString()
-    .toWellFormed();
+    .toString();
 
   sh.cd('..');
 
