@@ -143,3 +143,4 @@ build.npm.js
 
 #vitest
 tsconfig.vitest-temp.json
+lib

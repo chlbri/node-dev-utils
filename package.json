@@ -1,5 +1,5 @@
 {
-  "name": "@bemedev///TODO",
+  "name": "@bemedev/dev-utils",
   "version": "0.0.1",
   "description": "//TODO",
   "author": {
@@ -37,6 +37,7 @@
     "lib",
     "public"
   ],
+  "bin": "lib/build-tests/cli/index.js",
   "engines": {
     "node": ">=24"
   },
@@ -46,17 +47,17 @@
     "ci:admin": "pnpm run rm && pnpm run upgrade:fast && pnpm run ci",
     "config": "pnpm install",
     "config:off": "pnpm run config --offline",
-    "config:vitest": "pnpm add -D @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4",
+    "config:vitest": "pnpm add @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4",
     "_lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "lint": "pnpm run fmt && pnpm run lint:fix",
     "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
     "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
     "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt",
+    "posttest": "pnpm run fmt && node ./lib/build-tests/cli/index.js post",
     "prepare": "husky",
     "prepublishOnly": "",
-    "pretest": "pnpm run build && pnpm run size",
+    "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "rinit": "pnpm run rm && pnpm run config",
@@ -87,38 +88,46 @@
     }
   ],
   "dependencies": {
-    "@bemedev/sleep": "^0.1.2",
+    "@bemedev/sleep": "^0.2.2",
     "@bemedev/types": "^0.4.2",
-    "cmd-ts": "^0.13.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "3.2.4",
+    "cmd-ts": "^0.15.0",
     "edit-json-file": "^1.8.1",
+    "glob": "^13.0.6",
+    "rolldown": "1.0.0-rc.12",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^8.1.2",
     "rollup-plugin-tsc-alias": "^1.1.4",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "shelljs": "^0.10.0",
-    "sort-keys": "^5.1.0",
-    "tsc-alias": "^1.8.16"
+    "sort-keys": "^6.0.0",
+    "tsc-alias": "^1.8.16",
+    "vitest": "3.2.4"
   },
   "devDependencies": {
+    "@bemedev/basifun": "^0.5.3",
     "@bemedev/fsf": "^1.0.1",
     "@size-limit/file": "^12.0.1",
+    "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/user-event": "^14.6.1",
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "3.2.4",
-    "glob": "^13.0.6",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
+    "is-in-ci": "^2.0.0",
     "onchange": "^7.1.0",
     "oxfmt": "^0.42.0",
     "oxlint": "^1.57.0",
     "prettier": "^3.8.1",
     "pretty-quick": "^4.2.2",
-    "rolldown": "1.0.0-rc.12",
     "size-limit": "^12.0.1",
     "tslib": "^2.8.1",
     "typescript": "^6.0.2",
-    "vitest": "^3.2.4"
+    "zod": "^4.3.6"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0 || ^6.0.0"
   }
 }

@@ -22,7 +22,7 @@ export const buildInclude = async (
     cwd: process.cwd(),
   });
 
-  return include.map(mapper);
+  return include.map(mapper).sort();
 };
 
 export const testPattern = () => {
