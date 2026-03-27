@@ -5,6 +5,23 @@
 <details>
 <summary>
 
+## **[0.3.2] - 27/03/2026** => _20:43_
+
+</summary>
+
+- Remove `src/index.ts` root barrel export file
+- Remove `main`, `types`, `module` fields from `package.json`
+- Remove root `"."` entry from `exports` map in `package.json`
+- Update `vitest-exclude` tests to reflect removal of `src/index.ts`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.3.1] - 27/03/2026** => _18:11_
 
 </summary>

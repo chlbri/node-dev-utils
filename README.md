@@ -31,20 +31,16 @@ yarn add @bemedev/dev-utils
 
 ## Usage
 
-```typescript
-import {
-  createAlias,
-  aliasTs,
-  exclude,
-  defineConfig,
-  createTests,
-  createFakeWaiter,
-  addTarball,
-  cleanup,
-} from '@bemedev/dev-utils';
-```
+Each module is available as a dedicated sub-path export — there is no
+root barrel export:
 
-All utilities are exported as named exports from the package root.
+```typescript
+import { createAlias, aliasTs } from '@bemedev/dev-utils/vitest-alias';
+import { exclude } from '@bemedev/dev-utils/vitest-exclude';
+import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
+import { defineConfig } from '@bemedev/dev-utils/rolldown';
+import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
+```
 
 ---
 
@@ -60,12 +56,12 @@ object into a Vite-compatible alias map.
 
 ```typescript
 import tsconfig from './tsconfig.json';
-import { vitestAlias } from '@bemedev/dev-utils';
+import { createAlias } from '@bemedev/dev-utils/vitest-alias';
 
 // vitest.config.ts
 export default defineConfig({
   test: {
-    alias: vitestAlias.createAlias(tsconfig),
+    alias: createAlias(tsconfig),
   },
 });
 ```
@@ -90,11 +86,11 @@ result into `test.alias`.
 
 ```typescript
 import tsconfig from './tsconfig.json';
-import { vitestAlias } from '@bemedev/dev-utils';
+import { aliasTs } from '@bemedev/dev-utils/vitest-alias';
 
 // vitest.config.ts
 export default defineConfig({
-  plugins: [vitestAlias.aliasTs(tsconfig)],
+  plugins: [aliasTs(tsconfig)],
 });
 ```
 
@@ -120,12 +116,12 @@ Uses default patterns (`src/**/*.ts` for coverage,
 ignore lists.
 
 ```typescript
-import { vitestExclude } from '@bemedev/dev-utils';
+import { exclude } from '@bemedev/dev-utils/vitest-exclude';
 
 // vitest.config.ts
 export default defineConfig({
   plugins: [
-    vitestExclude.exclude({
+    exclude({
       ignoreTestFiles: ['src/fixtures/**'],
       ignoreCoverageFiles: ['src/**/*.types.ts'],
     }),
@@ -150,7 +146,7 @@ Same as `exclude`, but lets you provide custom glob patterns instead of the
 defaults.
 
 ```typescript
-vitestExclude.exclude.withPattern(
+exclude.withPattern(
   {
     patternTest: 'tests/**/*.test.ts',
     patternCov: 'src/**/*.ts',
@@ -181,9 +177,7 @@ Creates a reusable test suite for a function with `acceptation`, `success`,
 and `fails` runners.
 
 ```typescript
-import { vitestExtended } from '@bemedev/dev-utils';
-
-const { createTests } = vitestExtended;
+import { createTests } from '@bemedev/dev-utils/vitest-extended';
 
 // add.ts
 export const add = (a: number, b: number) => a + b;
@@ -254,9 +248,9 @@ Wraps a callback-style (done-based) test into a Vitest `test`. The test
 passes only when `done()` is called within the timeout.
 
 ```typescript
-import { vitestExtended } from '@bemedev/dev-utils';
+import { doneTest } from '@bemedev/dev-utils/vitest-extended';
 
-vitestExtended.doneTest('fires callback', done => {
+doneTest('fires callback', done => {
   emitter.once('event', done);
   emitter.emit('event');
 });
@@ -285,9 +279,9 @@ Creates a fake-timer-aware async waiter. If fake timers are active it
 advances them; otherwise it uses a real `sleep`.
 
 ```typescript
-import { vitestExtended } from '@bemedev/dev-utils';
+import { createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
 
-const wait = vitestExtended.createFakeWaiter(vi);
+const wait = createFakeWaiter(vi);
 
 test('advances time', async () => {
   vi.useFakeTimers();
@@ -317,9 +311,9 @@ test('advances time', async () => {
 A typed wrapper around `test.concurrent.each` for synchronous functions.
 
 ```typescript
-import { vitestExtended } from '@bemedev/dev-utils';
+import { useEach } from '@bemedev/dev-utils/vitest-extended';
 
-const run = vitestExtended.useEach(add);
+const run = useEach(add);
 
 run(['1+2', [1, 2], 3], ['0+0', [0, 0], 0]);
 ```
@@ -406,9 +400,9 @@ Produces a full Rolldown config with the default plugin pipeline:
 
 ```typescript
 // rolldown.config.ts
-import { rolldownConfig } from '@bemedev/dev-utils';
+import { defineConfig } from '@bemedev/dev-utils/rolldown';
 
-export default rolldownConfig.defineConfig.default({
+export default defineConfig.default({
   dir: 'lib',
   sourcemap: true,
   excludesTS: ['src/fixtures/**/*.ts'],
@@ -454,7 +448,7 @@ Opinionated preset that extends `defineConfig.default` with:
 - `DEFAULT_CIRCULAR_DEPS` merged into `ignoresJS`
 
 ```typescript
-export default rolldownConfig.defineConfig.bemedev({
+export default defineConfig.bemedev({
   excludesTS: ['src/my-fixtures/**'],
 });
 ```
@@ -478,7 +472,7 @@ Pass plugin keys as strings in the `plugins` array to reorder or subset
 them:
 
 ```typescript
-rolldownConfig.defineConfig.default({
+defineConfig.default({
   plugins: ['alias', 'tsPaths', 'externals', 'typescript'],
 });
 ```
@@ -529,9 +523,9 @@ Programmatic API for the `pre` step:
 3. Installs the resulting `.tgz` as `this-gen-1` in `devDependencies`
 
 ```typescript
-import { buildTests } from '@bemedev/dev-utils';
+import { addTarball } from '@bemedev/dev-utils/build-tests';
 
-await buildTests.addTarball();
+await addTarball();
 ```
 
 ---
@@ -544,9 +538,9 @@ Programmatic API for the `post` step:
 2. Runs `pnpm remove this-gen-1`
 
 ```typescript
-import { buildTests } from '@bemedev/dev-utils';
+import { cleanup } from '@bemedev/dev-utils/build-tests';
 
-buildTests.cleanup();
+cleanup();
 ```
 
 ---

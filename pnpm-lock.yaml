@@ -102,9 +102,6 @@ importers:
       solid-js:
         specifier: ^1.9.12
         version: 1.9.12
-      this-gen-1:
-        specifier: file:.pack/bemedev-dev-utils-0.2.0.tgz
-        version: '@bemedev/dev-utils@file:.pack/bemedev-dev-utils-0.2.0.tgz(@vitest/coverage-v8@3.2.4(vitest@3.2.4))(rolldown@1.0.0-rc.12)(rollup@4.60.0)(typescript@6.0.2)(vitest@3.2.4)'
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -221,17 +218,6 @@ packages:
     engines: {node: '>=20'}
     peerDependencies:
       '@bemedev/types': 0.4.2
-
-  '@bemedev/dev-utils@file:.pack/bemedev-dev-utils-0.2.0.tgz':
-    resolution: {integrity: sha512-uQd4SPEqO53cZzLValEAQNDzdTM5gsD5vO2I0UvJ4wN1y8KaJI/ut3XqPj12zdJmipgLIakJHJFvYj0Byvg5Iw==, tarball: file:.pack/bemedev-dev-utils-0.2.0.tgz}
-    version: 0.2.0
-    engines: {node: '>=24'}
-    hasBin: true
-    peerDependencies:
-      '@vitest/coverage-v8': 3.2.4
-      rolldown: 1.0.0-rc.12
-      typescript: ^6.0.2
-      vitest: 3.2.4
 
   '@bemedev/interval2@0.1.3':
     resolution: {integrity: sha512-RWbferVoFH0CkpeNZ7DW2MFdl04clqp4Q9WaiQAqlW8kgsizQltXhy780QDtWkQi+cRLWZ9j/ItYcVJ1nr+vDQ==}
@@ -2171,26 +2157,6 @@ snapshots:
     dependencies:
       '@bemedev/types': 0.4.2
       ts-deepmerge: 7.0.3
-
-  '@bemedev/dev-utils@file:.pack/bemedev-dev-utils-0.2.0.tgz(@vitest/coverage-v8@3.2.4(vitest@3.2.4))(rolldown@1.0.0-rc.12)(rollup@4.60.0)(typescript@6.0.2)(vitest@3.2.4)':
-    dependencies:
-      '@vitest/coverage-v8': 3.2.4(vitest@3.2.4)
-      cmd-ts: 0.15.0
-      edit-json-file: 1.8.1
-      glob: 13.0.6
-      rolldown: 1.0.0-rc.12
-      rollup-plugin-circular-dependencies: 2.0.1(rollup@4.60.0)
-      rollup-plugin-node-externals: 8.1.2(rollup@4.60.0)
-      rollup-plugin-tsc-alias: 1.1.4(rollup@4.60.0)
-      rollup-plugin-tsconfig-paths: 1.5.2(rollup@4.60.0)(typescript@6.0.2)
-      shelljs: 0.10.0
-      sort-keys: 6.0.0
-      tsc-alias: 1.8.16
-      typescript: 6.0.2
-      vitest: 3.2.4(@types/node@25.5.0)(@vitest/ui@3.2.4)(jsdom@29.0.1)(lightningcss@1.32.0)(tsx@4.21.0)
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
 
   '@bemedev/interval2@0.1.3':
     dependencies:
