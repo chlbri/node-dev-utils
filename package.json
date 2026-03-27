@@ -94,6 +94,7 @@
     "@vitest/ui": "3.2.4",
     "cmd-ts": "^0.13.0",
     "edit-json-file": "^1.8.1",
+    "glob": "^13.0.6",
     "rolldown": "1.0.0-rc.12",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^8.1.2",
@@ -105,12 +106,14 @@
     "vitest": "3.2.4"
   },
   "devDependencies": {
+    "@bemedev/basifun": "^0.5.3",
     "@bemedev/fsf": "^1.0.1",
     "@size-limit/file": "^12.0.1",
+    "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/user-event": "^14.6.1",
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
-    "glob": "^13.0.6",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
@@ -121,6 +124,10 @@
     "pretty-quick": "^4.2.2",
     "size-limit": "^12.0.1",
     "tslib": "^2.8.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0 || ^6.0.0"
   }
 }
