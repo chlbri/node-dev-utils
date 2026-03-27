@@ -103,8 +103,8 @@ export const useRebuild = (additionals?: Params | undefined) => {
   let writeEsm: ReturnType<typeof useBundle>['writeEsm'];
 
   beforeAll(async () => {
-    const bemedev = await import(`${this1}`).then(
-      ({ rolldownConfig }) => rolldownConfig.defineConfig.bemedev,
+    const bemedev = await import(`${this1}/rolldown`).then(
+      ({ defineConfig }) => defineConfig.bemedev,
     );
     const bundle = useBundle(bemedev(additionals));
     writeCjs = bundle.writeCjs;

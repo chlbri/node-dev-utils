@@ -16,6 +16,38 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./build-tests": {
+      "import": "./lib/build-tests/cli/index.js",
+      "require": "./lib/build-tests/cli/index.cjs",
+      "types": "./lib/build-tests/cli/index.d.ts"
+    },
+    "./rolldown": {
+      "import": "./lib/rolldown-config/index.js",
+      "require": "./lib/rolldown-config/index.cjs",
+      "types": "./lib/rolldown-config/index.d.ts"
+    },
+    "./vitest-alias": {
+      "import": "./lib/vitest-alias/index.js",
+      "require": "./lib/vitest-alias/index.cjs",
+      "types": "./lib/vitest-alias/index.d.ts"
+    },
+    "./vitest-exclude": {
+      "import": "./lib/vitest-exclude/index.js",
+      "require": "./lib/vitest-exclude/index.cjs",
+      "types": "./lib/vitest-exclude/index.d.ts"
+    },
+    "./vitest-extended": {
+      "import": "./lib/vitest-extended/index.js",
+      "require": "./lib/vitest-extended/index.cjs",
+      "types": "./lib/vitest-extended/index.d.ts"
+    }
+  },
   "maintainers": [
     {
       "email": "bri_lvi@icloud.com",
