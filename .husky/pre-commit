@@ -1,3 +1,2 @@
-npm run ci
+npm run p-q
 git add .
-echo "✅ Tests réussis 😎"

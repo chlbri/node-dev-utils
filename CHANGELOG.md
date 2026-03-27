@@ -5,6 +5,25 @@
 <details>
 <summary>
 
+## **[0.3.0] - 27/03/2026** => _18:06_
+
+</summary>
+
+- Refactor CI hooks: move `npm run ci` from `pre-commit` to `commit-msg`
+  hook for better hook separation
+- Add `this-gen-1` local tarball dependency for integration testing
+  (`file:.pack/bemedev-dev-utils-0.2.0.tgz`)
+- Refactor `rolldown-config` fixtures: simplify `beforeAll` arrow syntax
+  and clean up whitespace
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.2.0] - 27/03/2026** => _17:56_
 
 </summary>

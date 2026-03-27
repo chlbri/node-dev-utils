@@ -20,9 +20,7 @@ export const useBuild = () => {
     return rm('./lib', { recursive: true, force: true });
   });
 
-  beforeAll(() => {
-    return rm('./lib', { recursive: true, force: true });
-  });
+  beforeAll(() => rm('./lib', { recursive: true, force: true }));
 };
 
 export const useBundle = (options: RolldownOptions) => {
@@ -87,7 +85,6 @@ export const useTests = (options: Options) => {
           test(invite, () => {
             const file = `${process.cwd()}/${INTERMEDIATE_DIR}/${path}`;
             const check = existsSync(file);
-
             expect(check).toBe(bool);
           });
         });
@@ -106,6 +103,7 @@ export const useRebuild = (additionals?: Params | undefined) => {
     const bemedev = await import(`${this1}/rolldown`).then(
       ({ defineConfig }) => defineConfig.bemedev,
     );
+
     const bundle = useBundle(bemedev(additionals));
     writeCjs = bundle.writeCjs;
     writeEsm = bundle.writeEsm;
