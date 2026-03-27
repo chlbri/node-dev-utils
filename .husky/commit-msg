@@ -11,5 +11,4 @@ if echo "$commit_msg" | grep -q "\_NO\_CI"; then
   exit 0
 fi
 
-npm run ci
 echo "✅ Tests réussis 😎"

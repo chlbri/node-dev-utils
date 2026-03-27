@@ -5,6 +5,24 @@
 <details>
 <summary>
 
+## **[0.2.0] - 27/03/2026** => _17:56_
+
+</summary>
+
+- Refactor `src/index.ts`: remplace les re-exports par modules
+  (`export * from './module'`) par des re-exports explicites par fichier
+  (`export * from './module/file'`) pour une surface d'API plus précise
+- Fix `vitest-alias`: remplace le type `UserConfig` par `ViteUserConfig`
+  depuis `vitest/config` (type non déprécié)
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.1.2] - 27/03/2026** => _17:45_
 
 </summary>
@@ -18,8 +36,7 @@
 - Remove `types` fields from `exports` sub-path entries in `package.json`
 - Remove `@testing-library/jest-dom` from `tsconfig.json` types
 - Remove obsolete test files (`src/index.test.ts`,
-  `src/vitest-exclude/Counter.test.tsx`,
-  `src/vitest-exclude/Counter.tsx`)
+  `src/vitest-exclude/Counter.test.tsx`, `src/vitest-exclude/Counter.tsx`)
 - <u>Test coverage **_100%_**</u>
 
 </details>

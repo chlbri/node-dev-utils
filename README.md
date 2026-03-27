@@ -33,15 +33,18 @@ yarn add @bemedev/dev-utils
 
 ```typescript
 import {
-  vitestAlias,
-  vitestExclude,
-  vitestExtended,
-  rolldownConfig,
-  buildTests,
+  createAlias,
+  aliasTs,
+  exclude,
+  defineConfig,
+  createTests,
+  createFakeWaiter,
+  addTarball,
+  cleanup,
 } from '@bemedev/dev-utils';
 ```
 
-Each module is exported as a namespace.
+All utilities are exported as named exports from the package root.
 
 ---
 

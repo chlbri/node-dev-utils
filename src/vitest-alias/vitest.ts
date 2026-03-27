@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import type { UserConfig } from 'vitest/config';
+import type { ViteUserConfig } from 'vitest/config';
 
 type Entry = [string, string];
 
@@ -10,7 +10,7 @@ type TsConf = {
   };
 };
 
-type Plugin = Exclude<UserConfig['plugins'], undefined>[number];
+type Plugin = Exclude<ViteUserConfig['plugins'], undefined>[number];
 
 const configPaths = (arg: string) => {
   return arg.replace('/*', '');
