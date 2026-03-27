@@ -1,8 +1,8 @@
-import type { types } from '@bemedev/types';
 import { relative } from 'node:path';
 import { TARBALL_EXTENSION } from './constants';
+import type { Fn } from '#utils/types';
 
-type GetRelativePath_F = types.Fn<[string], string>;
+type GetRelativePath_F = Fn<[string], string>;
 
 export const getRelativePath0: GetRelativePath_F = result => {
   const split = result.split('\n');

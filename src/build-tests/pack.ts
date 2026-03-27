@@ -1,12 +1,12 @@
-import type { types } from '@bemedev/types';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import sh from 'shelljs';
 import { buildPackageJson } from './buildPackageJson';
 import { DOT, PACKAGE_PATH, TARBALL_FOLDER } from './constants';
 import { getRelativePath0 } from './getRelativePath';
+import type { Fn } from '#utils/types';
 
-type Pack_F = types.Fn<[], Promise<string>>;
+type Pack_F = Fn<[], Promise<string>>;
 
 export const pack: Pack_F = async () => {
   const { packageJson, outDir } = buildPackageJson();
@@ -25,8 +25,6 @@ export const pack: Pack_F = async () => {
     .toString();
 
   sh.cd('..');
-
   const out2 = getRelativePath0(out1);
-
   return out2;
 };

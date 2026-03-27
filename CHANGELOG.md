@@ -1,11 +1,28 @@
 ## CHANGELOG
 
 <br/>
-<br/>
 
-### Version [0.0.1] --> _date & hour_
+<details>
+<summary>
 
-- ✨ Première version de la bibliothèque
+## **[0.1.0] - 27/03/2026** => _13:47_
+
+</summary>
+
+- Add inline @bemedev/\* packages as src subfolders with re-exports
+- Add vitest.alias, vitest.exclude, rolldown.config, vitest.extended,
+  build-tests modules
+- Disable test parallelism and add build-tests CLI to pretest/posttest
+  hooks
+- Refactor bin entry in package.json to object structure
+- Move vitest and rolldown to peer dependencies
+- Move glob to production dependencies and add TypeScript peerDependencies
+- Rename package to @bemedev/dev-utils
+- Clean up obsolete test files and update configurations
+- Upgrade dependencies via pnpm up --latest
+- <u>Test coverage **_100%_**</u>
+
+</details>
 
 <br/>
 

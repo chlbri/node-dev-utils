@@ -1,7 +1,7 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.0.1",
-  "description": "//TODO",
+  "version": "0.1.0",
+  "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
     "name": "chlbri",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "//TODO"
+    "url": "https://github.com/chlbri/node-dev-utils"
   },
   "license": "MIT",
   "type": "module",
@@ -31,7 +31,14 @@
     }
   ],
   "keywords": [
-    "//TODO"
+    "node",
+    "utilities",
+    "build-tools",
+    "testing",
+    "configuration",
+    "typescript",
+    "rollup",
+    "vitest"
   ],
   "files": [
     "lib",
@@ -49,14 +56,14 @@
     "ci:admin": "pnpm run rm && pnpm run upgrade:fast && pnpm run ci",
     "config": "pnpm install",
     "config:off": "pnpm run config --offline",
-    "config:vitest": "pnpm add @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4",
+    "config:fast": "pnpm add -D @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4 @bemedev/app-ts@2.3.0 @bemedev/basifun@0.5.3",
     "_lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "lint": "pnpm run fmt && pnpm run lint:fix",
     "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
     "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
     "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt && pnpm run build && node ./lib/build-tests/cli/index.js post",
+    "posttest": "pnpm run fmt && tsx ./src/build-tests/cli/index.ts post && echo \"\n✅ Tests completed successfully\n\"",
     "prepare": "husky",
     "prepublishOnly": "",
     "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre",
@@ -75,9 +82,9 @@
     "test:type:watch": "vitest -c \"vitest.config.type.ts\"",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "upgrade": "pnpm dlx @bemedev/upgrade-npm-package && pnpm run config:vitest",
+    "upgrade": "pnpm dlx @bemedev/upgrade-npm-package && pnpm run config:fast",
     "size": "size-limit",
-    "upgrade:fast": "pnpm up --latest && pnpm run config:vitest"
+    "upgrade:fast": "pnpm up --latest && pnpm run config:fast"
   },
   "size-limit": [
     {
@@ -90,27 +97,20 @@
     }
   ],
   "dependencies": {
-    "@bemedev/sleep": "^0.2.2",
-    "@bemedev/types": "^0.4.2",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "3.2.4",
     "cmd-ts": "^0.15.0",
     "edit-json-file": "^1.8.1",
     "glob": "^13.0.6",
-    "rolldown": "1.0.0-rc.12",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^8.1.2",
     "rollup-plugin-tsc-alias": "^1.1.4",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "shelljs": "^0.10.0",
     "sort-keys": "^6.0.0",
-    "tsc-alias": "^1.8.16",
-    "vitest": "3.2.4"
+    "tsc-alias": "^1.8.16"
   },
   "devDependencies": {
-    "@bemedev/app-ts": "^2.3.0",
-    "@bemedev/basifun": "^0.5.3",
-    "@bemedev/fsf": "^1.0.1",
+    "@bemedev/app-ts": "2.3.0",
+    "@bemedev/basifun": "0.5.3",
     "@size-limit/file": "^12.0.1",
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.9.1",
@@ -118,6 +118,8 @@
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
+    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/ui": "3.2.4",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
@@ -127,15 +129,21 @@
     "oxlint": "^1.57.0",
     "prettier": "^3.8.1",
     "pretty-quick": "^4.2.2",
+    "rolldown": "1.0.0-rc.12",
     "rxjs": "^7.8.2",
     "size-limit": "^12.0.1",
     "solid-js": "^1.9.12",
     "tslib": "^2.8.1",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vite-plugin-solid": "^2.11.11",
+    "vitest": "3.2.4",
     "zod": "^4.3.6"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0 || ^6.0.0"
+    "@vitest/coverage-v8": "3.2.4",
+    "rolldown": "1.0.0-rc.12",
+    "typescript": "^6.0.2",
+    "vitest": "3.2.4"
   }
 }

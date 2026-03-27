@@ -1,4 +1,3 @@
-import { castings } from '@bemedev/types';
 import { command, flag } from 'cmd-ts';
 import sh from 'shelljs';
 import { addTarball } from '../addTarball';
@@ -38,8 +37,7 @@ export const test = command({
 
     // #region Test
     const { stderr } = sh.exec('pnpm run test');
-    if (castings.commons.isDefined(stderr) && stderr.trim() !== '')
-      console.warn(stderr);
+    if (!!stderr && stderr.trim() !== '') console.warn(stderr);
     // #endregion
 
     if (posttest || post) cleanup();

@@ -1,10 +1,10 @@
-import { type types, castings } from '@bemedev/types';
+import type { Fn } from '#utils/types';
 import editJsonFile from 'edit-json-file';
 import sortKeys from 'sort-keys';
 import { BIN_KEY, EXPORT_KEY, EXPORT_KEYS } from './constants';
 import { getTypescriptOutdir } from './getTypescriptOutdir';
 
-type BuldPackageJson_F = types.Fn<
+type BuldPackageJson_F = Fn<
   [],
   {
     packageJson: object;
@@ -51,9 +51,7 @@ export const buildPackageJson: BuldPackageJson_F = () => {
   // #endregion
 
   // #region Set bin
-  const bin1 = castings.objects.dynamic<Record<string, string>>(
-    file.get(BIN_KEY),
-  );
+  const bin1 = file.get(BIN_KEY) as Record<string, string> | undefined;
 
   if (bin1) {
     const bin2 = Object.entries(bin1).reduce((acc, [key, value]) => {

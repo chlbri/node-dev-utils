@@ -4,4 +4,5 @@ import { TEARDOWN_COMMAND } from './constants';
 export const cleanup = () => {
   sh.rm('-Rf', '.pack');
   sh.exec(TEARDOWN_COMMAND);
+  console.log('Cleanup done');
 };
