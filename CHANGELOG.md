@@ -5,6 +5,21 @@
 <details>
 <summary>
 
+## **[0.3.1] - 27/03/2026** => _18:11_
+
+</summary>
+
+- Remove `this-gen-1` temporary local tarball dependency
+  (`file:.pack/bemedev-dev-utils-0.2.0.tgz`) used for integration testing
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.3.0] - 27/03/2026** => _18:06_
 
 </summary>
