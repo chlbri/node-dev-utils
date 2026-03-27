@@ -1,4 +1,4 @@
-import sleep from '@bemedev/sleep';
+import { sleep } from '../utils/sleep';
 import { expect, test, type TestOptions } from 'vitest';
 import type { TestDoneFunction } from './types';
 

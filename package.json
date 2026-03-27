@@ -37,7 +37,9 @@
     "lib",
     "public"
   ],
-  "bin": "lib/build-tests/cli/index.js",
+  "bin": {
+    "build-tests": "lib/build-tests/cli/index.js"
+  },
   "engines": {
     "node": ">=24"
   },
@@ -54,7 +56,7 @@
     "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
     "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
     "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt && node ./lib/build-tests/cli/index.js post",
+    "posttest": "pnpm run fmt && pnpm run build && node ./lib/build-tests/cli/index.js post",
     "prepare": "husky",
     "prepublishOnly": "",
     "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre",
@@ -66,7 +68,7 @@
     "rm:lib": "pnpx rimraf ./lib",
     "rolldown": "rolldown -c",
     "test:coverage": "vitest run",
-    "test": "pnpm run test:coverage --no-coverage",
+    "test": "pnpm run test:coverage",
     "test:no-type": "pnpm run test:coverage -c \"vitest.config.notype.ts\" --no-coverage",
     "test:only": "pnpm run test:coverage --no-coverage",
     "test:type": "pnpm run test:coverage -c \"vitest.config.type.ts\" --no-coverage",
@@ -106,10 +108,12 @@
     "vitest": "3.2.4"
   },
   "devDependencies": {
+    "@bemedev/app-ts": "^2.3.0",
     "@bemedev/basifun": "^0.5.3",
     "@bemedev/fsf": "^1.0.1",
     "@size-limit/file": "^12.0.1",
     "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
@@ -117,14 +121,18 @@
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
+    "jsdom": "^29.0.1",
     "onchange": "^7.1.0",
     "oxfmt": "^0.42.0",
     "oxlint": "^1.57.0",
     "prettier": "^3.8.1",
     "pretty-quick": "^4.2.2",
+    "rxjs": "^7.8.2",
     "size-limit": "^12.0.1",
+    "solid-js": "^1.9.12",
     "tslib": "^2.8.1",
     "typescript": "^6.0.2",
+    "vite-plugin-solid": "^2.11.11",
     "zod": "^4.3.6"
   },
   "peerDependencies": {

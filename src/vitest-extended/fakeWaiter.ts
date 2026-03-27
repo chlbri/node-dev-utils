@@ -1,4 +1,4 @@
-import sleep from '@bemedev/sleep';
+import { sleep } from '../utils/sleep';
 import type { VitestUtils } from 'vitest';
 
 export type FakeWaiter1_F = (

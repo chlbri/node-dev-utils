@@ -1,4 +1,4 @@
-import sleep from '@bemedev/sleep';
+import { sleep } from '../../utils/sleep';
 import { describe, expect } from 'vitest';
 import { createTests } from '../createTests';
 import { useEach, useEachAsync } from './pass';

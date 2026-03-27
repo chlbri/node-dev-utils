@@ -1,11 +1,10 @@
-import * as Solid from 'solid-js';
+import { createSignal } from 'solid-js';
 
 export const createCounter = () => {
-  const [count, setCount] = Solid.createSignal(0);
+  const [count, setCount] = createSignal(0);
   const increment = () => setCount(c => c + 1);
   const decrement = () => setCount(c => c - 1);
   const reset = () => setCount(0);
-
   return { count, increment, decrement, reset };
 };
 

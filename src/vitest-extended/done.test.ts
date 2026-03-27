@@ -1,5 +1,5 @@
 import { createMachine, interpret, typings } from '@bemedev/app-ts';
-import sleep from '@bemedev/sleep';
+import { sleep } from '../utils/sleep';
 import { afterAll, beforeEach, describe } from 'vitest';
 import { doneTest } from './done';
 

@@ -35,9 +35,6 @@ describe('vitest - exclude', () => {
           config: {
             test: {
               include: [
-                'src/build-tests/buildPackageJson.test.ts',
-                'src/build-tests/cli/cli.build.test.ts',
-                'src/build-tests/cli/cli.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/index.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
@@ -49,7 +46,6 @@ describe('vitest - exclude', () => {
                 'src/rolldown-config/__tests__/bemedev/omitAFile.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/omitAFile.test.ts',
                 'src/rolldown-config/__tests__/withoutOptions.test.ts',
-                'src/vitest-alias/tests/index.test.ts',
                 'src/vitest-exclude/Counter.test.tsx',
                 'src/vitest-exclude/vitest.test.ts',
                 'src/vitest-extended/createTests.cov.test.ts',
@@ -67,11 +63,8 @@ describe('vitest - exclude', () => {
                 enabled,
                 include: [
                   'src/build-tests/addTarball.ts',
-                  'src/build-tests/buildPackageJson.test.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',
-                  'src/build-tests/cli/cli.build.test.ts',
-                  'src/build-tests/cli/cli.test.ts',
                   'src/build-tests/cli/cli.ts',
                   'src/build-tests/cli/index.ts',
                   'src/build-tests/cli/post.ts',
@@ -112,9 +105,8 @@ describe('vitest - exclude', () => {
                   'src/rolldown-config/plugins/typescript.ts',
                   'src/rolldown-config/types.ts',
                   'src/rolldown-config/utils.ts',
+                  'src/utils/sleep.ts',
                   'src/vitest-alias/index.ts',
-                  'src/vitest-alias/tests/index.test.ts',
-                  'src/vitest-alias/tests/index.ts',
                   'src/vitest-alias/vitest.ts',
                   'src/vitest-exclude/Counter.test.tsx',
                   'src/vitest-exclude/Counter.tsx',
@@ -176,9 +168,6 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/build-tests/buildPackageJson.test.ts',
-                'src/build-tests/cli/cli.build.test.ts',
-                'src/build-tests/cli/cli.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/index.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
@@ -190,7 +179,6 @@ describe('vitest - exclude', () => {
                 'src/rolldown-config/__tests__/bemedev/omitAFile.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/omitAFile.test.ts',
                 'src/rolldown-config/__tests__/withoutOptions.test.ts',
-                'src/vitest-alias/tests/index.test.ts',
                 'src/vitest-exclude/Counter.test.tsx',
                 'src/vitest-exclude/vitest.test.ts',
                 'src/vitest-extended/createTests.cov.test.ts',
@@ -239,8 +227,8 @@ describe('vitest - exclude', () => {
                   'src/rolldown-config/plugins/typescript.ts',
                   'src/rolldown-config/types.ts',
                   'src/rolldown-config/utils.ts',
+                  'src/utils/sleep.ts',
                   'src/vitest-alias/index.ts',
-                  'src/vitest-alias/tests/index.ts',
                   'src/vitest-alias/vitest.ts',
                   'src/vitest-exclude/Counter.tsx',
                   'src/vitest-exclude/constants.ts',
@@ -280,6 +268,7 @@ describe('vitest - exclude', () => {
           },
         },
       },
+
       {
         invite: 'Ignore all index files',
         parameters: [{ ignoreCoverageFiles: ['**/index.ts'] }],
@@ -290,9 +279,6 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/build-tests/buildPackageJson.test.ts',
-                'src/build-tests/cli/cli.build.test.ts',
-                'src/build-tests/cli/cli.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/index.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
@@ -304,7 +290,6 @@ describe('vitest - exclude', () => {
                 'src/rolldown-config/__tests__/bemedev/omitAFile.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/omitAFile.test.ts',
                 'src/rolldown-config/__tests__/withoutOptions.test.ts',
-                'src/vitest-alias/tests/index.test.ts',
                 'src/vitest-exclude/Counter.test.tsx',
                 'src/vitest-exclude/vitest.test.ts',
                 'src/vitest-extended/createTests.cov.test.ts',
@@ -322,11 +307,8 @@ describe('vitest - exclude', () => {
                 enabled,
                 include: [
                   'src/build-tests/addTarball.ts',
-                  'src/build-tests/buildPackageJson.test.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',
-                  'src/build-tests/cli/cli.build.test.ts',
-                  'src/build-tests/cli/cli.test.ts',
                   'src/build-tests/cli/cli.ts',
                   'src/build-tests/cli/post.ts',
                   'src/build-tests/cli/pre.ts',
@@ -362,7 +344,7 @@ describe('vitest - exclude', () => {
                   'src/rolldown-config/plugins/typescript.ts',
                   'src/rolldown-config/types.ts',
                   'src/rolldown-config/utils.ts',
-                  'src/vitest-alias/tests/index.test.ts',
+                  'src/utils/sleep.ts',
                   'src/vitest-alias/vitest.ts',
                   'src/vitest-exclude/Counter.test.tsx',
                   'src/vitest-exclude/Counter.tsx',
@@ -410,6 +392,7 @@ describe('vitest - exclude', () => {
           },
         },
       },
+
       {
         invite: 'Ignore all index files and tsx files',
         parameters: [
@@ -425,9 +408,6 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/build-tests/buildPackageJson.test.ts',
-                'src/build-tests/cli/cli.build.test.ts',
-                'src/build-tests/cli/cli.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/index.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
@@ -439,7 +419,6 @@ describe('vitest - exclude', () => {
                 'src/rolldown-config/__tests__/bemedev/omitAFile.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/omitAFile.test.ts',
                 'src/rolldown-config/__tests__/withoutOptions.test.ts',
-                'src/vitest-alias/tests/index.test.ts',
                 'src/vitest-exclude/vitest.test.ts',
                 'src/vitest-extended/createTests.cov.test.ts',
                 'src/vitest-extended/done.test.ts',
@@ -456,11 +435,8 @@ describe('vitest - exclude', () => {
                 enabled,
                 include: [
                   'src/build-tests/addTarball.ts',
-                  'src/build-tests/buildPackageJson.test.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',
-                  'src/build-tests/cli/cli.build.test.ts',
-                  'src/build-tests/cli/cli.test.ts',
                   'src/build-tests/cli/cli.ts',
                   'src/build-tests/cli/post.ts',
                   'src/build-tests/cli/pre.ts',
@@ -496,7 +472,7 @@ describe('vitest - exclude', () => {
                   'src/rolldown-config/plugins/typescript.ts',
                   'src/rolldown-config/types.ts',
                   'src/rolldown-config/utils.ts',
-                  'src/vitest-alias/tests/index.test.ts',
+                  'src/utils/sleep.ts',
                   'src/vitest-alias/vitest.ts',
                   'src/vitest-exclude/constants.ts',
                   'src/vitest-exclude/types.ts',

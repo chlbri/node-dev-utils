@@ -8,9 +8,10 @@ import type { Params } from '../types';
 export const WAITER = 100_000;
 
 export const path = 'fileInt';
+const INTERMEDIATE_DIR = 'lib/rolldown-config';
 
 export const useBuild = () => {
-  const cFile = `${process.cwd()}/src/${path}.ts`;
+  const cFile = `${process.cwd()}/src/rolldown-config/${path}.ts`;
   const content = `export const A = 'A';`;
   writeFileSync(cFile, content);
 
@@ -84,7 +85,7 @@ export const useTests = (options: Options) => {
           const invite = `#${index + 1} The file "${path}" ${existBool}`;
 
           test(invite, () => {
-            const file = `${process.cwd()}/lib/${path}`;
+            const file = `${process.cwd()}/${INTERMEDIATE_DIR}/${path}`;
             const check = existsSync(file);
 
             expect(check).toBe(bool);
@@ -102,8 +103,8 @@ export const useRebuild = (additionals?: Params | undefined) => {
   let writeEsm: ReturnType<typeof useBundle>['writeEsm'];
 
   beforeAll(async () => {
-    const bemedev = await import(this1).then(
-      ({ defineConfig }) => defineConfig.bemedev,
+    const bemedev = await import(`${this1}`).then(
+      ({ rolldownConfig }) => rolldownConfig.defineConfig.bemedev,
     );
     const bundle = useBundle(bemedev(additionals));
     writeCjs = bundle.writeCjs;
