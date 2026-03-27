@@ -1,5 +1,5 @@
 {
-  "name": "@bemedev///TODO",
+  "name": "@bemedev/dev-utils",
   "version": "0.0.1",
   "description": "//TODO",
   "author": {
@@ -37,9 +37,7 @@
     "lib",
     "public"
   ],
-  "bin": {
-    "build-tests": "lib/build-tests/cli/index.js"
-  },
+  "bin": "lib/build-tests/cli/index.js",
   "engines": {
     "node": ">=24"
   },
@@ -96,6 +94,7 @@
     "@vitest/ui": "3.2.4",
     "cmd-ts": "^0.13.0",
     "edit-json-file": "^1.8.1",
+    "rolldown": "1.0.0-rc.12",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^8.1.2",
     "rollup-plugin-tsc-alias": "^1.1.4",
@@ -120,7 +119,6 @@
     "oxlint": "^1.57.0",
     "prettier": "^3.8.1",
     "pretty-quick": "^4.2.2",
-    "rolldown": "1.0.0-rc.12",
     "size-limit": "^12.0.1",
     "tslib": "^2.8.1",
     "typescript": "^6.0.2"
