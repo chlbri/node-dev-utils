@@ -5,13 +5,37 @@
 <details>
 <summary>
 
+## **[0.1.2] - 27/03/2026** => _17:45_
+
+</summary>
+
+- Refactor main entry to flat re-exports (replace namespace exports
+  `export * as X` with `export * from`)
+- Remove `types` re-exports from `rolldown-config` and `vitest-extended`
+- Remove Solid.js testing environment (drop `solid()` plugin, `jsdom`
+  environment, `@solidjs/testing-library`, `@testing-library/jest-dom`,
+  `@testing-library/user-event`, `vite-plugin-solid`)
+- Remove `types` fields from `exports` sub-path entries in `package.json`
+- Remove `@testing-library/jest-dom` from `tsconfig.json` types
+- Remove obsolete test files (`src/index.test.ts`,
+  `src/vitest-exclude/Counter.test.tsx`,
+  `src/vitest-exclude/Counter.tsx`)
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.1.1] - 27/03/2026** => _16:56_
 
 </summary>
 
-- Add `exports` sub-path entries in `package.json` for all modules
-  (`.`, `./build-tests`, `./rolldown`, `./vitest-alias`,
-  `./vitest-exclude`, `./vitest-extended`)
+- Add `exports` sub-path entries in `package.json` for all modules (`.`,
+  `./build-tests`, `./rolldown`, `./vitest-alias`, `./vitest-exclude`,
+  `./vitest-extended`)
 - Fix import path in rolldown-config fixtures to use new `./rolldown`
   sub-path export
 - <u>Test coverage **_100%_**</u>

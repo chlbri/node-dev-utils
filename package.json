@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -19,33 +19,27 @@
   "exports": {
     ".": {
       "import": "./lib/index.js",
-      "require": "./lib/index.cjs",
-      "types": "./lib/index.d.ts"
+      "require": "./lib/index.cjs"
     },
     "./build-tests": {
       "import": "./lib/build-tests/cli/index.js",
-      "require": "./lib/build-tests/cli/index.cjs",
-      "types": "./lib/build-tests/cli/index.d.ts"
+      "require": "./lib/build-tests/cli/index.cjs"
     },
     "./rolldown": {
       "import": "./lib/rolldown-config/index.js",
-      "require": "./lib/rolldown-config/index.cjs",
-      "types": "./lib/rolldown-config/index.d.ts"
+      "require": "./lib/rolldown-config/index.cjs"
     },
     "./vitest-alias": {
       "import": "./lib/vitest-alias/index.js",
-      "require": "./lib/vitest-alias/index.cjs",
-      "types": "./lib/vitest-alias/index.d.ts"
+      "require": "./lib/vitest-alias/index.cjs"
     },
     "./vitest-exclude": {
       "import": "./lib/vitest-exclude/index.js",
-      "require": "./lib/vitest-exclude/index.cjs",
-      "types": "./lib/vitest-exclude/index.d.ts"
+      "require": "./lib/vitest-exclude/index.cjs"
     },
     "./vitest-extended": {
       "import": "./lib/vitest-extended/index.js",
-      "require": "./lib/vitest-extended/index.cjs",
-      "types": "./lib/vitest-extended/index.d.ts"
+      "require": "./lib/vitest-extended/index.cjs"
     }
   },
   "maintainers": [
@@ -144,9 +138,6 @@
     "@bemedev/app-ts": "2.3.0",
     "@bemedev/basifun": "0.5.3",
     "@size-limit/file": "^12.0.1",
-    "@solidjs/testing-library": "^0.8.10",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1",
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
@@ -168,7 +159,6 @@
     "tslib": "^2.8.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
-    "vite-plugin-solid": "^2.11.11",
     "vitest": "3.2.4",
     "zod": "^4.3.6"
   },

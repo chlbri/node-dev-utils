@@ -1,8 +1,7 @@
+import { defineConfig } from 'vitest/config';
 import { aliasTs } from './src/vitest-alias';
 import { exclude } from './src/vitest-exclude';
-import { defineConfig } from 'vitest/config';
 import tsconfig from './tsconfig.json';
-import solid from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [
@@ -11,11 +10,9 @@ export default defineConfig({
       ignoreCoverageFiles: ['**/index.ts', '**/*.types.ts', '**/types.ts'],
       ignoreTestFiles: ['src/build-tests/cli/**/*'],
     }),
-    solid() as any,
   ],
 
   test: {
-    environment: 'jsdom',
     fileParallelism: false,
     bail: 1_000,
     maxConcurrency: 1,
