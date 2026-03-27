@@ -37,6 +37,7 @@
     "lib",
     "public"
   ],
+  "bin": "lib/build-tests/cli/index.js",
   "engines": {
     "node": ">=24"
   },
@@ -53,10 +54,10 @@
     "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
     "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
     "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt",
+    "posttest": "pnpm run fmt && build-tests post",
     "prepare": "husky",
     "prepublishOnly": "",
-    "pretest": "pnpm run build && pnpm run size",
+    "pretest": "pnpm run build && build-tests pre",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "rinit": "pnpm run rm && pnpm run config",

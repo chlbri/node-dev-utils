@@ -9,8 +9,9 @@ export default defineConfig({
     exclude({ ignoreCoverageFiles: ['**/index.ts'] }),
   ],
   test: {
+    fileParallelism: false,
     bail: 10,
-    maxConcurrency: 10,
+    maxConcurrency: 1,
     passWithNoTests: true,
     slowTestThreshold: 3000,
     globals: true,
