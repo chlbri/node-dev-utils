@@ -31,13 +31,16 @@ yarn add @bemedev/dev-utils
 
 ## Usage
 
-Each module is available as a dedicated sub-path export — there is no
-root barrel export:
+Each module is available as a dedicated sub-path export — there is no root
+barrel export:
 
 ```typescript
 import { createAlias, aliasTs } from '@bemedev/dev-utils/vitest-alias';
 import { exclude } from '@bemedev/dev-utils/vitest-exclude';
-import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
+import {
+  createTests,
+  createFakeWaiter,
+} from '@bemedev/dev-utils/vitest-extended';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
 ```
