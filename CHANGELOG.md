@@ -5,6 +5,22 @@
 <details>
 <summary>
 
+## **[0.4.0] - 03/04/2026** => _09:51_
+
+</summary>
+
+- Refactor `rolldown-config/config.ts` : remplace `transform.inject.require` par `esmExternalRequirePlugin()` de `rolldown/plugins`
+- Remove import `path` from `node:path` (plus nécessaire)
+- Update dépendances : `rolldown` rc.12 → rc.13, `oxlint` 1.57 → 1.58, `oxfmt` 0.42 → 0.43, `@types/node` 25.5.0 → 25.5.1
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.3.2] - 27/03/2026** => _20:43_
 
 </summary>

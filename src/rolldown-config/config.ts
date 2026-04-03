@@ -1,5 +1,5 @@
-import { toArray } from './utils';
 import { defineConfig as _defineConfig } from 'rolldown';
+import { esmExternalRequirePlugin } from 'rolldown/plugins';
 import {
   DEFAULT_CIRCULAR_DEPS,
   DEFAULT_DIR,
@@ -9,7 +9,7 @@ import { buildInput } from './input';
 import { buildOutput } from './output';
 import { PLUGIN_BUILDERS } from './plugins';
 import type { Config_F, Params } from './types';
-import path from 'node:path';
+import { toArray } from './utils';
 
 export const defineConfig: Config_F = additionals => {
   return defineConfig.default(additionals);
@@ -61,6 +61,7 @@ const producePlugins = ({
     unordered.circulars(),
     unordered.externals(),
     unordered.typescript(),
+    esmExternalRequirePlugin(),
     unordered.clean(),
   ];
 
@@ -94,11 +95,6 @@ defineConfig.default = ({
     plugins,
     external,
     output,
-    transform: {
-      inject: {
-        require: path.resolve('./require.js'),
-      },
-    },
     platform: 'node',
   });
 };
