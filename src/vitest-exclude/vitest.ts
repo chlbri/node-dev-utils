@@ -7,6 +7,33 @@ import {
 } from './vitest.utils';
 
 /**
+ * Create includeTest and includeCoverage arrays from glob patterns
+ *
+ * @param args Globs to ignore for test and coverage files
+ * @returns an object with includeTest and includeCoverage string arrays
+ */
+export async function create(args: Args[1] = {}) {
+  const firsts = {
+    patternTest: testPattern(),
+    patternCov: defaultCovPattern(),
+  };
+
+  return create.withPattern(firsts, args);
+}
+
+create.withPattern = async (
+  {
+    patternTest = testPattern(),
+    patternCov = defaultCovPattern(),
+  }: Partial<Args[0]> = {},
+  { ignoreTestFiles, ignoreCoverageFiles }: Args[1] = {},
+) => {
+  const files = await buildInclude(patternTest, ignoreTestFiles);
+  const coverage = await buildInclude(patternCov, ignoreCoverageFiles);
+  return { files, coverage };
+};
+
+/**
  * Plugin to add files with glob patterns to vitest
  *
  * @param ignore globs to exclude inside
@@ -41,20 +68,19 @@ exclude.withPattern = ((
       const testConfig = options?.test;
       const coverage = options?.test?.coverage;
 
-      const includeCov = await buildInclude(
-        patternCov,
-        ignoreCoverageFiles,
+      const all = await create.withPattern(
+        { patternTest, patternCov },
+        { ignoreCoverageFiles, ignoreTestFiles },
       );
-      const includeTest = await buildInclude(patternTest, ignoreTestFiles);
 
       return {
         ...options,
         test: {
           ...testConfig,
-          include: includeTest,
+          include: all.files,
           coverage: {
             ...coverage,
-            include: includeCov,
+            include: all.coverage,
           },
         },
       };

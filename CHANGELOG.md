@@ -5,13 +5,33 @@
 <details>
 <summary>
 
+## **[0.5.0] - 03/04/2026** => _10:16_
+
+</summary>
+
+- Add `create` function dans `vitest-exclude` : prend `Args[1]` (listes
+  d'ignorés) et retourne `{ files, coverage }`
+- Add `create.withPattern` : prend les `Args` complets (patterns +
+  ignorés), délégation interne pour les deux cas d'usage
+- Refactor `exclude.withPattern` pour déléguer à `create.withPattern`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.4.0] - 03/04/2026** => _09:51_
 
 </summary>
 
-- Refactor `rolldown-config/config.ts` : remplace `transform.inject.require` par `esmExternalRequirePlugin()` de `rolldown/plugins`
+- Refactor `rolldown-config/config.ts` : remplace
+  `transform.inject.require` par `esmExternalRequirePlugin()` de
+  `rolldown/plugins`
 - Remove import `path` from `node:path` (plus nécessaire)
-- Update dépendances : `rolldown` rc.12 → rc.13, `oxlint` 1.57 → 1.58, `oxfmt` 0.42 → 0.43, `@types/node` 25.5.0 → 25.5.1
+- Update dépendances : `rolldown` rc.12 → rc.13, `oxlint` 1.57 → 1.58,
+  `oxfmt` 0.42 → 0.43, `@types/node` 25.5.0 → 25.5.1
 - <u>Test coverage **_100%_**</u>
 
 </details>

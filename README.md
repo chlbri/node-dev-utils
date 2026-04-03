@@ -170,6 +170,60 @@ exclude.withPattern(
 
 ---
 
+### `create(args?)`
+
+Plain async function (not a plugin) that resolves glob patterns and returns
+`{ files, coverage }` string arrays using the default patterns.
+
+```typescript
+import { create } from '@bemedev/dev-utils/vitest-exclude';
+
+const { files, coverage } = await create({
+  ignoreTestFiles: ['src/fixtures/**'],
+  ignoreCoverageFiles: ['src/**/*.types.ts'],
+});
+```
+
+**Parameters (`args`)**
+
+| Property              | Type                    | Description                                  |
+| --------------------- | ----------------------- | -------------------------------------------- |
+| `ignoreTestFiles`     | `string[] \| undefined` | Glob patterns to exclude from test discovery |
+| `ignoreCoverageFiles` | `string[] \| undefined` | Glob patterns to exclude from coverage       |
+
+**Returns** `Promise<{ files: string[]; coverage: string[] }>`.
+
+---
+
+### `create.withPattern(patterns, args)`
+
+Same as `create`, but accepts custom glob patterns for both test and
+coverage discovery.
+
+```typescript
+import { create } from '@bemedev/dev-utils/vitest-exclude';
+
+const { files, coverage } = await create.withPattern(
+  {
+    patternTest: 'tests/**/*.test.ts',
+    patternCov: 'src/**/*.ts',
+  },
+  { ignoreTestFiles: ['tests/fixtures/**'] },
+);
+```
+
+**Parameters**
+
+| Name          | Type                 | Description                         |
+| ------------- | -------------------- | ----------------------------------- |
+| `patternTest` | `string \| string[]` | Glob(s) for test file discovery     |
+| `patternCov`  | `string \| string[]` | Glob(s) for coverage file discovery |
+| `args`        | same as `create`     | Optional ignore lists               |
+
+**Returns** `Promise<{ files: string[]; coverage: string[] }>`.
+
+---
+
 ## `vitestExtended`
 
 Extended helpers for writing structured, type-safe Vitest tests.
