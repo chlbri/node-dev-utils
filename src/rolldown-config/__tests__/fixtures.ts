@@ -2,7 +2,7 @@ import { existsSync, writeFileSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import { rolldown, type RolldownOptions } from 'rolldown';
 import { toArray } from '../utils';
-import { this1 } from '../../build-tests/constants';
+import { THIS1 } from '../../build-tests/constants';
 import type { Params } from '../types';
 
 export const WAITER = 100_000;
@@ -100,7 +100,7 @@ export const useRebuild = (additionals?: Params | undefined) => {
   let writeEsm: ReturnType<typeof useBundle>['writeEsm'];
 
   beforeAll(async () => {
-    const bemedev = await import(`${this1}/rolldown`).then(
+    const bemedev = await import(`${THIS1}/rolldown`).then(
       ({ defineConfig }) => defineConfig.bemedev,
     );
 

@@ -4,19 +4,12 @@ import sortKeys from 'sort-keys';
 import { BIN_KEY, EXPORT_KEY, EXPORT_KEYS } from './constants';
 import { getTypescriptOutdir } from './getTypescriptOutdir';
 
-type BuldPackageJson_F = Fn<
-  [],
-  {
-    packageJson: object;
-    outDir: string;
-  }
->;
+type BuldPackageJson_F = Fn<[], { packageJson: object; outDir: string }>;
 
 export const buildPackageJson: BuldPackageJson_F = () => {
   const file = editJsonFile('./package.json');
   const outDir = getTypescriptOutdir();
   const lib = `${outDir}/`;
-
   const replaceLib = (str: string) => str.replace(lib, '');
 
   // #region Set export values
@@ -51,16 +44,24 @@ export const buildPackageJson: BuldPackageJson_F = () => {
   // #endregion
 
   // #region Set bin
-  const bin1 = file.get(BIN_KEY) as Record<string, string> | undefined;
+  const bin1 = file.get(BIN_KEY) as
+    | Record<string, string>
+    | undefined
+    | string;
 
   if (bin1) {
-    const bin2 = Object.entries(bin1).reduce((acc, [key, value]) => {
-      acc[key] = replaceLib(value);
-      return acc;
-    }, {} as any);
-    const bin3 = sortKeys(bin2);
+    if (typeof bin1 === 'string') {
+      const bin2 = replaceLib(bin1);
+      file.set(BIN_KEY, bin2);
+    } else {
+      const bin2 = Object.entries(bin1).reduce((acc, [key, value]) => {
+        acc[key] = replaceLib(value);
+        return acc;
+      }, {} as any);
 
-    file.set(BIN_KEY, bin3);
+      const bin3 = sortKeys(bin2);
+      file.set(BIN_KEY, bin3);
+    }
   }
   // #endregion
 
@@ -71,6 +72,5 @@ export const buildPackageJson: BuldPackageJson_F = () => {
   // #endregion
 
   const packageJson = file.get();
-
   return { packageJson, outDir };
 };

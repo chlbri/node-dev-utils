@@ -5,6 +5,29 @@
 <details>
 <summary>
 
+## **[0.5.1] - 04/04/2026** => _00:00_
+
+</summary>
+
+- Add `src/build-tests/import.ts` : utilitaire `customImport` pour importer dynamiquement le paquet testé avec transformation optionnelle
+- Add `src/build-tests/types.ts` : type `IndexImport`
+- Add `src/utils/identity.ts` : fonction générique `identity`
+- Add export `./utils` dans `package.json`
+- Rename `this1` → `THIS1` dans `constants.ts` (convention SCREAMING_SNAKE_CASE)
+- Fix `buildPackageJson` : gestion du champ `bin` sous forme de `string` en plus d'`object`
+- Remove `FIXTURES` constant de `constants.ts` (commenté)
+- Update `tsconfig.json` : ajout du path alias `#utils` vers `src/utils/index.ts`
+- Update `rolldown.config.ts` : exclusion de `**/fixtures.ts` et `**/*.fixtures.ts`
+- Update dépendances : `@types/node` `^25.5.1` → `^25.5.2`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.5.0] - 03/04/2026** => _10:16_
 
 </summary>
