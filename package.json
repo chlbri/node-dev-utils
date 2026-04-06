@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -15,8 +15,8 @@
   "type": "module",
   "exports": {
     "./build-tests": {
-      "import": "./lib/build-tests/cli/index.js",
-      "require": "./lib/build-tests/cli/index.cjs"
+      "import": "./lib/build-tests/index.js",
+      "require": "./lib/build-tests/index.cjs"
     },
     "./rolldown": {
       "import": "./lib/rolldown-config/index.js",

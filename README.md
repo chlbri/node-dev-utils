@@ -542,6 +542,17 @@ CLI tooling that packs your built library as a local tarball, installs it
 under the alias `this-gen-1`, runs your test suite against the real
 distributable, then tears down.
 
+Available as a sub-path export:
+
+```typescript
+import {
+  addTarball,
+  cleanup,
+  customImport,
+  THIS1,
+} from '@bemedev/dev-utils/build-tests';
+```
+
 ### CLI usage
 
 The binary is `build-tests`. It exposes three subcommands:
@@ -599,6 +610,52 @@ import { cleanup } from '@bemedev/dev-utils/build-tests';
 
 cleanup();
 ```
+
+---
+
+### `customImport(fn?)`
+
+Dynamically imports the installed package (`this-gen-1`) and optionally
+transforms its exports via a mapper function.
+
+```typescript
+import { customImport } from '@bemedev/dev-utils/build-tests';
+
+// Import the default export as-is
+const out = await customImport();
+
+// Import and pick a specific export
+const myFn = await customImport(mod => mod.myFn);
+```
+
+**Parameters**
+
+| Name | Type                        | Default      | Description                                             |
+| ---- | --------------------------- | ------------ | ------------------------------------------------------- |
+| `fn` | `(out: IndexImport) => T`   | `identity`   | Mapper applied to the imported module; defaults to no-op |
+
+**Returns** `Promise<T>` — the mapped module output.
+
+---
+
+### `THIS1`
+
+Constant string `'this-gen-1'` — the package alias used by `addTarball` and
+`cleanup` when installing/removing the local tarball.
+
+```typescript
+import { THIS1 } from '@bemedev/dev-utils/build-tests';
+
+console.log(THIS1); // 'this-gen-1'
+```
+
+---
+
+### Types
+
+| Name          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `IndexImport` | Type of the module returned by a dynamic `import(THIS1)` call (`any`) |
 
 ---
 
