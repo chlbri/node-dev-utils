@@ -5,6 +5,22 @@
 <details>
 <summary>
 
+## **[0.5.3] - 13/04/2026** => _00:00_
+
+</summary>
+
+- Add `.husky/commit-msg` hook exécutable : déclenche `npm run ci` à chaque commit sauf si le message contient `_NO_CI`
+- Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
+- Update dépendances dev : `@size-limit/file` `^12.0.1` → `^12.1.0`, `@types/node` `^25.5.2` → `^25.6.0`, `globals` `^17.4.0` → `^17.5.0`, `jsdom` `^29.0.1` → `^29.0.2`, `oxfmt` `^0.43.0` → `^0.45.0`, `oxlint` `^1.58.0` → `^1.60.0`, `prettier` `^3.8.1` → `^3.8.2`, `rolldown` `1.0.0-rc.13` → `1.0.0-rc.15`, `size-limit` `^12.0.1` → `^12.1.0`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.5.2] - 04/04/2026** => _12:00_
 
 </summary>

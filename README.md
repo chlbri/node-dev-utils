@@ -630,9 +630,9 @@ const myFn = await customImport(mod => mod.myFn);
 
 **Parameters**
 
-| Name | Type                        | Default      | Description                                             |
-| ---- | --------------------------- | ------------ | ------------------------------------------------------- |
-| `fn` | `(out: IndexImport) => T`   | `identity`   | Mapper applied to the imported module; defaults to no-op |
+| Name | Type                      | Default    | Description                                              |
+| ---- | ------------------------- | ---------- | -------------------------------------------------------- |
+| `fn` | `(out: IndexImport) => T` | `identity` | Mapper applied to the imported module; defaults to no-op |
 
 **Returns** `Promise<T>` — the mapped module output.
 
@@ -653,8 +653,8 @@ console.log(THIS1); // 'this-gen-1'
 
 ### Types
 
-| Name          | Description                                                          |
-| ------------- | -------------------------------------------------------------------- |
+| Name          | Description                                                           |
+| ------------- | --------------------------------------------------------------------- |
 | `IndexImport` | Type of the module returned by a dynamic `import(THIS1)` call (`any`) |
 
 ---
