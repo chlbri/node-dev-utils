@@ -302,11 +302,19 @@ const { acceptation, success } = createTests.withImplementation(myFn, {
 ### `doneTest(invite, fn, options?)`
 
 Wraps a callback-style (done-based) test into a Vitest `test`. The test
-passes only when `done()` is called within the timeout.
+passes only when `done()` is called within the timeout. Supports both sync
+and async test functions.
 
 ```typescript
 import { doneTest } from '@bemedev/dev-utils/vitest-extended';
 
+// Async example with await
+doneTest('async callback', async done => {
+  await service.start();
+  await service.send('event');
+});
+
+// Sync example
 doneTest('fires callback', done => {
   emitter.once('event', done);
   emitter.emit('event');
@@ -315,11 +323,11 @@ doneTest('fires callback', done => {
 
 **Parameters**
 
-| Name      | Type                         | Default | Description                           |
-| --------- | ---------------------------- | ------- | ------------------------------------- |
-| `invite`  | `string`                     | —       | Test description                      |
-| `fn`      | `(done: () => void) => void` | —       | Test body (sync, receives `done`)     |
-| `options` | `number \| TestOptions`      | `100`   | Timeout in ms or Vitest `TestOptions` |
+| Name      | Type                                              | Default | Description                                    |
+| --------- | ------------------------------------------------- | ------- | ---------------------------------------------- |
+| `invite`  | `string`                                          | —       | Test description                               |
+| `fn`      | `(done: () => void) => void \| Promise<void>`    | —       | Test body (sync or async, receives `done`)     |
+| `options` | `number \| TestOptions`                           | `100`   | Timeout in ms or Vitest `TestOptions`          |
 
 **Variants**
 

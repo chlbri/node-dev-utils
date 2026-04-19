@@ -24,9 +24,7 @@ export default defineConfig({
     hookTimeout: 50_000,
     coverage: {
       enabled: true,
-      extension: 'ts',
       reportsDirectory: '.coverage',
-      all: true,
       provider: 'v8',
     },
   },

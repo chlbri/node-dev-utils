@@ -60,8 +60,8 @@ const producePlugins = ({
     unordered.tsPaths(),
     unordered.circulars(),
     unordered.externals(),
-    unordered.typescript(),
     esmExternalRequirePlugin(),
+    unordered.typescript(),
     unordered.clean(),
   ];
 

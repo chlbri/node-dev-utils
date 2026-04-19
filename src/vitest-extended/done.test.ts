@@ -43,19 +43,18 @@ describe('DoneTest', () => {
 
   afterAll(service.dispose);
 
-  doneTest('#1 => Simple', done => {
+  doneTest('#1 => Simple', async done => {
     service.addOptions(({ voidAction }) => ({
       actions: {
         onDone: voidAction(done),
       },
     }));
 
-    service.start();
-
-    service.send('START');
-    service.send('STOP');
-    service.send('START');
-    service.send('FINISH');
+    await service.start();
+    await service.send('START');
+    await service.send('STOP');
+    await service.send('START');
+    await service.send('FINISH');
   });
 
   doneTest.fails('#2 => Fails', done => {

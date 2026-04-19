@@ -5,6 +5,32 @@
 <details>
 <summary>
 
+## **[0.6.2] - 19/04/2026** => _15:57_
+
+</summary>
+
+- Fix : compilateur TypeScript — amélioration de l'initialisation du
+  `createCompilerHost()` avec gestion correcte du répertoire des lib de
+  TypeScript
+- Fix : configuration du compilateur TypeScript — utilisation de
+  `configFile.options` pour les options du compilateur avec support des
+  paramètres d'émission
+- Update : ordre des plugins dans rolldown config — le plugin TypeScript
+  s'exécute maintenant après `esmExternalRequirePlugin()` pour une meilleure
+  interopérabilité
+- Update : vitest-extended — support des opérations asynchrones dans
+  `doneTest` avec await sur les appels de service
+- Fix : types TypeScript — correction des affectations de type dans
+  `createTests.withImplementation()`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.6.1] - 19/04/2026** => _13:16_
 
 </summary>
@@ -12,13 +38,14 @@
 - Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
   `configFile.options` au lieu d'un objet vide pour une meilleure cohérence
   avec les options du compilateur
-- Add : plugin TypeScript plugin externe `typescript.config.ts` avec support
-  configurable pour les transformations de compiler options
+- Add : plugin TypeScript plugin externe `typescript.config.ts` avec
+  support configurable pour les transformations de compiler options
 - Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
 - Refactor : réorganisation de la structure `.github/skills/` vers
   `.claude/skills/` pour une meilleure intégration des Copilot skills
-- Enhance : documentation des skills mise à jour avec instructions détaillées
-  pour `update-docs`, `analyze-tests`, `check-spacing`, `organize-tests`
+- Enhance : documentation des skills mise à jour avec instructions
+  détaillées pour `update-docs`, `analyze-tests`, `check-spacing`,
+  `organize-tests`
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -33,12 +60,12 @@
 </summary>
 
 - Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
-  `configFile.options` au lieu d'un objet vide, et active le host compilateur
-  pour l'émission de programme
+  `configFile.options` au lieu d'un objet vide, et active le host
+  compilateur pour l'émission de programme
 - Update dépendances dev : `prettier` `^3.8.2` → `^3.8.3`, `rolldown`
   `1.0.0-rc.15` → `1.0.0-rc.16`, `typescript` `^6.0.2` → `^6.0.3`
-- Update `vitest.config.ts` : réduction des timeouts (`bail` `1000` → `100`,
-  `testTimeout` et `hookTimeout` `100000` → `50000`)
+- Update `vitest.config.ts` : réduction des timeouts (`bail` `1000` →
+  `100`, `testTimeout` et `hookTimeout` `100000` → `50000`)
 - <u>Test coverage **_100%_**</u>
 
 </details>

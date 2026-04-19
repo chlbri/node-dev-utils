@@ -120,7 +120,7 @@ createTests.withImplementation = <
   if (instanciation) {
     beforeAll(async () => {
       const impl = await instanciation();
-      func.mockImplementation(impl);
+      func.mockImplementation(impl as any);
     });
   }
 

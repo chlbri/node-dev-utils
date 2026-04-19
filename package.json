@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -81,7 +81,6 @@
     "ci:admin": "pnpm run rm && pnpm run upgrade:fast && pnpm run ci",
     "config": "pnpm install",
     "config:off": "pnpm run config --offline",
-    "config:fast": "pnpm add -D @vitest/coverage-v8@3.2.4 @vitest/ui@3.2.4 vitest@3.2.4 @bemedev/app-ts@2.3.0 @bemedev/basifun@0.5.3",
     "_lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "lint": "pnpm run fmt && pnpm run lint:fix",
@@ -107,9 +106,9 @@
     "test:type:watch": "vitest -c \"vitest.config.type.ts\"",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "upgrade": "pnpm dlx @bemedev/upgrade-npm-package && pnpm run config:fast",
+    "upgrade": "pnpm dlx @bemedev/upgrade-npm-package",
     "size": "size-limit",
-    "upgrade:fast": "pnpm up --latest && pnpm run config:fast"
+    "upgrade:fast": "pnpm up --latest"
   },
   "size-limit": [
     {
@@ -134,14 +133,15 @@
     "tsc-alias": "^1.8.16"
   },
   "devDependencies": {
-    "@bemedev/app-ts": "2.3.0",
+    "@bemedev/app-ts": "3.0.1",
     "@bemedev/basifun": "0.5.3",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@size-limit/file": "^12.1.0",
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^25.6.0",
     "@types/shelljs": "^0.10.0",
-    "@vitest/coverage-v8": "3.2.4",
-    "@vitest/ui": "3.2.4",
+    "@vitest/coverage-v8": "4.1.4",
+    "@vitest/ui": "4.1.4",
     "globals": "^17.5.0",
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
@@ -158,13 +158,13 @@
     "tslib": "^2.8.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
-    "vitest": "3.2.4",
+    "vitest": "4.1.4",
     "zod": "^4.3.6"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "3.2.4",
-    "rolldown": "1.0.0-rc.12",
-    "typescript": "^6.0.2",
-    "vitest": "3.2.4"
+    "@vitest/coverage-v8": "4.1.4",
+    "rolldown": "1.0.0-rc.16",
+    "typescript": "^6.0.3",
+    "vitest": "4.1.4"
   }
 }
