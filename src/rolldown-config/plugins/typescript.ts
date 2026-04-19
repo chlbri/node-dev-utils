@@ -4,6 +4,7 @@ import type { RolldownPluginOption } from 'rolldown';
 import { replaceTscAliasPaths } from 'tsc-alias';
 import ts from 'typescript';
 import { readTsConfig } from './typescript.config';
+import { dirname, join } from 'node:path';
 
 type Props = {
   exclude?: string | string[];
@@ -43,6 +44,19 @@ export const typescript = ({
 
         const configFile = readTsConfig(tsconfigPath);
         const host = ts.createCompilerHost(configFile.options);
+        const libLocation = join(
+          dirname(require.resolve('typescript')),
+          'lib',
+        );
+        host.getDefaultLibLocation = () => libLocation;
+        host.getDefaultLibFileName = options => {
+          return join(libLocation, ts.getDefaultLibFileName(options));
+        };
+
+        // host.useCaseSensitiveFileNames = () =>
+        //   ts.sys.useCaseSensitiveFileNames;
+        // host.readFile = ts.sys.readFile;
+        // host.fileExists = ts.sys.fileExists;
 
         const parsed = ts.parseJsonConfigFileContent(
           {

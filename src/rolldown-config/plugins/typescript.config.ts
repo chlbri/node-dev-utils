@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { dirname, join } from 'node:path';
 import ts from 'typescript';
 
 const _readFile = (filePath: string): string | undefined => {
@@ -76,7 +76,7 @@ export const readTsConfig = (path: string) => {
   const parsedConfig = ts.parseJsonConfigFileContent(
     configFile.config,
     _host,
-    resolve(path.split('/').slice(0, -1).join('/')),
+    dirname(path),
   );
 
   return parsedConfig;

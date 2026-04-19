@@ -5,6 +5,29 @@
 <details>
 <summary>
 
+## **[0.6.1] - 19/04/2026** => _13:16_
+
+</summary>
+
+- Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
+  `configFile.options` au lieu d'un objet vide pour une meilleure cohérence
+  avec les options du compilateur
+- Add : plugin TypeScript plugin externe `typescript.config.ts` avec support
+  configurable pour les transformations de compiler options
+- Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
+- Refactor : réorganisation de la structure `.github/skills/` vers
+  `.claude/skills/` pour une meilleure intégration des Copilot skills
+- Enhance : documentation des skills mise à jour avec instructions détaillées
+  pour `update-docs`, `analyze-tests`, `check-spacing`, `organize-tests`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.6.0] - 19/04/2026** => _13:04_
 
 </summary>
