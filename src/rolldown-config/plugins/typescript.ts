@@ -42,7 +42,7 @@ export const typescript = ({
         )!;
 
         const configFile = readTsConfig(tsconfigPath);
-        const host = ts.createCompilerHost({});
+        const host = ts.createCompilerHost(configFile.options);
 
         const parsed = ts.parseJsonConfigFileContent(
           {
@@ -65,7 +65,7 @@ export const typescript = ({
         const program = ts.createProgram(
           parsed.fileNames,
           parsed.options,
-          // host,
+          host,
         );
 
         const emitResult = program.emit();

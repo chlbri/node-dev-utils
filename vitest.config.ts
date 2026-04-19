@@ -14,14 +14,14 @@ export default defineConfig({
 
   test: {
     fileParallelism: false,
-    bail: 1_000,
+    bail: 100,
     maxConcurrency: 1,
     passWithNoTests: true,
     slowTestThreshold: 3000,
     globals: true,
     logHeapUsage: true,
-    testTimeout: 100_000,
-    hookTimeout: 100_000,
+    testTimeout: 50_000,
+    hookTimeout: 50_000,
     coverage: {
       enabled: true,
       extension: 'ts',

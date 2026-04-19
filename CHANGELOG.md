@@ -5,13 +5,38 @@
 <details>
 <summary>
 
+## **[0.6.0] - 19/04/2026** => _13:04_
+
+</summary>
+
+- Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
+  `configFile.options` au lieu d'un objet vide, et active le host compilateur
+  pour l'émission de programme
+- Update dépendances dev : `prettier` `^3.8.2` → `^3.8.3`, `rolldown`
+  `1.0.0-rc.15` → `1.0.0-rc.16`, `typescript` `^6.0.2` → `^6.0.3`
+- Update `vitest.config.ts` : réduction des timeouts (`bail` `1000` → `100`,
+  `testTimeout` et `hookTimeout` `100000` → `50000`)
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.5.3] - 13/04/2026** => _00:00_
 
 </summary>
 
-- Add `.husky/commit-msg` hook exécutable : déclenche `npm run ci` à chaque commit sauf si le message contient `_NO_CI`
+- Add `.husky/commit-msg` hook exécutable : déclenche `npm run ci` à chaque
+  commit sauf si le message contient `_NO_CI`
 - Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
-- Update dépendances dev : `@size-limit/file` `^12.0.1` → `^12.1.0`, `@types/node` `^25.5.2` → `^25.6.0`, `globals` `^17.4.0` → `^17.5.0`, `jsdom` `^29.0.1` → `^29.0.2`, `oxfmt` `^0.43.0` → `^0.45.0`, `oxlint` `^1.58.0` → `^1.60.0`, `prettier` `^3.8.1` → `^3.8.2`, `rolldown` `1.0.0-rc.13` → `1.0.0-rc.15`, `size-limit` `^12.0.1` → `^12.1.0`
+- Update dépendances dev : `@size-limit/file` `^12.0.1` → `^12.1.0`,
+  `@types/node` `^25.5.2` → `^25.6.0`, `globals` `^17.4.0` → `^17.5.0`,
+  `jsdom` `^29.0.1` → `^29.0.2`, `oxfmt` `^0.43.0` → `^0.45.0`, `oxlint`
+  `^1.58.0` → `^1.60.0`, `prettier` `^3.8.1` → `^3.8.2`, `rolldown`
+  `1.0.0-rc.13` → `1.0.0-rc.15`, `size-limit` `^12.0.1` → `^12.1.0`
 - <u>Test coverage **_100%_**</u>
 
 </details>
