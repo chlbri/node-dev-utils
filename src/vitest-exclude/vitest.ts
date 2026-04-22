@@ -1,5 +1,5 @@
 import { name } from './constants';
-import type { Args, Plugin, WithPattern } from './types';
+import type { Args, WithPattern } from './types';
 import {
   buildInclude,
   defaultCovPattern,
@@ -60,7 +60,7 @@ export function exclude(args: Args[1] = {}) {
 exclude.withPattern = ((
   { patternTest, patternCov },
   { ignoreCoverageFiles, ignoreTestFiles },
-): Plugin => {
+) => {
   return {
     name,
     enforce: 'pre',

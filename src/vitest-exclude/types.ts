@@ -1,11 +1,6 @@
-import type { ViteUserConfig } from 'vitest/config';
+import type { Plugin } from 'vitest/config';
 
 export type Define<T> = Exclude<T, undefined>;
-
-export type Plugin = Exclude<
-  Define<ViteUserConfig['plugins']>[number],
-  Promise<any> | null | undefined | false | Array<any>
->;
 
 export type Args = [
   { patternTest: string | string[]; patternCov: string | string[] },

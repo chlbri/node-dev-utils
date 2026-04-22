@@ -5,6 +5,20 @@
 <details>
 <summary>
 
+## **[0.6.3] - 22/04/2026** => _22:56_
+
+</summary>
+
+- Fix : gestion asynchrone améliorée dans `vitest-extended` — `pass` attend maintenant les transformations asynchrones
+- Fix : correction des types de plugin dans `vitest-exclude` pour une compatibilité Vitest plus simple
+- Add : fixture de test de couverture `createTests.cov.test.ts` enrichie avec un transformateur asynchrone
+- Update dépendances dev : `@vitest/coverage-v8` `4.1.4` → `4.1.5`, `@vitest/ui` `4.1.4` → `4.1.5`, `oxfmt` `^0.45.0` → `^0.46.0`, `oxlint` `^1.60.0` → `^1.61.0`, `rolldown` `1.0.0-rc.16` → `1.0.0-rc.17`, `vitest` `4.1.4` → `4.1.5`
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.2] - 19/04/2026** => _15:57_
 
 </summary>
@@ -16,8 +30,8 @@
   `configFile.options` pour les options du compilateur avec support des
   paramètres d'émission
 - Update : ordre des plugins dans rolldown config — le plugin TypeScript
-  s'exécute maintenant après `esmExternalRequirePlugin()` pour une meilleure
-  interopérabilité
+  s'exécute maintenant après `esmExternalRequirePlugin()` pour une
+  meilleure interopérabilité
 - Update : vitest-extended — support des opérations asynchrones dans
   `doneTest` avec await sur les appels de service
 - Fix : types TypeScript — correction des affectations de type dans

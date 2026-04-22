@@ -323,11 +323,11 @@ doneTest('fires callback', done => {
 
 **Parameters**
 
-| Name      | Type                                              | Default | Description                                    |
-| --------- | ------------------------------------------------- | ------- | ---------------------------------------------- |
-| `invite`  | `string`                                          | —       | Test description                               |
-| `fn`      | `(done: () => void) => void \| Promise<void>`    | —       | Test body (sync or async, receives `done`)     |
-| `options` | `number \| TestOptions`                           | `100`   | Timeout in ms or Vitest `TestOptions`          |
+| Name      | Type                                          | Default | Description                                |
+| --------- | --------------------------------------------- | ------- | ------------------------------------------ |
+| `invite`  | `string`                                      | —       | Test description                           |
+| `fn`      | `(done: () => void) => void \| Promise<void>` | —       | Test body (sync or async, receives `done`) |
+| `options` | `number \| TestOptions`                       | `100`   | Timeout in ms or Vitest `TestOptions`      |
 
 **Variants**
 

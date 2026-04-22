@@ -14,6 +14,7 @@ describe('CreateTests - Coverage', () => {
       {
         instanciation: () => add,
         name: 'add',
+        transform: async x => x,
       },
     );
 
