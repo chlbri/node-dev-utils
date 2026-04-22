@@ -1,12 +1,5 @@
 import type { Fn } from './bemedev/globals/types';
-import type { ToError_F } from './each/error.types';
-import type {
-  ChainedFn,
-  Identity,
-  NextFn,
-  TestArgs,
-  TestErrors,
-} from './types';
+import type { TestArgs, TestErrors } from './types';
 
 type ReturnR<F extends Fn> = {
   acceptation: () => void;
@@ -14,12 +7,9 @@ type ReturnR<F extends Fn> = {
   fails: (...cases: TestErrors<F>) => () => void;
 };
 
-export type _CreateTests_F = <
-  F extends Fn,
-  T extends NextFn<F> = Identity<F>,
->(
-  func: F,
-  transform?: T,
-  toError?: ToError_F<F>,
+export type _CreateTests_F = <F0 extends any[], F1, F2 = F1>(
+  func: Fn<F0, F1>,
+  transform?: Fn<[Awaited<F1>], F2>,
+  toError?: Fn<F0, string | undefined>,
   name?: string,
-) => ReturnR<ChainedFn<F, T>>;
+) => ReturnR<Fn<F0, F2>>;

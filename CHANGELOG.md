@@ -5,6 +5,22 @@
 <details>
 <summary>
 
+## **[0.6.4] - 22/04/2026** => _23:37_
+
+</summary>
+
+- Fix : typage amélioré de `createTests` et
+  `createTests.withImplementation` dans `vitest-extended`
+- Fix : conversion `transform` prise en charge correctement pour les appels
+  asynchrones de `useErrorAsyncEach` et `useEachAsync`
+- Fix : export de type `_CreateTests_F` restructuré pour un usage plus
+  propre
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.3] - 22/04/2026** => _22:56_
 
 </summary>

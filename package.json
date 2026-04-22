@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",

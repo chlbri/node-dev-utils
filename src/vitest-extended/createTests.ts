@@ -1,16 +1,16 @@
-import type { Fn } from './bemedev/globals/types';
 import { beforeAll, vi } from 'vitest';
 import { useTFA } from './acceptation';
+import type { Fn } from './bemedev/globals/types';
 import type { _CreateTests_F } from './createTests.types';
 import { useErrorAsyncEach } from './each/error';
-import type { ToError_F } from './each/error.types';
 import {
   useEachAsync,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   type useEach,
 } from './each/pass';
 import { toStringFlat } from './toStringFlat';
-import type { Identity, NextFn } from './types';
+
+export type { _CreateTests_F };
 
 const _create: _CreateTests_F = (func, transform, toError, name) => {
   return {
@@ -20,7 +20,11 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
       const length = cases.length;
 
       return () => {
-        const useTests = useErrorAsyncEach(func, transform, toError);
+        const useTests = useErrorAsyncEach(
+          func,
+          transform as any,
+          toError,
+        );
 
         const _cases: any = cases.map(
           ({ invite: _invite, parameters, error }, index) => {
@@ -37,7 +41,7 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
     success: (...cases) => {
       const length = cases.length;
       return () => {
-        const useTests = useEachAsync(func, transform);
+        const useTests = useEachAsync(func as any, transform);
 
         const _cases: any = cases.map(
           ({ invite: _invite, parameters, expected, test }, index) => {
@@ -87,32 +91,29 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
  *)
  *
  */
-export const createTests = <
-  F extends Fn,
-  T extends NextFn<F> = Identity<F>,
->(
-  func: F,
-  args?: { transform?: T; toError?: ToError_F<F> },
+export const createTests = <F0 extends any[], F1, F2 = F1>(
+  func: Fn<F0, F1>,
+  args?: {
+    transform?: Fn<[Awaited<F1>], F2>;
+    toError?: Fn<F0, string | undefined>;
+  },
 ) => {
   const { transform, toError } = args || {};
   return _create(func, transform, toError);
 };
 
-createTests.withImplementation = <
-  F extends Fn,
-  T extends NextFn<F> = Identity<F>,
->(
-  f: F,
+createTests.withImplementation = <F0 extends any[], F1, F2 = F1>(
+  f: Fn<NoInfer<F0>, NoInfer<F1>>,
   {
     instanciation,
     name,
     transform,
     toError,
   }: {
-    instanciation: () => Promise<F> | F;
+    instanciation: () => Promise<Fn<F0, F1>> | Fn<F0, F1>;
     name: string;
-    transform?: T;
-    toError?: ToError_F<F>;
+    transform?: Fn<[Awaited<F1>], F2>;
+    toError?: Fn<F0, string | undefined>;
   },
 ) => {
   const func = vi.fn(f);
@@ -120,7 +121,7 @@ createTests.withImplementation = <
   if (instanciation) {
     beforeAll(async () => {
       const impl = await instanciation();
-      func.mockImplementation(impl as any);
+      func.mockImplementation(impl);
     });
   }
 

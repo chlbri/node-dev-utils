@@ -181,5 +181,28 @@ describe('CreateTests - Coverage', () => {
         ),
       );
     });
+
+    describe('#5 => transform', () => {
+      const add = (a: number, b: number) => a + b;
+      const { success } = createTests(add, {
+        transform: x => `Result is ${x}`,
+      });
+
+      describe(
+        '#1 => Success',
+        success(
+          {
+            invite: '1 + 2 = 3',
+            parameters: [1, 2],
+            expected: 'Result is 3',
+          },
+          {
+            invite: '5 + 5 = 10',
+            parameters: [5, 5],
+            expected: 'Result is 10',
+          },
+        ),
+      );
+    });
   });
 });
