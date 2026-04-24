@@ -5,6 +5,26 @@
 <details>
 <summary>
 
+## **[0.6.5] - 24/04/2026** => _12:24_
+
+</summary>
+
+- Fix : `build-tests` export mis à jour pour utiliser `./imports` au lieu
+  de l'ancien `types`
+- Update : `customImport()` accepte maintenant un `path` optionnel et
+  résout dynamiquement le module cible
+- Fix : tests `vitest-exclude` enrichis avec les nouveaux chemins de
+  `src/__tests__/package-exports.built.test.ts` et
+  `src/build-tests/imports/*`
+- Fix : tests `vitest-extended` — numérotation des cas d'acceptation
+  alignée sur le format `#01`, `#02`
+- Add : dépendance dev `zx` ajoutée
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.4] - 22/04/2026** => _23:37_
 
 </summary>

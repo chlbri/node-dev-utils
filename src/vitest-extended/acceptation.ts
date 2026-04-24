@@ -5,10 +5,10 @@ import { isFunction } from './isFunction';
 export const useTestFunctionAcceptation = (f: Fn, _name?: string) => {
   const name = _name ?? f.name;
 
-  test(`#1 => ${name} is defined`, () => {
+  test(`#01 => ${name} is defined`, () => {
     expect(f).toBeDefined();
   });
-  test(`#2 => ${name} is a function`, () => {
+  test(`#02 => ${name} is a function`, () => {
     const check = isFunction(f);
     expect(check).toBe(true);
   });

@@ -1,13 +1,19 @@
 import { identity } from '#utils';
 import { THIS1 } from './constants';
-import type { IndexImport } from './types';
 
-type CustomImport_F = <T = IndexImport>(
-  fn?: (out: any) => T,
-) => Promise<T>;
+type Args<T = any> = {
+  path?: string;
+  fn: (out: any) => T;
+};
 
-export const customImport: CustomImport_F = async (fn = identity) => {
-  const out = await import(THIS1);
+type CustomImport_F = <T = any>(args: Args<T>) => Promise<T>;
+
+export const customImport: CustomImport_F = async ({
+  path = '',
+  fn = identity,
+}: Args) => {
+  const _path = path === '' ? THIS1 : `${THIS1}/${path}`;
+  const out = await import(_path);
   const out2 = fn(out);
   return out2;
 };
