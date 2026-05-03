@@ -5,6 +5,19 @@
 <details>
 <summary>
 
+## **[0.6.6] - 03/05/2026** => _12:06_
+
+</summary>
+
+- Fix : `createImportFnTests` support optionnel `FAILS` et `describe.skipIf` pour éviter les sections vides
+- Update : tests `Built package exports` enrichis avec de nouveaux cas d'import
+- Update dépendances dev : `@bemedev/app-ts` `3.0.1` → `3.0.2`, `globals` `^17.5.0` → `^17.6.0`, `oxfmt` `^0.46.0` → `^0.47.0`, `oxlint` `^1.61.0` → `^1.62.0`, `rolldown` `1.0.0-rc.17` → `1.0.0-rc.18`, `zod` `^4.3.6` → `^4.4.2`, `tsc-alias` `^1.8.16` → `^1.8.17`
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.5] - 24/04/2026** => _12:24_
 
 </summary>

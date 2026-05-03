@@ -11,6 +11,21 @@ beforeAll(async () => {
 describe('Built package exports', () => {
   describe(
     ...createImportFnTests({
+      SUCCESS: [],
+      FAILS: [
+        'notAFunction',
+        'missingExport',
+        'buildPackageJson',
+        'defineConfig',
+        'addTarball',
+        'cleanup',
+        'customImport',
+        'createImportFnTests',
+      ],
+    }),
+  );
+  describe(
+    ...createImportFnTests({
       path: 'build-tests',
       SUCCESS: [
         'addTarball',
@@ -100,14 +115,6 @@ describe('Built package exports', () => {
         'useEachAsync',
         'useErrorAsyncEachCases',
         'createFakeWaiter',
-      ],
-      FAILS: [
-        'identity',
-        'sleep',
-        'addTarball',
-        'cleanup',
-        'customImport',
-        'createImportFnTests',
       ],
     }),
   );
