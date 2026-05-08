@@ -5,18 +5,28 @@
 <details>
 <summary>
 
-## **[0.6.8] - 08/05/2026** => _09:36_
+## **[0.6.9] - 08/05/2026** => _09:46_
 
 </summary>
 
-- Betteer github actions
+- Better github actions
 - <u>Test coverage **_100%_**</u>
 
 </details>
 
 <details>
 <summary>
-<details>
+
+## **[0.6.8] - 08/05/2026** => _09:36_
+
+</summary>
+
+- Better github actions
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+  <details>
 <summary>
 
 ## **[0.6.7] - 08/05/2026** => _09:13_
