@@ -5,6 +5,20 @@
 <details>
 <summary>
 
+## **[0.6.8] - 08/05/2026** => _09:36_
+
+</summary>
+
+- Betteer github actions
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<details>
+<summary>
+<details>
+<summary>
+
 ## **[0.6.7] - 08/05/2026** => _09:13_
 
 </summary>
