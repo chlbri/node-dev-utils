@@ -5,6 +5,18 @@
 <details>
 <summary>
 
+## **[0.6.10] - 08/05/2026** => _09:47_
+
+</summary>
+
+- Better github actions
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.9] - 08/05/2026** => _09:46_
 
 </summary>
