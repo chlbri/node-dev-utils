@@ -35,7 +35,7 @@ describe('vitest - exclude', () => {
           config: {
             test: {
               include: [
-                'src/__tests__/package-exports.built.test.ts',
+                'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -61,7 +61,7 @@ describe('vitest - exclude', () => {
               coverage: {
                 enabled,
                 include: [
-                  'src/__tests__/package-exports.built.test.ts',
+                  'src/__tests__/package-exports.test.ts',
                   'src/build-tests/addTarball.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',
@@ -171,7 +171,7 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/__tests__/package-exports.built.test.ts',
+                'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -287,7 +287,7 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/__tests__/package-exports.built.test.ts',
+                'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -313,7 +313,7 @@ describe('vitest - exclude', () => {
               coverage: {
                 enabled,
                 include: [
-                  'src/__tests__/package-exports.built.test.ts',
+                  'src/__tests__/package-exports.test.ts',
                   'src/build-tests/addTarball.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',
@@ -419,7 +419,7 @@ describe('vitest - exclude', () => {
             test: {
               environment,
               include: [
-                'src/__tests__/package-exports.built.test.ts',
+                'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -445,7 +445,7 @@ describe('vitest - exclude', () => {
               coverage: {
                 enabled,
                 include: [
-                  'src/__tests__/package-exports.built.test.ts',
+                  'src/__tests__/package-exports.test.ts',
                   'src/build-tests/addTarball.ts',
                   'src/build-tests/buildPackageJson.ts',
                   'src/build-tests/cleanup.ts',

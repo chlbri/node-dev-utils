@@ -5,13 +5,41 @@
 <details>
 <summary>
 
+## **[0.6.7] - 08/05/2026** => _09:13_
+
+</summary>
+
+- Add : tests de fonctions d'import améliorés avec cas d'erreur
+  additionnels
+- Fix : compilation TypeScript — initialisation améliorée du compilateur
+  avec gestion correcte de la localisation des lib TypeScript
+- Fix : configuration du compilateur TypeScript — utilisation de
+  `configFile.options` pour les options du compilateur
+- Refactor : réordonnancement du plugin TypeScript dans `producePlugins`,
+  amélioration de la configuration TypeScript et du traitement des tests
+- Refactor : types améliorés et gestion asynchrone optimisée dans
+  `vitest-exclude` et `vitest-extended`
+- Update dépendances dev : `oxfmt` `^0.47.0` → `^0.48.0`, `oxlint`
+  `^1.62.0` → `^1.63.0`, `typescript` `^6.0.2` → `^6.0.3`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<details>
+<summary>
+
 ## **[0.6.6] - 03/05/2026** => _12:06_
 
 </summary>
 
-- Fix : `createImportFnTests` support optionnel `FAILS` et `describe.skipIf` pour éviter les sections vides
-- Update : tests `Built package exports` enrichis avec de nouveaux cas d'import
-- Update dépendances dev : `@bemedev/app-ts` `3.0.1` → `3.0.2`, `globals` `^17.5.0` → `^17.6.0`, `oxfmt` `^0.46.0` → `^0.47.0`, `oxlint` `^1.61.0` → `^1.62.0`, `rolldown` `1.0.0-rc.17` → `1.0.0-rc.18`, `zod` `^4.3.6` → `^4.4.2`, `tsc-alias` `^1.8.16` → `^1.8.17`
+- Fix : `createImportFnTests` support optionnel `FAILS` et
+  `describe.skipIf` pour éviter les sections vides
+- Update : tests `Built package exports` enrichis avec de nouveaux cas
+  d'import
+- Update dépendances dev : `@bemedev/app-ts` `3.0.1` → `3.0.2`, `globals`
+  `^17.5.0` → `^17.6.0`, `oxfmt` `^0.46.0` → `^0.47.0`, `oxlint` `^1.61.0`
+  → `^1.62.0`, `rolldown` `1.0.0-rc.17` → `1.0.0-rc.18`, `zod` `^4.3.6` →
+  `^4.4.2`, `tsc-alias` `^1.8.16` → `^1.8.17`
 
 </details>
 
@@ -27,8 +55,7 @@
 - Update : `customImport()` accepte maintenant un `path` optionnel et
   résout dynamiquement le module cible
 - Fix : tests `vitest-exclude` enrichis avec les nouveaux chemins de
-  `src/__tests__/package-exports.built.test.ts` et
-  `src/build-tests/imports/*`
+  `src/__tests__/package-exports.test.ts` et `src/build-tests/imports/*`
 - Fix : tests `vitest-extended` — numérotation des cas d'acceptation
   alignée sur le format `#01`, `#02`
 - Add : dépendance dev `zx` ajoutée

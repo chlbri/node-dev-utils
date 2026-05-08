@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -152,16 +152,17 @@
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
     "onchange": "^7.1.0",
-    "oxfmt": "^0.47.0",
-    "oxlint": "^1.62.0",
+    "oxfmt": "^0.48.0",
+    "oxlint": "^1.63.0",
     "pretty-quick": "^4.2.2",
-    "rolldown": "1.0.0-rc.18",
+    "rolldown": "1.0.0-rc.17",
     "size-limit": "^12.1.0",
+    "this-gen-1": "file:.pack/bemedev-dev-utils-0.6.6.tgz",
     "tslib": "^2.8.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
     "vitest": "4.1.5",
-    "zod": "^4.4.2",
+    "zod": "^4.4.3",
     "zx": "^8.8.5"
   },
   "peerDependencies": {
@@ -170,5 +171,6 @@
     "rolldown": "1.0.0-rc.17",
     "typescript": "^6.0.3",
     "vitest": "4.1.5"
-  }
+  },
+  "packageManager": "pnpm@11.0.8+sha512.4c4097e1dd2d42372c4e7fa5a791ff28fc75a484c7ac192e64b1df0fdef17594ba982f9b4fed9adfb3c757846f565b799b2763fb3733d1de1bcb82cf46684912"
 }
