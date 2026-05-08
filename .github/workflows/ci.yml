@@ -16,5 +16,5 @@ on:
       - beta
 
 jobs:
-  test:
+  all:
     uses: chlbri/node-github-actions/.github/workflows/ci.yml@main
