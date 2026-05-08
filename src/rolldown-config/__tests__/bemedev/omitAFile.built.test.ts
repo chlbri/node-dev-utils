@@ -1,9 +1,8 @@
-import { IS_EXTENSION } from '../constants';
 import { path, useBuild, useRebuild, useTests } from '../fixtures';
 
 useBuild();
 
-describe.skipIf(IS_EXTENSION)('bemedev omit "fileInt"', () => {
+describe('bemedev omit "fileInt"', () => {
   const { testCjs, testEsm } = useRebuild({
     ignoresJS: `${process.cwd()}/src/**/${path}.ts`,
   });

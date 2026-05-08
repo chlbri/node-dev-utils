@@ -1,9 +1,8 @@
-import { IS_EXTENSION } from '../constants';
 import { useBuild, useRebuild, useTests } from '../fixtures';
 
 useBuild();
 
-describe.skipIf(IS_EXTENSION)('bemedev options', () => {
+describe('bemedev options', () => {
   const { testCjs, testEsm } = useRebuild();
   test('#1 Write esm', ...testEsm());
 
