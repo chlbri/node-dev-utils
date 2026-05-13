@@ -5,6 +5,24 @@
 <details>
 <summary>
 
+## **[0.7.0] - 13/05/2026** => _21:10_
+
+</summary>
+
+- Refactor: unified publish workflows (beta, canary, latest) into a single `publish-NPM.yml` with conditional type selection — removed `publish-beta.yml` and `publish-canary.yml`
+- Update: devcontainer now uses `pnpm@latest` and adds `anthropic.claude-code` VS Code extension
+- Update: vitest, @vitest/coverage-v8 and @vitest/ui bumped to 4.1.6
+- Update: oxfmt bumped to 0.49.0, oxlint to 1.64.0, @types/node to 25.7.0
+- Update: pnpm package manager updated to 11.1.1
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.6.11] - 08/05/2026** => _10:17_
 
 </summary>
