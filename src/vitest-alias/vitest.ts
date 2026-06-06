@@ -60,7 +60,7 @@ export const createAlias = (tsconfig?: string | TsConf) => {
   } else {
     const tsconfigPath = resolve(
       process.cwd(),
-      typeof tsconfig === 'string' ? tsconfig : 'tsconfig.json',
+      tsconfig ?? 'tsconfig.json',
     );
     if (existsSync(tsconfigPath)) {
       const { config } = ts.readConfigFile(tsconfigPath, ts.sys.readFile);

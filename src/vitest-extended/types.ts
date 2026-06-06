@@ -1,4 +1,5 @@
 import type { Fn, RuA } from './bemedev/globals/types';
+export type { Fn, RuA };
 
 type ReR<F extends Fn> = Awaited<ReturnType<F>>;
 type TestFn<F extends Fn> = Fn<[ReR<F>, ReR<F>], void>;

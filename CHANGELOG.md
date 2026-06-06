@@ -5,6 +5,29 @@
 <details>
 <summary>
 
+## **[0.8.0] - 06/06/2026** => _20:34_
+
+</summary>
+
+- Enhance: vitest-alias supports loading tsconfig.json automatically and
+  custom config paths
+- Add: export types Undefiny, Fn, and RuA from vitest-extended
+- Update: guide against single-test describe blocks in test organization
+  guidelines
+- Refactor: rename .claude configuration directory to .agents
+- Refactor: replace pre-commit hook with verifying background loop in
+  commit-msg hook
+- Update: development dependencies (vitest, rolldown, oxlint, oxfmt, tsx,
+  @types/node)
+- <u>Test coverage **_89.49%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.7.0] - 13/05/2026** => _21:10_
 
 </summary>

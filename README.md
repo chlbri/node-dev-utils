@@ -55,25 +55,26 @@ them as Vitest/Vite aliases — no manual duplication needed.
 ### `createAlias(tsconfig?)`
 
 Converts `compilerOptions.paths` (and optional `baseUrl`) from a tsconfig
-object into a Vite-compatible alias map.
+object or a tsconfig file path (loads `tsconfig.json` by default if
+omitted) into a Vite-compatible alias map.
 
 ```typescript
-import tsconfig from './tsconfig.json';
 import { createAlias } from '@bemedev/dev-utils/vitest-alias';
 
 // vitest.config.ts
 export default defineConfig({
   test: {
-    alias: createAlias(tsconfig),
+    // Automatically loads tsconfig.json from project root
+    alias: createAlias(),
   },
 });
 ```
 
 **Parameters**
 
-| Name       | Type                  | Description                 |
-| ---------- | --------------------- | --------------------------- |
-| `tsconfig` | `TsConf \| undefined` | Parsed tsconfig JSON object |
+| Name       | Type                            | Description                                                                          |
+| ---------- | ------------------------------- | ------------------------------------------------------------------------------------ |
+| `tsconfig` | `string \| TsConf \| undefined` | Parsed tsconfig JSON object or path to a tsconfig file (defaults to `tsconfig.json`) |
 
 **Returns** `Record<string, string>` — alias map ready for `test.alias`.
 
@@ -85,23 +86,26 @@ A Vitest/Vite plugin that automatically calls `createAlias` and merges the
 result into `test.alias`.
 
 > **Note:** Make sure `"resolveJsonModule": true` is set in your
-> `compilerOptions`, or pass the parsed JSON directly.
+> `compilerOptions` if passing a parsed JSON object directly, or pass a
+> file path (or nothing) to load it via TypeScript's file reader.
 
 ```typescript
-import tsconfig from './tsconfig.json';
 import { aliasTs } from '@bemedev/dev-utils/vitest-alias';
 
 // vitest.config.ts
 export default defineConfig({
-  plugins: [aliasTs(tsconfig)],
+  plugins: [
+    // Automatically loads tsconfig.json from project root
+    aliasTs(),
+  ],
 });
 ```
 
 **Parameters**
 
-| Name       | Type                  | Description                 |
-| ---------- | --------------------- | --------------------------- |
-| `tsconfig` | `TsConf \| undefined` | Parsed tsconfig JSON object |
+| Name       | Type                            | Description                                                                          |
+| ---------- | ------------------------------- | ------------------------------------------------------------------------------------ |
+| `tsconfig` | `string \| TsConf \| undefined` | Parsed tsconfig JSON object or path to a tsconfig file (defaults to `tsconfig.json`) |
 
 **Returns** a Vitest `Plugin`.
 
