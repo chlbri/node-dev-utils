@@ -1,12 +1,11 @@
 import { defineConfig } from 'vitest/config';
 import { aliasTs } from './src/vitest-alias';
 import { exclude } from './src/vitest-exclude';
-import tsconfig from './tsconfig.json';
 import { IS_EXTENSION } from './src/rolldown-config/__tests__/constants';
 
 export default defineConfig({
   plugins: [
-    aliasTs(tsconfig as any),
+    aliasTs(),
     exclude({
       ignoreCoverageFiles: [
         '**/index.ts',

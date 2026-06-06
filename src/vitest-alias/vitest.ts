@@ -1,4 +1,6 @@
-import { resolve } from 'node:path';
+import { existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import ts from 'typescript';
 import type { ViteUserConfig } from 'vitest/config';
 
 type Entry = [string, string];
@@ -48,15 +50,36 @@ const transformer = (baseUrl?: string) => {
  * }
  *</code>
  */
-export const createAlias = (tsconfig?: TsConf) => {
-  const paths = tsconfig?.compilerOptions?.paths;
+export const createAlias = (tsconfig?: string | TsConf) => {
+  let paths: Record<string, string[]> | undefined;
+  let baseUrl: string | undefined;
+
+  if (tsconfig && typeof tsconfig === 'object') {
+    paths = tsconfig.compilerOptions?.paths;
+    baseUrl = tsconfig.compilerOptions?.baseUrl;
+  } else {
+    const tsconfigPath = resolve(
+      process.cwd(),
+      typeof tsconfig === 'string' ? tsconfig : 'tsconfig.json',
+    );
+    if (existsSync(tsconfigPath)) {
+      const { config } = ts.readConfigFile(tsconfigPath, ts.sys.readFile);
+      const parsed = ts.parseJsonConfigFileContent(
+        config || {},
+        ts.sys,
+        dirname(tsconfigPath),
+      );
+      paths = parsed.options.paths;
+      baseUrl = parsed.options.baseUrl;
+    }
+  }
+
   if (!paths) return {};
   const entries = Object.entries(paths);
   const array = entries.map(([key, [value]]) => {
     return [key, value];
   }) as Entry[];
 
-  const baseUrl = tsconfig?.compilerOptions?.baseUrl;
   const transformedArray = array.map(transformer(baseUrl));
   const object = Object.fromEntries(transformedArray);
 
@@ -66,15 +89,10 @@ export const createAlias = (tsconfig?: TsConf) => {
 /**
  * Plugin to add alias from tsconfig to test.alias
  *
- * @param tsconfig The tsconfig json
+ * @param tsconfig The tsconfig json or path to tsconfig file
  * @returns a vitest config
- *
- * @remarks
- * Make sure you add "resolveJsonModule": true
- * inside your tsconfig.json at compilerOPtions
- * or add the json directly
  */
-export const aliasTs = (tsconfig?: TsConf): Plugin => ({
+export const aliasTs = (tsconfig?: string | TsConf): Plugin => ({
   name: 'aliasTs',
   enforce: 'pre',
   config: options => {
