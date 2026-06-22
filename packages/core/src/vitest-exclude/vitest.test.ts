@@ -1,5 +1,5 @@
-import { createTests } from '../vitest-extended/createTests';
 import { describe } from 'vitest';
+import { createTests } from '../vitest-extended/createTests';
 import { name } from './constants';
 import { exclude } from './vitest';
 
@@ -9,17 +9,26 @@ describe('vitest - exclude', () => {
   const environment = 'node';
   const enabled = true;
   const enforce = 'pre';
+  const cwd = vi.spyOn(process, 'cwd');
 
-  const fn = async (...args: Parameters<typeof exclude>) => {
-    const { name, enforce, config: c } = exclude(...args);
-    const fn = c as Fn;
-    const config = await fn({
-      test: { environment, coverage: { enabled } },
-    });
-    return { config, name, enforce };
-  };
+  beforeEach(() => {
+    const dir = '/Users/bri/Documents/GitHub/node-dev-utils/packages/core';
+    cwd.mockReturnValue(dir);
+  });
 
-  const { acceptation, success } = createTests(fn);
+  afterAll(() => {
+    cwd.mockRestore();
+  });
+
+  const { acceptation, success } = createTests(exclude, {
+    transform: async ({ config: c, enforce, name }) => {
+      const _fn = c as Fn;
+      const config = await _fn({
+        test: { environment, coverage: { enabled } },
+      });
+      return { config, name, enforce };
+    },
+  });
 
   describe('#00 => Acceptation', acceptation);
 

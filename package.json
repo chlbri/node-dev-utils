@@ -1,7 +1,7 @@
 {
-  "name": "@bemedev/dev-utils",
-  "version": "0.8.0",
-  "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
+  "name": "@bemedev/dev-utils-monorepo",
+  "private": true,
+  "description": "Monorepo workspace root for dev-utils",
   "author": {
     "email": "bri_lvi@icloud.com",
     "name": "chlbri",
@@ -13,34 +13,6 @@
   },
   "license": "MIT",
   "type": "module",
-  "exports": {
-    "./build-tests": {
-      "import": "./lib/build-tests/index.js",
-      "require": "./lib/build-tests/index.cjs",
-      "types": "./lib/build-tests/index.d.ts"
-    },
-    "./rolldown": {
-      "import": "./lib/rolldown-config/index.js",
-      "require": "./lib/rolldown-config/index.cjs",
-      "types": "./lib/rolldown-config/index.d.ts"
-    },
-    "./utils": {
-      "import": "./lib/utils/index.js",
-      "require": "./lib/utils/index.cjs",
-      "types": "./lib/utils/index.d.ts"
-    },
-    "./vitest-exclude": {
-      "import": "./lib/vitest-exclude/index.js",
-      "require": "./lib/vitest-exclude/index.cjs",
-      "types": "./lib/vitest-exclude/index.d.ts"
-    },
-    "./vitest-extended": {
-      "import": "./lib/vitest-extended/index.js",
-      "require": "./lib/vitest-extended/index.cjs",
-      "types": "./lib/vitest-extended/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
   "maintainers": [
     {
       "email": "bri_lvi@icloud.com",
@@ -55,84 +27,27 @@
       "url": "https://bemedev.vercel.app"
     }
   ],
-  "keywords": [
-    "node",
-    "utilities",
-    "build-tools",
-    "testing",
-    "configuration",
-    "typescript",
-    "rollup",
-    "vitest"
-  ],
-  "files": [
-    "lib",
-    "public"
-  ],
-  "bin": {
-    "build-tests": "lib/build-tests/cli/index.js"
-  },
   "engines": {
     "node": ">=24"
   },
   "scripts": {
-    "_preconfig": "chmod +x .husky/commit-msg && chmod +x .husky/pre-commit",
-    "build": "pnpm run rm:lib && pnpm run rolldown",
-    "_ci": "pnpm run config:off && pnpm run lint && pnpm run test",
-    "ci": "CI_START=$(date +%s) && pnpm run config:off && pnpm run lint && pnpm run test && echo \"\n✅ CI takes $(($(date +%s) - CI_START))s\n\"",
-    "ci:admin": "pnpm run rm && pnpm run upgrade:fast && pnpm run ci",
-    "config": "pnpm install",
-    "config:off": "pnpm run config --offline",
-    "_lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "lint": "pnpm run fmt && pnpm run lint:fix",
-    "lint:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run lint",
-    "build:watch": "onchange --await-write-finish 1500 -d 10000 -v \"**/*.ts\" -- pnpm run build",
-    "p-q": "pretty-quick",
-    "posttest": "pnpm run fmt && tsx ./src/build-tests/cli/index.ts post && echo \"\n✅ Tests completed successfully\n\"",
-    "prepare": "husky",
-    "prepublishOnly": "",
-    "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
+    "pnpm:devPreinstall": "node -e \"const fs=require('fs'); const pkg=JSON.parse(fs.readFileSync('./package.json')); const version=require('child_process').execSync('pnpm -v').toString().trim(); pkg.packageManager='pnpm@' + version; fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\\n');\"",
+    "build": "pnpm -r --sort run build",
+    "config": "pnpm i",
+    "_ci": "pnpm install && pnpm -r --sort run _ci",
+    "ci": "CI=$(date +%s) && pnpm run _ci && echo \"\\n✅ CI takes $(($(date +%s) - CI))s\\n\"",
+    "ci:admin": "CI_ADMIN=$(date +%s) && pnpm run rm && pnpm run up && pnpm run _ci && echo \"\\n✅ Admin CI takes $(($(date +%s) - CI_ADMIN))s\\n\"",
+    "rimraf": "pnpx rimraf -rf",
     "rinit": "pnpm run rm && pnpm run config",
-    "rinit:off": "pnpm run rm && pnpm run config:off",
-    "rm": "pnpx rimraf ./node_modules ./pnpm-lock.yaml",
-    "rm:lib": "pnpx rimraf ./lib",
-    "rolldown": "rolldown -c",
-    "test:coverage": "vitest run",
-    "test": "pnpm run test:coverage",
-    "test:no-type": "pnpm run test:coverage -c \"vitest.config.notype.ts\" --no-coverage",
-    "test:only": "pnpm run test:coverage --no-coverage",
-    "test:type": "pnpm run test:coverage -c \"vitest.config.type.ts\" --no-coverage",
-    "test:type:watch": "vitest -c \"vitest.config.type.ts\"",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest",
-    "upgrade": "pnpm dlx @bemedev/upgrade-npm-package",
-    "size": "size-limit",
-    "upgrade:fast": "pnpm up --latest"
-  },
-  "size-limit": [
-    {
-      "path": "lib/*.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "lib/*.cjs",
-      "limit": "10 KB"
-    }
-  ],
-  "dependencies": {
-    "cmd-ts": "^0.15.0",
-    "edit-json-file": "^1.8.1",
-    "glob": "^13.0.6",
-    "rollup-plugin-circular-dependencies": "^2.0.1",
-    "rollup-plugin-node-externals": "^9.0.1",
-    "rollup-plugin-tsc-alias": "^1.1.4",
-    "rollup-plugin-tsconfig-paths": "^1.5.2",
-    "shelljs": "^0.10.0",
-    "sort-keys": "^6.0.0",
-    "tsc-alias": "^1.8.17"
+    "lint": "oxlint --fix && oxfmt",
+    "test": "vitest run",
+    "pretest": "pnpm run -r pretest",
+    "posttest": "pnpm run -r posttest",
+    "test:only": "pnpm run test --no-coverage",
+    "rm": "pnpm clean lockfile && pnpx rimraf node_modules **/node_modules",
+    "up": "pnpm -r update --latest",
+    "prepare": "husky",
+    "fmt": "oxfmt"
   },
   "devDependencies": {
     "@bemedev/app-ts": "3.0.2",
@@ -160,12 +75,5 @@
     "zod": "^4.4.3",
     "zx": "^8.8.5"
   },
-  "peerDependencies": {
-    "@vitest/coverage-v8": "4.1.5",
-    "@vitest/ui": "4.1.5",
-    "rolldown": "1.0.0-rc.17",
-    "typescript": "^6.0.3",
-    "vitest": "4.1.5"
-  },
-  "packageManager": "pnpm@11.1.1+sha512.d1fdf5f73c617b64fa1a56a81c3c8dfe0e966e33a6010aa256b517ae77be21d93e05affc0de1a83b0e4f29d569f68b446ae8f068cd7247c0bb3df0fb4d7bdf9a"
+  "packageManager": "pnpm@11.1.1"
 }

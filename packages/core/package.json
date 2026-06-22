@@ -1,0 +1,131 @@
+{
+  "name": "@bemedev/dev-utils",
+  "version": "0.8.0",
+  "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
+  "author": {
+    "email": "bri_lvi@icloud.com",
+    "name": "chlbri",
+    "url": "https://bemedev.vercel.app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chlbri/node-dev-utils"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./build-tests": {
+      "import": "./lib/build-tests/index.js",
+      "require": "./lib/build-tests/index.cjs",
+      "types": "./lib/build-tests/index.d.ts"
+    },
+    "./rolldown": {
+      "import": "./lib/rolldown-config/index.js",
+      "require": "./lib/rolldown-config/index.cjs",
+      "types": "./lib/rolldown-config/index.d.ts"
+    },
+    "./utils": {
+      "import": "./lib/utils/index.js",
+      "require": "./lib/utils/index.cjs",
+      "types": "./lib/utils/index.d.ts"
+    },
+    "./vitest-exclude": {
+      "import": "./lib/vitest-exclude/index.js",
+      "require": "./lib/vitest-exclude/index.cjs",
+      "types": "./lib/vitest-exclude/index.d.ts"
+    },
+    "./vitest-extended": {
+      "import": "./lib/vitest-extended/index.js",
+      "require": "./lib/vitest-extended/index.cjs",
+      "types": "./lib/vitest-extended/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "maintainers": [
+    {
+      "email": "bri_lvi@icloud.com",
+      "name": "chlbri",
+      "url": "https://bemedev.vercel.app"
+    }
+  ],
+  "contributors": [
+    {
+      "email": "bri_lvi@icloud.com",
+      "name": "chlbri",
+      "url": "https://bemedev.vercel.app"
+    }
+  ],
+  "keywords": [
+    "node",
+    "utilities",
+    "build-tools",
+    "testing",
+    "configuration",
+    "typescript",
+    "rollup",
+    "vitest"
+  ],
+  "files": [
+    "lib",
+    "public"
+  ],
+  "bin": {
+    "build-tests": "lib/build-tests/cli/index.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "pnpm run rm:lib && pnpm run rolldown",
+    "rm:lib": "pnpx rimraf ./lib",
+    "fmt": "oxfmt",
+    "lint": "oxlint --fix && oxfmt",
+    "test": "vitest run --project core",
+    "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre && pnpm run size",
+    "posttest": "pnpm run fmt && tsx ./src/build-tests/cli/index.ts post && echo \"\\n✅ Tests completed successfully\\n\"",
+    "test:only": "pnpm run test --no-coverage",
+    "_ci": "pnpm run lint && pnpm run test",
+    "size": "size-limit",
+    "rolldown": "rolldown -c"
+  },
+  "size-limit": [
+    {
+      "path": "lib/**/*.js",
+      "limit": "50 KB"
+    },
+    {
+      "path": "lib/**/*.cjs",
+      "limit": "50 KB"
+    }
+  ],
+  "dependencies": {
+    "cmd-ts": "^0.15.0",
+    "edit-json-file": "^1.8.1",
+    "glob": "^13.0.6",
+    "rollup-plugin-circular-dependencies": "^2.0.1",
+    "rollup-plugin-node-externals": "^9.0.1",
+    "rollup-plugin-tsc-alias": "^1.1.4",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "shelljs": "^0.10.0",
+    "sort-keys": "^6.0.0",
+    "tsc-alias": "^1.8.17"
+  },
+  "devDependencies": {
+    "@bemedev/app-ts": "3.0.2",
+    "@bemedev/basifun": "0.5.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/edit-json-file": "^1.7.4",
+    "@types/node": "^26.0.0",
+    "@types/shelljs": "^0.10.0",
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3",
+    "zx": "^8.8.5"
+  },
+  "peerDependencies": {
+    "@vitest/coverage-v8": "4.1.5",
+    "@vitest/ui": "4.1.5",
+    "rolldown": "1.0.0-rc.17",
+    "typescript": "^6.0.3",
+    "vitest": "4.1.5"
+  }
+}

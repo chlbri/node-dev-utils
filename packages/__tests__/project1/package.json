@@ -1,0 +1,16 @@
+{
+  "name": "project1",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "cd ../../core && pnpm run build",
+    "test": "vitest run",
+    "test:only": "vitest run --no-coverage",
+    "pretest": "pnpm run build",
+    "_ci": "pnpm run test"
+  },
+  "devDependencies": {
+    "@bemedev/dev-utils": "workspace:^",
+    "typescript": "^6.0.3"
+  }
+}

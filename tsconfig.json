@@ -1,12 +1,10 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
     "lib": ["dom", "ESNext"],
     "importHelpers": true,
     "target": "ESNext",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./lib",
     "module": "esnext",
     "resolveJsonModule": true,
     "strict": true,
@@ -23,10 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
-    "declarationMap": true,
-    "paths": {
-      "#utils/*": ["./src/utils/*"],
-      "#utils": ["./src/utils/index.ts"]
-    }
+    "declarationMap": true
   }
 }

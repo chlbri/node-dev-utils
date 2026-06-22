@@ -5,6 +5,7 @@ import {
   defaultCovPattern,
   testPattern,
 } from './vitest.utils';
+import type { Plugin } from 'vitest/config';
 
 /**
  * Create includeTest and includeCoverage arrays from glob patterns
@@ -12,24 +13,30 @@ import {
  * @param args Globs to ignore for test and coverage files
  * @returns an object with includeTest and includeCoverage string arrays
  */
-export async function create(args: Args[1] = {}) {
+export async function create(args: Args[1] = {}, root?: string) {
   const firsts = {
-    patternTest: testPattern(),
-    patternCov: defaultCovPattern(),
+    patternTest: testPattern(root),
+    patternCov: defaultCovPattern(root),
   };
 
-  return create.withPattern(firsts, args);
+  return create.withPattern(firsts, args, root);
 }
 
 create.withPattern = async (
-  {
-    patternTest = testPattern(),
-    patternCov = defaultCovPattern(),
-  }: Partial<Args[0]> = {},
+  { patternTest, patternCov }: Partial<Args[0]> = {},
   { ignoreTestFiles, ignoreCoverageFiles }: Args[1] = {},
+  root?: string,
 ) => {
-  const files = await buildInclude(patternTest, ignoreTestFiles);
-  const coverage = await buildInclude(patternCov, ignoreCoverageFiles);
+  const files = await buildInclude(
+    patternTest ?? testPattern(root),
+    ignoreTestFiles,
+    root,
+  );
+  const coverage = await buildInclude(
+    patternCov ?? defaultCovPattern(root),
+    ignoreCoverageFiles,
+    root,
+  );
   return { files, coverage };
 };
 
@@ -45,9 +52,38 @@ create.withPattern = async (
  * The default search patter is './src/**\/*.ts'
  */
 export function exclude(args: Args[1] = {}) {
-  const patternCov = defaultCovPattern();
-  const patternTest = testPattern();
-  return exclude.withPattern({ patternCov, patternTest }, args);
+  return {
+    name,
+    enforce: 'pre',
+    config: async options => {
+      const root = options?.root ?? process.cwd();
+      const testConfig = options?.test;
+      const coverage = options?.test?.coverage;
+
+      const patternCov = defaultCovPattern(root);
+      const patternTest = testPattern(root);
+
+      const { ignoreCoverageFiles, ignoreTestFiles } = args;
+
+      const all = await create.withPattern(
+        { patternTest, patternCov },
+        { ignoreCoverageFiles, ignoreTestFiles },
+        root,
+      );
+
+      return {
+        ...options,
+        test: {
+          ...testConfig,
+          include: all.files,
+          coverage: {
+            ...coverage,
+            include: all.coverage,
+          },
+        },
+      };
+    },
+  } as Plugin;
 }
 
 /**
@@ -65,12 +101,14 @@ exclude.withPattern = ((
     name,
     enforce: 'pre',
     config: async options => {
+      const root = options?.root ?? process.cwd();
       const testConfig = options?.test;
       const coverage = options?.test?.coverage;
 
       const all = await create.withPattern(
         { patternTest, patternCov },
         { ignoreCoverageFiles, ignoreTestFiles },
+        root,
       );
 
       return {
