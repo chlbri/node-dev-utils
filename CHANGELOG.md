@@ -5,6 +5,20 @@
 <details>
 <summary>
 
+## **[0.8.1] - 22/06/2026** => _18:00_
+
+</summary>
+
+- Remove: export `./vitest-alias` supprimé — la résolution des alias est désormais prise en charge nativement par Vite via `resolve.tsConfigPaths`
+- Refactor: migration vers une architecture pnpm monorepo (séparation du core et des projets de test)
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.8.0] - 06/06/2026** => _20:34_
 
 </summary>

@@ -7,11 +7,16 @@ testing utilities, and configuration management.
 
 | Module                              | Description                                   |
 | ----------------------------------- | --------------------------------------------- |
-| [`vitestAlias`](#vitestalias)       | Vitest plugin to inject tsconfig path aliases |
 | [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude  |
 | [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest              |
 | [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory        |
 | [`buildTests`](#buildtests)         | CLI tooling to build and test packages        |
+
+> **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path alias
+> resolution is now handled natively by Vite via `resolve.alias` with
+> `vite-tsconfig-paths` or the built-in `resolve.tsConfigPaths` option.
+> Remove any `aliasTs()` / `createAlias()` usage and configure aliases
+> directly in your `vite` / `vitest` config.
 
 <br/>
 
@@ -35,7 +40,6 @@ Each module is available as a dedicated sub-path export — there is no root
 barrel export:
 
 ```typescript
-import { createAlias, aliasTs } from '@bemedev/dev-utils/vitest-alias';
 import { exclude } from '@bemedev/dev-utils/vitest-exclude';
 import {
   createTests,
@@ -44,70 +48,6 @@ import {
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
 ```
-
----
-
-## `vitestAlias`
-
-Vitest plugin that reads your `tsconfig.json` path mappings and injects
-them as Vitest/Vite aliases — no manual duplication needed.
-
-### `createAlias(tsconfig?)`
-
-Converts `compilerOptions.paths` (and optional `baseUrl`) from a tsconfig
-object or a tsconfig file path (loads `tsconfig.json` by default if
-omitted) into a Vite-compatible alias map.
-
-```typescript
-import { createAlias } from '@bemedev/dev-utils/vitest-alias';
-
-// vitest.config.ts
-export default defineConfig({
-  test: {
-    // Automatically loads tsconfig.json from project root
-    alias: createAlias(),
-  },
-});
-```
-
-**Parameters**
-
-| Name       | Type                            | Description                                                                          |
-| ---------- | ------------------------------- | ------------------------------------------------------------------------------------ |
-| `tsconfig` | `string \| TsConf \| undefined` | Parsed tsconfig JSON object or path to a tsconfig file (defaults to `tsconfig.json`) |
-
-**Returns** `Record<string, string>` — alias map ready for `test.alias`.
-
----
-
-### `aliasTs(tsconfig?)`
-
-A Vitest/Vite plugin that automatically calls `createAlias` and merges the
-result into `test.alias`.
-
-> **Note:** Make sure `"resolveJsonModule": true` is set in your
-> `compilerOptions` if passing a parsed JSON object directly, or pass a
-> file path (or nothing) to load it via TypeScript's file reader.
-
-```typescript
-import { aliasTs } from '@bemedev/dev-utils/vitest-alias';
-
-// vitest.config.ts
-export default defineConfig({
-  plugins: [
-    // Automatically loads tsconfig.json from project root
-    aliasTs(),
-  ],
-});
-```
-
-**Parameters**
-
-| Name       | Type                            | Description                                                                          |
-| ---------- | ------------------------------- | ------------------------------------------------------------------------------------ |
-| `tsconfig` | `string \| TsConf \| undefined` | Parsed tsconfig JSON object or path to a tsconfig file (defaults to `tsconfig.json`) |
-
-**Returns** a Vitest `Plugin`.
 
 ---
 

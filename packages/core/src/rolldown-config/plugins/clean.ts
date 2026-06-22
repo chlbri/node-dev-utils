@@ -1,9 +1,12 @@
+import { existsSync } from 'fs';
 import { globSync } from 'glob';
 import { relative } from 'node:path';
 import type { RolldownPluginOption } from 'rolldown';
-import { WARNING_CODES } from '../constants';
+import ts from 'typescript';
+import { DEFAULT_DIR, WARNING_CODES } from '../constants';
 import { cleanupJS, withoutExtension } from '../helpers';
 import { toArray } from '../utils';
+import { readTsConfig } from './typescript.config';
 
 export type EndPluginOptions = {
   ignoresJS?: string | string[];
@@ -11,8 +14,8 @@ export type EndPluginOptions = {
   dir?: string;
 };
 
-export const clean = (options: EndPluginOptions = {}) => {
-  const { ignoresJS, sourcemap = false, dir = '' } = options;
+export const clean = (options: EndPluginOptions) => {
+  const { ignoresJS, sourcemap = false, dir } = options;
 
   const _ignoresJS = toArray(ignoresJS);
 
@@ -47,6 +50,15 @@ export const clean = (options: EndPluginOptions = {}) => {
     closeBundle: {
       order: 'post',
       handler: () => {
+        const cwd = process.cwd();
+
+        const tsconfigPath = ts.findConfigFile(
+          cwd,
+          existsSync,
+          'tsconfig.json',
+        )!;
+        const _outDir = readTsConfig(tsconfigPath).options.outDir;
+        const outDir = _outDir ?? dir ?? DEFAULT_DIR;
         if (_ignoresJS.length > 0) {
           try {
             const files = new Set<string>();
@@ -54,7 +66,7 @@ export const clean = (options: EndPluginOptions = {}) => {
               const globs = globSync(pat, { nodir: true });
               globs.forEach(file => files.add(file));
             });
-            cleanupJS(files, dir, sourcemap);
+            cleanupJS(files, outDir, sourcemap);
             console.log('Build finished');
             /* v8 ignore next 3 */
           } catch (err) {

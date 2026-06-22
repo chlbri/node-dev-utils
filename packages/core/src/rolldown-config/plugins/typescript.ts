@@ -4,6 +4,7 @@ import type { RolldownPluginOption } from 'rolldown';
 import { replaceTscAliasPaths } from 'tsc-alias';
 import ts from 'typescript';
 import { readTsConfig } from './typescript.config';
+import { DEFAULT_DIR } from '../constants';
 
 type Props = {
   exclude?: string | string[];
@@ -16,7 +17,7 @@ export const typescript = ({
   exclude,
   include,
   declarationMap,
-  dir: outDir,
+  dir,
 }: Props = {}): RolldownPluginOption => {
   let done = false;
 
@@ -43,6 +44,7 @@ export const typescript = ({
 
         const configFile = readTsConfig(tsconfigPath);
         const host = ts.createCompilerHost(configFile.options);
+        const outDir = configFile.options.outDir ?? dir ?? DEFAULT_DIR;
 
         const parsed = ts.parseJsonConfigFileContent(
           {

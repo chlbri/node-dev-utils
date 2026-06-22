@@ -1,10 +1,6 @@
 import { defineConfig as _defineConfig } from 'rolldown';
 import { esmExternalRequirePlugin } from 'rolldown/plugins';
-import {
-  DEFAULT_CIRCULAR_DEPS,
-  DEFAULT_DIR,
-  DEFAULT_EXCLUDE,
-} from './constants';
+import { DEFAULT_CIRCULAR_DEPS, DEFAULT_EXCLUDE } from './constants';
 import { buildInput } from './input';
 import { buildOutput } from './output';
 import { PLUGIN_BUILDERS } from './plugins';
@@ -17,8 +13,9 @@ export const defineConfig: Config_F = additionals => {
 
 const producePlugins = ({
   circularDeps,
+
   ignoresJS,
-  dir = DEFAULT_DIR,
+  dir,
   sourcemap = false,
   excludesTS,
   declarationMap,
@@ -76,7 +73,7 @@ const producePlugins = ({
 };
 
 defineConfig.default = ({
-  dir = DEFAULT_DIR,
+  dir,
   sourcemap = false,
   ...rest
 }: Params = {}) => {

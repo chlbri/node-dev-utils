@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -80,9 +80,9 @@
     "rm:lib": "pnpx rimraf ./lib",
     "fmt": "oxfmt",
     "lint": "oxlint --fix && oxfmt",
-    "test": "vitest run --project core",
+    "test": "vitest run",
     "pretest": "pnpm run build && node ./lib/build-tests/cli/index.js pre && pnpm run size",
-    "posttest": "pnpm run fmt && tsx ./src/build-tests/cli/index.ts post && echo \"\\n✅ Tests completed successfully\\n\"",
+    "posttest": "pnpm run fmt && tsx ./src/build-tests/cli/index.ts post && pnpm run build && echo \"\\n✅ Tests completed successfully\\n\"",
     "test:only": "pnpm run test --no-coverage",
     "_ci": "pnpm run lint && pnpm run test",
     "size": "size-limit",
@@ -122,10 +122,10 @@
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "4.1.5",
-    "@vitest/ui": "4.1.5",
+    "@vitest/coverage-v8": "4.1.9",
+    "@vitest/ui": "4.1.9",
     "rolldown": "1.0.0-rc.17",
     "typescript": "^6.0.3",
-    "vitest": "4.1.5"
+    "vitest": "4.1.9"
   }
 }

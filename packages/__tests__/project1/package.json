@@ -3,14 +3,20 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "cd ../../core && pnpm run build",
+    "build": "pnpm run rm:lib && pnpm run rolldown",
+    "rm:lib": "pnpx rimraf ./lib",
     "test": "vitest run",
     "test:only": "vitest run --no-coverage",
     "pretest": "pnpm run build",
+    "rolldown": "rolldown -c",
     "_ci": "pnpm run test"
   },
   "devDependencies": {
     "@bemedev/dev-utils": "workspace:^",
-    "typescript": "^6.0.3"
+    "@vitest/coverage-v8": "4.1.9",
+    "@vitest/ui": "4.1.9",
+    "rolldown": "1.1.2",
+    "typescript": "^6.0.3",
+    "vitest": "4.1.9"
   }
 }
