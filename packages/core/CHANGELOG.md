@@ -5,12 +5,33 @@
 <details>
 <summary>
 
+## **[0.8.2] - 22/06/2026** => _19:46_
+
+</summary>
+
+- Remove: `.vscode/tasks.json` supprimé — tâches automatiques `git pull` et
+  `pnpm install` à l'ouverture du dossier retirées
+- Fix: script `rm:lib` du projet de test `project1` corrigé — cible
+  `./dist` au lieu de `./lib`
+- Update: `pnpm-workspace.yaml` — ajout de `minimumReleaseAge: 300`
+- Update dépendances dev: `oxfmt` `^0.55.0` → `^0.56.0`, `oxlint` `^1.70.0`
+  → `^1.71.0`, `pnpm` `11.1.1` → `11.7.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.8.1] - 22/06/2026** => _18:00_
 
 </summary>
 
-- Remove: export `./vitest-alias` supprimé — la résolution des alias est désormais prise en charge nativement par Vite via `resolve.tsConfigPaths`
-- Refactor: migration vers une architecture pnpm monorepo (séparation du core et des projets de test)
+- Remove: export `./vitest-alias` supprimé — la résolution des alias est
+  désormais prise en charge nativement par Vite via `resolve.tsConfigPaths`
+- Refactor: migration vers une architecture pnpm monorepo (séparation du
+  core et des projets de test)
 
 </details>
 

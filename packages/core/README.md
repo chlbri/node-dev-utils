@@ -5,15 +5,15 @@ testing utilities, and configuration management.
 
 ## Modules
 
-| Module                              | Description                                   |
-| ----------------------------------- | --------------------------------------------- |
-| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude  |
-| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest              |
-| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory        |
-| [`buildTests`](#buildtests)         | CLI tooling to build and test packages        |
+| Module                              | Description                                  |
+| ----------------------------------- | -------------------------------------------- |
+| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude |
+| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest             |
+| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory       |
+| [`buildTests`](#buildtests)         | CLI tooling to build and test packages       |
 
-> **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path alias
-> resolution is now handled natively by Vite via `resolve.alias` with
+> **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path
+> alias resolution is now handled natively by Vite via `resolve.alias` with
 > `vite-tsconfig-paths` or the built-in `resolve.tsConfigPaths` option.
 > Remove any `aliasTs()` / `createAlias()` usage and configure aliases
 > directly in your `vite` / `vitest` config.

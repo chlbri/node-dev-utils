@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "pnpm run rm:lib && pnpm run rolldown",
-    "rm:lib": "pnpx rimraf ./lib",
+    "rm:lib": "pnpx rimraf ./dist",
+    "fmt": "oxfmt",
+    "lint": "oxlint --fix && oxfmt",
     "test": "vitest run",
     "test:only": "vitest run --no-coverage",
     "pretest": "pnpm run build",
