@@ -74,21 +74,6 @@ describe('Built package exports', () => {
 
   describe(
     ...createImportFnTests({
-      path: 'vitest-alias',
-      SUCCESS: ['createAlias', 'aliasTs'],
-      FAILS: [
-        'identity',
-        'sleep',
-        'addTarball',
-        'cleanup',
-        'customImport',
-        'createImportFnTests',
-      ],
-    }),
-  );
-
-  describe(
-    ...createImportFnTests({
       path: 'vitest-exclude',
       SUCCESS: ['create', 'exclude'],
       FAILS: [
