@@ -9,9 +9,13 @@
 
 </summary>
 
-- Enhance: `getTypescriptOutdir` résout désormais `tsconfig.json` relativement au répertoire de travail actuel (`process.cwd()`) au lieu du chemin absolu du fichier source
-- Enhance: ajout d'une valeur par défaut (`./lib`) si `outDir` n'est pas défini dans le fichier de configuration TypeScript (`tsconfig.json`)
-- Update dépendances dev: `@types/node` `^26.0.0` → `^26.0.1`, `globals` `^17.6.0` → `^17.7.0`, `rolldown` `1.1.2` → `1.1.3`
+- Enhance: `getTypescriptOutdir` résout désormais `tsconfig.json`
+  relativement au répertoire de travail actuel (`process.cwd()`) au lieu du
+  chemin absolu du fichier source
+- Enhance: ajout d'une valeur par défaut (`./lib`) si `outDir` n'est pas
+  défini dans le fichier de configuration TypeScript (`tsconfig.json`)
+- Update dépendances dev: `@types/node` `^26.0.0` → `^26.0.1`, `globals`
+  `^17.6.0` → `^17.7.0`, `rolldown` `1.1.2` → `1.1.3`
 
 </details>
 
