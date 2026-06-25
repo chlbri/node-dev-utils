@@ -11,6 +11,7 @@ export const PACKAGE_PATH = './package.json';
 export const TARBALL_FOLDER = '.pack';
 export const TARBALL_EXTENSION = '.tgz';
 export const TEARDOWN_COMMAND = `pnpm remove ${THIS1}`;
+export const DEFAULT_OUT_DIR = './lib';
 
 // export const FIXTURES = {
 //   true: 'true',

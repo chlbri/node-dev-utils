@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -115,8 +115,9 @@
     "@bemedev/basifun": "0.5.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/edit-json-file": "^1.7.4",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@types/shelljs": "^0.10.0",
+    "this-gen-1": "file:.pack/bemedev-dev-utils-0.8.3.tgz",
     "typescript": "^6.0.3",
     "zod": "^4.4.3",
     "zx": "^8.8.5"
