@@ -379,7 +379,7 @@ vitestExtended.useTFA(myFunction, 'myFunction');
 ## `rolldownConfig`
 
 Rolldown bundler configuration factory with built-in plugins for TypeScript
-declarations, path aliasing, circular dependency detection, and
+declarations, circular dependency detection, and
 tree-shaking externals.
 
 ### `defineConfig(additionals?)`
@@ -390,16 +390,13 @@ Shorthand for `defineConfig.default`.
 
 Produces a full Rolldown config with the default plugin pipeline:
 
-1. **alias** — resolves tsconfig path aliases (`rollup-plugin-tsc-alias`)
-2. **tsPaths** — resolves tsconfig path imports at bundle time
-   (`rollup-plugin-tsconfig-paths`)
-3. **circulars** — warns on circular dependencies
+1. **circulars** — warns on circular dependencies
    (`rollup-plugin-circular-dependency`)
-4. **externals** — marks `dependencies` and `peerDependencies` as external
+2. **externals** — marks `dependencies` and `peerDependencies` as external
    (`rollup-plugin-node-externals`)
-5. **typescript** — emits `.d.ts` declarations via the TypeScript compiler
+3. **typescript** — emits `.d.ts` declarations via the TypeScript compiler
    API
-6. **clean** — removes JS outputs for files that produce empty chunks
+4. **clean** — removes JS outputs for files that produce empty chunks
 
 ```typescript
 // rolldown.config.ts
@@ -464,8 +461,6 @@ Individual plugin factories are available for custom pipeline assembly:
 
 | Key          | Function               | Wraps                                 |
 | ------------ | ---------------------- | ------------------------------------- |
-| `alias`      | `alias(options?)`      | `rollup-plugin-tsc-alias`             |
-| `tsPaths`    | `tsPaths(options?)`    | `rollup-plugin-tsconfig-paths`        |
 | `circulars`  | `circulars(options?)`  | `rollup-plugin-circular-dependency`   |
 | `externals`  | `externals(options?)`  | `rollup-plugin-node-externals`        |
 | `typescript` | `typescript(options?)` | TypeScript compiler API + `tsc-alias` |
@@ -476,7 +471,7 @@ them:
 
 ```typescript
 defineConfig.default({
-  plugins: ['alias', 'tsPaths', 'externals', 'typescript'],
+  plugins: ['externals', 'typescript'],
 });
 ```
 

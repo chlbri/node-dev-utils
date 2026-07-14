@@ -5,26 +5,31 @@
 <details>
 <summary>
 
-## **[1.0.0] - 14/07/2026** => _10:17_
+## **[1.0.1] - 14/07/2026** => _10:23_
 
 </summary>
 
 - Remove: alias plugin for alias resolution
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
+## **[1.0.0] - 14/07/2026** => _10:17_
+
+</summary>
+
 - Remove: `tsPaths` plugin for import path resolution
-- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and
-  analyze test files
-- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration
-  plugins
-- Refactor: consolidate utility modules (move `utils.ts` to
-  `utils/array.ts`) and remove redundant test suites
-  (`declarationMap.built.test.ts`, `default.built.test.ts`,
-  `withoutOptions.test.ts`)
+- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and analyze test files
+- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration plugins
+- Refactor: consolidate utility modules (move `utils.ts` to `utils/array.ts`) and remove redundant test suites (`declarationMap.built.test.ts`, `default.built.test.ts`, `withoutOptions.test.ts`)
 - Update: upgrade global TypeScript to version `7.0.2`
-- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and
-  `rolldown` to `^1.1.5`
+- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and `rolldown` to `^1.1.5`
 - Update: upgrade `pnpm` package manager to version `11.13.0`
-- Update: improve global upgrade script (`up`) using
-  `pnpm up --latest && npm-check-updates`
+- Update: improve global upgrade script (`up`) using `pnpm up --latest && npm-check-updates`
 
 </details>
 
