@@ -5,7 +5,8 @@
     "rootDir": "./src",
     "paths": {
       "#utils/*": ["./src/utils/*"],
-      "#utils": ["./src/utils/index.ts"]
+      "#utils": ["./src/utils/index.ts"],
+      "#bemedev/*": ["./src/utils/bemedev/*"]
     }
   },
   "include": ["src/**/*"]

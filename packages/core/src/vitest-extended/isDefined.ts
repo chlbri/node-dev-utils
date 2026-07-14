@@ -1,4 +1,4 @@
-import type { Undefiny } from './bemedev/globals/types';
+import type { Undefiny } from '../utils/bemedev/globals/types';
 export type { Undefiny };
 
 export const isDefined = <T>(value?: Undefiny<T>): value is T => {

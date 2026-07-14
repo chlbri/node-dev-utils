@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 import { z } from 'zod';
 
+import type { Fn } from '../../utils/bemedev/globals/types';
 import { useTFA } from '../acceptation';
-import type { Fn } from '../bemedev/globals/types';
 import { TestReturn } from '../types';
 import { transformZTF, type Any } from './zod';
 

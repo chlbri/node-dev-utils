@@ -1,4 +1,4 @@
-import type { Fn } from './bemedev/globals/types';
+import type { Fn } from '../utils/bemedev/globals/types';
 import type { TestArgs, TestErrors } from './types';
 
 type ReturnR<F extends Fn> = {

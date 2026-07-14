@@ -1,4 +1,4 @@
-import type { Fn } from '../bemedev/globals/types';
+import type { Fn } from '../../utils/bemedev/globals/types';
 import type { Identity, NextFn, TestErrors } from '../types';
 
 export type ToError_F<F extends Fn> = (

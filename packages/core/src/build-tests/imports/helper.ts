@@ -1,6 +1,6 @@
 import { expect } from 'vitest';
 
-import type { Fn } from '../../vitest-extended/bemedev/globals/types';
+import type { Fn } from '../../utils/bemedev/globals/types';
 import { customImport } from '../import';
 
 export type Helper_F = (args: {

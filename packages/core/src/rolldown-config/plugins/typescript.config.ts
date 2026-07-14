@@ -61,6 +61,20 @@ const _host: ts.ParseConfigHost = {
   readFile: _readFile,
 };
 
+export function getConfig(
+  searchPath: string,
+  configName: string = 'tsconfig.json',
+) {
+  const tsconfigPath = ts.findConfigFile(
+    searchPath,
+    existsSync,
+    configName,
+  )!;
+
+  const configFile = readTsConfig(tsconfigPath);
+  return configFile;
+}
+
 export const readTsConfig = (path: string) => {
   const configFile = ts.readConfigFile(path, _readFile);
 

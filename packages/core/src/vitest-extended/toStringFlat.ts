@@ -1,4 +1,4 @@
-import { type Fn } from './bemedev/globals/types';
+import { type Fn } from '../utils/bemedev/globals/types';
 
 const log10: Fn<[value: number], number> = (value: number) => {
   return Math.floor(Math.log10(value));

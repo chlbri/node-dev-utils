@@ -41,12 +41,21 @@ const producePlugins = ({
         include: excludesTS,
       }),
     clean: () => PLUGIN_BUILDERS.clean({ ignoresJS, sourcemap, dir }),
+    fast: () => {
+      return PLUGIN_BUILDERS.fast({
+        include,
+        exclude,
+        declarationMap,
+        dir,
+      });
+    },
+    esm: esmExternalRequirePlugin,
   };
 
   const defaultOrdered = () => [
     unordered.circulars(),
     unordered.externals(),
-    esmExternalRequirePlugin(),
+    unordered.esm(),
     unordered.typescript(),
     unordered.clean(),
   ];
@@ -61,11 +70,7 @@ const producePlugins = ({
     : defaultOrdered();
 };
 
-defineConfig.default = ({
-  dir,
-  sourcemap = false,
-  ...rest
-}: Params = {}) => {
+defineConfig.default = ({ dir, sourcemap = false, ...rest } = {}) => {
   const input = buildInput();
   const external = rest.externals;
   const output = buildOutput(dir, sourcemap);
@@ -78,6 +83,13 @@ defineConfig.default = ({
     external,
     output,
     platform: 'node',
+  });
+};
+
+defineConfig.fast = rest => {
+  return defineConfig.default({
+    ...rest,
+    plugins: ['circulars', 'externals', 'esm', 'fast', 'clean'],
   });
 };
 

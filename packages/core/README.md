@@ -482,16 +482,39 @@ export default defineConfig.bemedev({
 
 ---
 
+### `defineConfig.fast(params?)`
+
+A fast build configuration preset that optimizes TypeScript declaration
+emitting. It uses the `fast` (`typescriptFast`) plugin wrapping
+`oxc-transform` instead of the standard compiler API.
+
+It runs the following plugin pipeline:
+
+1. **circulars** — warns on circular dependencies
+2. **externals** — marks `dependencies` and `peerDependencies` as external
+3. **esm** — injects ESM external require helpers
+   (`esmExternalRequirePlugin`)
+4. **fast** — generates `.d.ts` files quickly using `oxc-transform`
+5. **clean** — removes empty JS chunks
+
+```typescript
+export default defineConfig.fast({ excludesTS: ['src/my-fixtures/**'] });
+```
+
+---
+
 ### Plugin builders (`PLUGIN_BUILDERS`)
 
 Individual plugin factories are available for custom pipeline assembly:
 
-| Key          | Function               | Wraps                                 |
-| ------------ | ---------------------- | ------------------------------------- |
-| `circulars`  | `circulars(options?)`  | `rollup-plugin-circular-dependency`   |
-| `externals`  | `externals(options?)`  | `rollup-plugin-node-externals`        |
-| `typescript` | `typescript(options?)` | TypeScript compiler API + `tsc-alias` |
-| `clean`      | `clean(options?)`      | Custom post-build JS cleanup          |
+| Key          | Function               | Wraps                                                                                      |
+| ------------ | ---------------------- | ------------------------------------------------------------------------------------------ |
+| `circulars`  | `circulars(options?)`  | `rollup-plugin-circular-dependency`                                                        |
+| `externals`  | `externals(options?)`  | `rollup-plugin-node-externals`                                                             |
+| `esm`        | `esm`                  | `esmExternalRequirePlugin` from Rolldown                                                   |
+| `typescript` | `typescript(options?)` | TypeScript compiler API + `tsc-alias`                                                      |
+| `fast`       | `fast(options?)`       | `oxc-transform` + `tsc-alias`, for ONLY compilerOptions.isolatedDeclarations set to `true` |
+| `clean`      | `clean(options?)`      | Custom post-build JS cleanup                                                               |
 
 Pass plugin keys as strings in the `plugins` array to reorder or subset
 them:

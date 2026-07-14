@@ -1,4 +1,4 @@
-import type { Fn, RuA } from './bemedev/globals/types';
+import type { Fn, RuA } from '../utils/bemedev/globals/types';
 export type { Fn, RuA };
 
 type ReR<F extends Fn> = Awaited<ReturnType<F>>;

@@ -23,5 +23,6 @@ export type BuildInput_F = (
 export type Config_F = {
   (additionals?: Params): RolldownOptions;
   bemedev: (additionals?: Params) => RolldownOptions;
+  fast: (additionals?: Omit<Params, 'plugins'>) => RolldownOptions;
   default: (additionals?: Params) => RolldownOptions;
 };

@@ -1,4 +1,4 @@
-import type { Fn } from '../bemedev/globals/types';
+import type { Fn } from '../../utils/bemedev/globals/types';
 import type { ChainedFn, Identity, NextFn, TestArgs } from '../types';
 
 export type _UseEach_F = <F extends Fn, T extends NextFn<F> = Identity<F>>(

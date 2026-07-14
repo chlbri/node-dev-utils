@@ -5,15 +5,50 @@
 <details>
 <summary>
 
+## **[1.1.0] - 14/07/2026** => _14:09_
+
+</summary>
+
+- Add: fast compilation plugin `typescriptFast` (key `fast`) that uses
+  `oxc-transform` to generate `.d.ts` declaration files quickly without
+  using the full TypeScript compiler
+- Add: `defineConfig.fast` configuration target to compile packages using
+  the fast compile plugin
+- Add: `getConfig` utility to dynamically read and parse `tsconfig.json`
+  relative to the search path
+- Add: `#bemedev/*` path alias mapping in `tsconfig.json` for internal
+  utilities
+- Refactor: relocate the internal `bemedev/globals` types and utilities
+  directory from `vitest-extended` to `utils` workspace under path alias
+  `#bemedev/globals/` and rewrite all imports across the codebase
+- Refactor: resolve output directories dynamically in `buildOutput` using
+  `tsconfig.json`'s `outDir` configuration
+- Update: export `esmExternalRequirePlugin` (`esm`) and `typescriptFast`
+  (`fast`) builders in `PLUGIN_BUILDERS` for custom pipeline configuration
+- Update: bump package version to `1.1.0` and upgrade `oxc-transform` to
+  `^0.140.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.0.2] - 14/07/2026** => _12:15_
 
 </summary>
 
-- Fix: resolve Vitest workspace configuration error by removing machine-specific hardcoded absolute paths
-- Refactor: export `defineProject` wrapper in `vitest-extended` for unified workspace test defaults and alias resolution
-- Refactor: migrate typescript plugin from `oxc-transform` to `@typescript/typescript6` for generating declaration files
-- Remove: delete redundant `packages/core/src/build-tests/test.test.ts` test file
-- Update: remove `rollup-plugin-tsc-alias`, `rollup-plugin-tsconfig-paths`, and standard `typescript` dependencies
+- Fix: resolve Vitest workspace configuration error by removing
+  machine-specific hardcoded absolute paths
+- Refactor: export `defineProject` wrapper in `vitest-extended` for unified
+  workspace test defaults and alias resolution
+- Refactor: migrate typescript plugin from `oxc-transform` to
+  `@typescript/typescript6` for generating declaration files
+- Remove: delete redundant `packages/core/src/build-tests/test.test.ts`
+  test file
+- Update: remove `rollup-plugin-tsc-alias`, `rollup-plugin-tsconfig-paths`,
+  and standard `typescript` dependencies
 - Update: add `@typescript/typescript6` and `unplugin-dts` dependencies
 
 </details>

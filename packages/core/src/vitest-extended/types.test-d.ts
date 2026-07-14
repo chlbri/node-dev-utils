@@ -1,6 +1,6 @@
 import { expectTypeOf } from 'vitest';
 
-import type { Fn } from './bemedev/globals/types';
+import type { Fn } from '../utils/bemedev/globals/types';
 import type { SimpleParams } from './types';
 
 type HSP<T extends any[]> = SimpleParams<Fn<T>>;

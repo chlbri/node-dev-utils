@@ -1,7 +1,7 @@
 import { beforeAll, vi } from 'vitest';
 
+import type { Fn } from '../utils/bemedev/globals/types';
 import { useTFA } from './acceptation';
-import type { Fn } from './bemedev/globals/types';
 import type { _CreateTests_F } from './createTests.types';
 import { useErrorAsyncEach } from './each/error';
 import {

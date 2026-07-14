@@ -1,7 +1,8 @@
 import { maxLength, minLength, multiChar } from '@bemedev/basifun';
 import { describe } from 'vitest';
 
-import { _unknown } from './bemedev/globals/utils/_unknown';
+import { _unknown } from '#utils';
+
 import { createTests } from './createTests';
 
 describe('CreateTests - Coverage', () => {
