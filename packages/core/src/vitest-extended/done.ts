@@ -1,6 +1,7 @@
 import { expect, test, type TestOptions } from 'vitest';
 
-import { sleep } from '../utils/sleep';
+import { sleep } from '#utils/sleep';
+
 import type { TestDoneFunction } from './types';
 
 const useDone = (ms = 0) => {

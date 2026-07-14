@@ -3,9 +3,10 @@ import { relative } from 'node:path';
 import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
 
+import { toArray } from '#utils';
+
 import { DEFAULT_DIR, WARNING_CODES } from '../constants';
 import { cleanupJS, withoutExtension } from '../helpers';
-import { toArray } from '../utils';
 import { findConfigFile, readTsConfig } from './typescript.config';
 
 export type EndPluginOptions = {

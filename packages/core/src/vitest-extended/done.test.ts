@@ -1,7 +1,8 @@
 import { createMachine, interpret, typings } from '@bemedev/app-ts';
 import { afterAll, beforeEach, describe } from 'vitest';
 
-import { sleep } from '../utils/sleep';
+import { sleep } from '#utils/sleep';
+
 import { doneTest } from './done';
 
 const machine = createMachine(

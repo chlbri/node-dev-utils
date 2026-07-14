@@ -1,12 +1,13 @@
 import { defineConfig as _defineConfig } from 'rolldown';
 import { esmExternalRequirePlugin } from 'rolldown/plugins';
 
+import { toArray } from '#utils';
+
 import { DEFAULT_CIRCULAR_DEPS, DEFAULT_EXCLUDE } from './constants';
 import { buildInput } from './input';
 import { buildOutput } from './output';
 import { PLUGIN_BUILDERS } from './plugins';
 import type { Config_F, Params } from './types';
-import { toArray } from './utils';
 
 export const defineConfig: Config_F = additionals => {
   return defineConfig.default(additionals);

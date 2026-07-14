@@ -15,7 +15,6 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.js': {
         config: true,
@@ -23,7 +22,6 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
       },
       '.cjs': {
         config: false,
@@ -31,7 +29,6 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.d.ts.map': {
         config: false,
@@ -39,21 +36,18 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.js.map': {
         config: true,
         constants: true,
         input: true,
         types: false,
-        utils: true,
       },
       '.cjs.map': {
         config: false,
         constants: false,
         input: false,
         types: false,
-        utils: false,
       },
     }),
   );
@@ -69,7 +63,6 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.js': {
         config: true,
@@ -77,7 +70,6 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
       },
       '.cjs': {
         config: true,
@@ -85,7 +77,6 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
       },
       '.d.ts.map': {
         config: false,
@@ -93,21 +84,18 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.js.map': {
         config: true,
         constants: true,
         input: true,
         types: false,
-        utils: true,
       },
       '.cjs.map': {
         config: true,
         constants: true,
         input: true,
         types: false,
-        utils: true,
       },
     }),
   );

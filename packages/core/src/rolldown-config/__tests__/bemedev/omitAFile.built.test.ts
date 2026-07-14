@@ -18,7 +18,7 @@ describe('bemedev omit "fileInt"', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
+
         [path]: true,
       },
       '.js': {
@@ -27,7 +27,7 @@ describe('bemedev omit "fileInt"', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
       '.cjs': {
@@ -36,7 +36,7 @@ describe('bemedev omit "fileInt"', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.d.ts.map': {
@@ -45,7 +45,7 @@ describe('bemedev omit "fileInt"', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.js.map': {
@@ -53,7 +53,7 @@ describe('bemedev omit "fileInt"', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
       '.cjs.map': {
@@ -61,7 +61,7 @@ describe('bemedev omit "fileInt"', () => {
         constants: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
     }),
@@ -78,7 +78,7 @@ describe('bemedev omit "fileInt"', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
+
         [path]: true,
       },
       '.js': {
@@ -87,7 +87,7 @@ describe('bemedev omit "fileInt"', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
       '.cjs': {
@@ -96,7 +96,7 @@ describe('bemedev omit "fileInt"', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
       '.d.ts.map': {
@@ -105,7 +105,7 @@ describe('bemedev omit "fileInt"', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.js.map': {
@@ -113,7 +113,7 @@ describe('bemedev omit "fileInt"', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
       '.cjs.map': {
@@ -121,7 +121,7 @@ describe('bemedev omit "fileInt"', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: false,
       },
     }),

@@ -17,7 +17,6 @@ describe('Without options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.js': {
         config: true,
@@ -25,7 +24,6 @@ describe('Without options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.cjs': {
         config: false,
@@ -33,7 +31,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.d.ts.map': {
         config: false,
@@ -41,7 +38,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.js.map': {
         config: false,
@@ -49,7 +45,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.cjs.map': {
         config: false,
@@ -57,7 +52,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
     }),
   );
@@ -73,7 +67,6 @@ describe('Without options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.js': {
         config: true,
@@ -81,7 +74,6 @@ describe('Without options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.cjs': {
         config: true,
@@ -89,7 +81,6 @@ describe('Without options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
       },
       '.d.ts.map': {
         config: false,
@@ -97,7 +88,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.js.map': {
         config: false,
@@ -105,7 +95,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
       '.cjs.map': {
         config: false,
@@ -113,7 +102,6 @@ describe('Without options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
       },
     }),
   );

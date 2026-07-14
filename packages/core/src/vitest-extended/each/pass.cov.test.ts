@@ -1,6 +1,7 @@
 import { describe, expect } from 'vitest';
 
-import { sleep } from '../../utils/sleep';
+import { sleep } from '#utils/sleep';
+
 import { createTests } from '../createTests';
 import { useEach, useEachAsync } from './pass';
 

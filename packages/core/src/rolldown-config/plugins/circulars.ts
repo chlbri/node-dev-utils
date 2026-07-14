@@ -4,9 +4,10 @@ import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
 import { circularDependencies } from 'rollup-plugin-circular-dependencies';
 
+import { toArray } from '#utils';
+
 import { WARNING_CODES } from '../constants';
 import { withoutExtension } from '../helpers';
-import { toArray } from '../utils';
 
 export type CircularDependenciesOptions = Parameters<
   typeof circularDependencies

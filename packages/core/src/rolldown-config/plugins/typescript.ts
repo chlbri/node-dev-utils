@@ -6,8 +6,9 @@ import { transformSync } from 'oxc-transform';
 import type { RolldownPluginOption } from 'rolldown';
 import { replaceTscAliasPaths } from 'tsc-alias';
 
+import { toArray } from '#utils';
+
 import { DEFAULT_DIR } from '../constants';
-import { toArray } from '../utils';
 import { findConfigFile, readTsConfig } from './typescript.config';
 
 type Props = {

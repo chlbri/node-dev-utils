@@ -3,9 +3,10 @@ import { rm } from 'node:fs/promises';
 
 import { rolldown, type RolldownOptions } from 'rolldown';
 
+import { toArray } from '#utils';
+
 import { THIS1 } from '../../build-tests/constants';
 import type { Params } from '../types';
-import { toArray } from '../utils';
 
 export const WAITER = 100_000;
 

@@ -16,7 +16,7 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
+
         [path]: true,
       },
       '.js': {
@@ -25,7 +25,7 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
       '.cjs': {
@@ -34,7 +34,7 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.d.ts.map': {
@@ -43,7 +43,7 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.js.map': {
@@ -51,7 +51,7 @@ describe('bemedev options', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
       '.cjs.map': {
@@ -59,7 +59,7 @@ describe('bemedev options', () => {
         constants: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
     }),
@@ -76,7 +76,7 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: true,
-        utils: true,
+
         [path]: true,
       },
       '.js': {
@@ -85,7 +85,7 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
       '.cjs': {
@@ -94,7 +94,7 @@ describe('bemedev options', () => {
         index: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
       '.d.ts.map': {
@@ -103,7 +103,7 @@ describe('bemedev options', () => {
         index: false,
         input: false,
         types: false,
-        utils: false,
+
         [path]: false,
       },
       '.js.map': {
@@ -111,7 +111,7 @@ describe('bemedev options', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
       '.cjs.map': {
@@ -119,7 +119,7 @@ describe('bemedev options', () => {
         constants: true,
         input: true,
         types: false,
-        utils: true,
+
         [path]: true,
       },
     }),
