@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "0.8.3",
+  "version": "1.0.0",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -118,15 +118,18 @@
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^26.1.1",
     "@types/shelljs": "^0.10.0",
+    "@vitest/ui": "4.1.10",
+    "rolldown": "^1.1.5",
     "typescript": "^7.0.2",
+    "vitest": "4.1.10",
     "zod": "^4.4.3",
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "4.1.9",
-    "@vitest/ui": "4.1.9",
-    "rolldown": "1.0.0-rc.17",
-    "typescript": "^6.0.3",
-    "vitest": "4.1.9"
+    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/ui": "4.1.10",
+    "rolldown": "^1.1.5",
+    "typescript": "^7.0.2",
+    "vitest": "4.1.10"
   }
 }

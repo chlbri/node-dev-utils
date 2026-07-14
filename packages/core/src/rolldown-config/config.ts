@@ -15,7 +15,6 @@ export const defineConfig: Config_F = additionals => {
 
 const producePlugins = ({
   circularDeps,
-
   ignoresJS,
   dir,
   sourcemap = false,
@@ -26,7 +25,6 @@ const producePlugins = ({
   const include = buildInput(...toArray(excludesTS));
   const exclude = DEFAULT_EXCLUDE.concat(toArray(excludesTS));
   const unordered = {
-    alias: () => PLUGIN_BUILDERS.alias(),
     typescript: () =>
       PLUGIN_BUILDERS.typescript({
         include,
@@ -46,7 +44,6 @@ const producePlugins = ({
   };
 
   const defaultOrdered = () => [
-    unordered.alias(),
     unordered.circulars(),
     unordered.externals(),
     esmExternalRequirePlugin(),
