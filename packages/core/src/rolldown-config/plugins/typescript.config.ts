@@ -1,84 +1,90 @@
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { dirname, join, resolve } from 'node:path';
 
-import ts from 'typescript';
+function stripComments(jsonString: string): string {
+  return jsonString.replace(
+    /\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g,
+    (m, g) => (g ? '' : m),
+  );
+}
 
-const _readFile = (filePath: string): string | undefined => {
-  try {
-    return readFileSync(filePath, 'utf-8');
-  } catch {
-    return undefined;
+export function findConfigFile(
+  searchPath: string,
+  configName: string = 'tsconfig.json',
+): string | undefined {
+  let dir = searchPath;
+  while (true) {
+    const filePath = join(dir, configName);
+    if (existsSync(filePath)) {
+      return filePath;
+    }
+    const parentDir = dirname(dir);
+    if (parentDir === dir) {
+      break;
+    }
+    dir = parentDir;
   }
-};
+  return undefined;
+}
 
-const _readDirectory: ts.ParseConfigHost['readDirectory'] = (
-  rootDir,
-  extensions,
-  _,
-  __,
-  depth,
-): string[] => {
-  const results: string[] = [];
-
-  const walk = (dir: string, currentDepth: number) => {
-    if (depth !== undefined && currentDepth > depth) return;
-
-    let entries: string[];
-    try {
-      entries = readdirSync(dir);
-    } catch {
-      return;
-    }
-
-    for (const entry of entries) {
-      const fullPath = join(dir, entry);
-      let stat;
-      try {
-        stat = statSync(fullPath);
-      } catch {
-        continue;
-      }
-
-      if (stat.isDirectory()) {
-        walk(fullPath, currentDepth + 1);
-      } else if (
-        !extensions ||
-        extensions.some(ext => entry.endsWith(ext))
-      ) {
-        results.push(fullPath);
-      }
-    }
-  };
-
-  walk(rootDir, 0);
-  return results;
-};
-
-const _host: ts.ParseConfigHost = {
-  useCaseSensitiveFileNames: true,
-  readDirectory: _readDirectory,
-  fileExists: existsSync,
-  readFile: _readFile,
-};
-
-export const readTsConfig = (path: string) => {
-  const configFile = ts.readConfigFile(path, _readFile);
-
-  if (configFile.error) {
+export const readTsConfig = (path: string): { compilerOptions: any } => {
+  if (!existsSync(path)) {
+    throw new Error(`tsconfig.json not found at ${path}`);
+  }
+  const content = readFileSync(path, 'utf-8');
+  const cleanJson = stripComments(content);
+  let config: any;
+  try {
+    config = JSON.parse(cleanJson);
+  } catch (e: any) {
     throw new Error(
-      ts.formatDiagnostic(configFile.error, {
-        getCanonicalFileName: f => f,
-        getCurrentDirectory: () => process.cwd(),
-        getNewLine: () => '\n',
-      }),
+      `Failed to parse tsconfig.json at ${path}: ${e.message}`,
+      { cause: e },
     );
   }
 
-  const parsedConfig = ts.parseJsonConfigFileContent(
-    configFile.config,
-    _host,
-    dirname(path),
-  );
+  let compilerOptions = config.compilerOptions || {};
+  const configDir = dirname(path);
 
-  return parsedConfig;
+  const extendsPaths = Array.isArray(config.extends)
+    ? config.extends
+    : config.extends
+      ? [config.extends]
+      : [];
+
+  for (const extPath of extendsPaths) {
+    let baseConfigPath: string | undefined;
+    if (extPath.startsWith('.')) {
+      baseConfigPath = resolve(configDir, extPath);
+    } else {
+      baseConfigPath = findConfigFile(
+        join(configDir, 'node_modules'),
+        extPath,
+      );
+      if (!baseConfigPath) {
+        baseConfigPath = createRequire(import.meta.url).resolve(extPath, {
+          paths: [configDir],
+        });
+      }
+    }
+
+    if (baseConfigPath && existsSync(baseConfigPath)) {
+      const baseConfig = readTsConfig(baseConfigPath);
+      compilerOptions = {
+        ...baseConfig.compilerOptions,
+        ...compilerOptions,
+      };
+    }
+  }
+
+  if (compilerOptions.rootDir) {
+    compilerOptions.rootDir = resolve(configDir, compilerOptions.rootDir);
+  }
+
+  if (compilerOptions.outDir) {
+    compilerOptions.outDir = resolve(configDir, compilerOptions.outDir);
+  }
+
+  return { compilerOptions };
 };

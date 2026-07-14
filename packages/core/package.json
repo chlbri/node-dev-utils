@@ -102,6 +102,7 @@
     "cmd-ts": "^0.15.0",
     "edit-json-file": "^1.8.1",
     "glob": "^13.0.6",
+    "oxc-transform": "^0.139.0",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^9.0.1",
     "rollup-plugin-tsc-alias": "^1.1.4",
@@ -117,7 +118,7 @@
     "@types/edit-json-file": "^1.7.4",
     "@types/node": "^26.1.1",
     "@types/shelljs": "^0.10.0",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "zod": "^4.4.3",
     "zx": "^8.8.5"
   },

@@ -1,14 +1,12 @@
-import { existsSync } from 'fs';
 import { relative } from 'node:path';
 
 import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
-import ts from 'typescript';
 
 import { DEFAULT_DIR, WARNING_CODES } from '../constants';
 import { cleanupJS, withoutExtension } from '../helpers';
 import { toArray } from '../utils';
-import { readTsConfig } from './typescript.config';
+import { findConfigFile, readTsConfig } from './typescript.config';
 
 export type EndPluginOptions = {
   ignoresJS?: string | string[];
@@ -54,12 +52,8 @@ export const clean = (options: EndPluginOptions) => {
       handler: () => {
         const cwd = process.cwd();
 
-        const tsconfigPath = ts.findConfigFile(
-          cwd,
-          existsSync,
-          'tsconfig.json',
-        )!;
-        const _outDir = readTsConfig(tsconfigPath).options.outDir;
+        const tsconfigPath = findConfigFile(cwd, 'tsconfig.json')!;
+        const _outDir = readTsConfig(tsconfigPath).compilerOptions.outDir;
         const outDir = _outDir ?? dir ?? DEFAULT_DIR;
         if (_ignoresJS.length > 0) {
           try {

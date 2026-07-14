@@ -41,13 +41,11 @@ const producePlugins = ({
         builtinsPrefix: 'strip',
         include: excludesTS,
       }),
-    tsPaths: () => PLUGIN_BUILDERS.tsPaths({ colors: true }),
     clean: () => PLUGIN_BUILDERS.clean({ ignoresJS, sourcemap, dir }),
   };
 
   const defaultOrdered = () => [
     unordered.alias(),
-    unordered.tsPaths(),
     unordered.circulars(),
     unordered.externals(),
     esmExternalRequirePlugin(),
