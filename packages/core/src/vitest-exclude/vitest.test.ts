@@ -9,7 +9,6 @@ type Fn = (...args: any) => any;
 describe('vitest - exclude', () => {
   const environment = 'node';
   const enabled = true;
-  const enforce = 'pre';
   const cwd = vi.spyOn(process, 'cwd');
 
   beforeEach(() => {
@@ -22,12 +21,12 @@ describe('vitest - exclude', () => {
   });
 
   const { acceptation, success } = createTests(exclude, {
-    transform: async ({ config: c, enforce, name }) => {
+    transform: async ({ config: c, name }) => {
       const _fn = c as Fn;
       const config = await _fn({
         test: { environment, coverage: { enabled } },
       });
-      return { config, name, enforce };
+      return { config, name };
     },
   });
 
@@ -41,13 +40,12 @@ describe('vitest - exclude', () => {
         parameters: [],
         expected: {
           name,
-          enforce,
           config: {
             test: {
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
-                'src/build-tests/test.test.ts',
+
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -91,7 +89,7 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/index.ts',
                   'src/build-tests/index.ts',
                   'src/build-tests/pack.ts',
-                  'src/build-tests/test.test.ts',
+
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                   'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -158,6 +156,7 @@ describe('vitest - exclude', () => {
                   'src/vitest-extended/isDefined.ts',
                   'src/vitest-extended/isFunction.test.ts',
                   'src/vitest-extended/isFunction.ts',
+                  'src/vitest-extended/project.ts',
                   'src/vitest-extended/toArray.ts',
                   'src/vitest-extended/toStringFlat.ts',
                   'src/vitest-extended/types.test-d.ts',
@@ -174,14 +173,13 @@ describe('vitest - exclude', () => {
         parameters: [{ ignoreCoverageFiles: ['**/*.test.t{s,sx}'] }],
         expected: {
           name,
-          enforce,
           config: {
             test: {
               environment,
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
-                'src/build-tests/test.test.ts',
+
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -271,6 +269,7 @@ describe('vitest - exclude', () => {
                   'src/vitest-extended/index.ts',
                   'src/vitest-extended/isDefined.ts',
                   'src/vitest-extended/isFunction.ts',
+                  'src/vitest-extended/project.ts',
                   'src/vitest-extended/toArray.ts',
                   'src/vitest-extended/toStringFlat.ts',
                   'src/vitest-extended/types.test-d.ts',
@@ -287,14 +286,13 @@ describe('vitest - exclude', () => {
         parameters: [{ ignoreCoverageFiles: ['**/index.ts'] }],
         expected: {
           name,
-          enforce,
           config: {
             test: {
               environment,
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
-                'src/build-tests/test.test.ts',
+
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -335,7 +333,6 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/create.ts',
                   'src/build-tests/imports/helper.ts',
                   'src/build-tests/pack.ts',
-                  'src/build-tests/test.test.ts',
 
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -397,6 +394,7 @@ describe('vitest - exclude', () => {
                   'src/vitest-extended/isDefined.ts',
                   'src/vitest-extended/isFunction.test.ts',
                   'src/vitest-extended/isFunction.ts',
+                  'src/vitest-extended/project.ts',
                   'src/vitest-extended/toArray.ts',
                   'src/vitest-extended/toStringFlat.ts',
                   'src/vitest-extended/types.test-d.ts',
@@ -418,14 +416,13 @@ describe('vitest - exclude', () => {
         ],
         expected: {
           name,
-          enforce,
           config: {
             test: {
               environment,
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
-                'src/build-tests/test.test.ts',
+
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -466,7 +463,6 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/create.ts',
                   'src/build-tests/imports/helper.ts',
                   'src/build-tests/pack.ts',
-                  'src/build-tests/test.test.ts',
 
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -528,6 +524,7 @@ describe('vitest - exclude', () => {
                   'src/vitest-extended/isDefined.ts',
                   'src/vitest-extended/isFunction.test.ts',
                   'src/vitest-extended/isFunction.ts',
+                  'src/vitest-extended/project.ts',
                   'src/vitest-extended/toArray.ts',
                   'src/vitest-extended/toStringFlat.ts',
                   'src/vitest-extended/types.test-d.ts',

@@ -3,6 +3,11 @@
 A collection of utilities for Node.js development, including build tools,
 testing utilities, and configuration management.
 
+## HOTFIX fix for version 1.0.*
+
+> It doesn't type declarations well, if you're not put directly the output
+> type
+
 ## Modules
 
 | Module                              | Description                                  |
@@ -365,6 +370,29 @@ vitestExtended.useTFA(myFunction, 'myFunction');
 
 ---
 
+### `defineProject(config)`
+
+A wrapper around Vitest's `defineProject` / `defineConfig` that injects
+default configurations.
+
+> [!IMPORTANT] **HOT FIX**: Use this instead of standard `defineProject`
+> from `vitest/config` to automatically resolve path aliases (via
+> `tsconfigPaths: true`), set `globals: true`, configure
+> `logHeapUsage: false`, and set the `NODE_ENV` environment variable to
+> `'test'` by default.
+
+```typescript
+import { defineProject } from '@bemedev/dev-utils/vitest-extended';
+
+export default defineProject({
+  test: {
+    // your config here
+  },
+});
+```
+
+---
+
 ### Utility helpers
 
 | Export                             | Signature                           | Description                                       |
@@ -379,8 +407,7 @@ vitestExtended.useTFA(myFunction, 'myFunction');
 ## `rolldownConfig`
 
 Rolldown bundler configuration factory with built-in plugins for TypeScript
-declarations, circular dependency detection, and
-tree-shaking externals.
+declarations, circular dependency detection, and tree-shaking externals.
 
 ### `defineConfig(additionals?)`
 
@@ -470,9 +497,7 @@ Pass plugin keys as strings in the `plugins` array to reorder or subset
 them:
 
 ```typescript
-defineConfig.default({
-  plugins: ['externals', 'typescript'],
-});
+defineConfig.default({ plugins: ['externals', 'typescript'] });
 ```
 
 ---

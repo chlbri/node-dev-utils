@@ -1,12 +1,8 @@
-import { defineProject } from 'vitest/config';
-
 import { IS_EXTENSION } from './src/rolldown-config/__tests__/constants';
 import { exclude } from './src/vitest-exclude';
+import { defineProject } from './src/vitest-extended/project';
 
 export default defineProject({
-  root: '/Users/bri/Documents/GitHub/node-dev-utils/packages/core',
-  resolve: { tsconfigPaths: true },
-
   plugins: [
     exclude({
       ignoreCoverageFiles: [

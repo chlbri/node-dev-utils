@@ -4,3 +4,4 @@ export * from './done';
 export * from './each';
 export * from './fakeWaiter';
 export * from './types';
+export * from './project';

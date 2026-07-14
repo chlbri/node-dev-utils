@@ -52,7 +52,6 @@ create.withPattern = async (
 export function exclude(args: Args[1] = {}) {
   return {
     name,
-    enforce: 'pre',
     config: async options => {
       const root = options?.root ?? process.cwd();
       const testConfig = options?.test;
@@ -94,7 +93,6 @@ exclude.withPattern = ((
 ) => {
   return {
     name,
-    enforce: 'pre',
     config: async options => {
       const root = options?.root ?? process.cwd();
       const testConfig = options?.test;

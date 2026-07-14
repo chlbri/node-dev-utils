@@ -5,6 +5,24 @@
 <details>
 <summary>
 
+## **[1.0.2] - 14/07/2026** => _12:15_
+
+</summary>
+
+- Fix: resolve Vitest workspace configuration error by removing machine-specific hardcoded absolute paths
+- Refactor: export `defineProject` wrapper in `vitest-extended` for unified workspace test defaults and alias resolution
+- Refactor: migrate typescript plugin from `oxc-transform` to `@typescript/typescript6` for generating declaration files
+- Remove: delete redundant `packages/core/src/build-tests/test.test.ts` test file
+- Update: remove `rollup-plugin-tsc-alias`, `rollup-plugin-tsconfig-paths`, and standard `typescript` dependencies
+- Update: add `@typescript/typescript6` and `unplugin-dts` dependencies
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.0.1] - 14/07/2026** => _10:23_
 
 </summary>
@@ -23,13 +41,20 @@
 </summary>
 
 - Remove: `tsPaths` plugin for import path resolution
-- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and analyze test files
-- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration plugins
-- Refactor: consolidate utility modules (move `utils.ts` to `utils/array.ts`) and remove redundant test suites (`declarationMap.built.test.ts`, `default.built.test.ts`, `withoutOptions.test.ts`)
+- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and
+  analyze test files
+- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration
+  plugins
+- Refactor: consolidate utility modules (move `utils.ts` to
+  `utils/array.ts`) and remove redundant test suites
+  (`declarationMap.built.test.ts`, `default.built.test.ts`,
+  `withoutOptions.test.ts`)
 - Update: upgrade global TypeScript to version `7.0.2`
-- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and `rolldown` to `^1.1.5`
+- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and
+  `rolldown` to `^1.1.5`
 - Update: upgrade `pnpm` package manager to version `11.13.0`
-- Update: improve global upgrade script (`up`) using `pnpm up --latest && npm-check-updates`
+- Update: improve global upgrade script (`up`) using
+  `pnpm up --latest && npm-check-updates`
 
 </details>
 

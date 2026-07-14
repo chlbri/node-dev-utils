@@ -1,15 +1,13 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { basename, dirname, join, relative } from 'node:path';
+import { existsSync } from 'node:fs';
 
-import { globSync } from 'glob';
-import { transformSync } from 'oxc-transform';
+import ts from '@typescript/typescript6';
 import type { RolldownPluginOption } from 'rolldown';
 import { replaceTscAliasPaths } from 'tsc-alias';
 
 import { toArray } from '#utils';
 
 import { DEFAULT_DIR } from '../constants';
-import { findConfigFile, readTsConfig } from './typescript.config';
+import { readTsConfig } from './typescript.config';
 
 type Props = {
   exclude?: string | string[];
@@ -41,89 +39,58 @@ export const typescript = ({
         if (done) return;
         const cwd = process.cwd();
 
-        const tsconfigPath = findConfigFile(cwd, 'tsconfig.json')!;
+        const tsconfigPath = ts.findConfigFile(
+          cwd,
+          existsSync,
+          'tsconfig.json',
+        )!;
 
         const configFile = readTsConfig(tsconfigPath);
-        const outDir =
-          configFile.compilerOptions.outDir ?? dir ?? DEFAULT_DIR;
-        const rootDir =
-          configFile.compilerOptions.rootDir ?? join(cwd, 'src');
+        const host = ts.createCompilerHost(configFile.options);
+        const outDir = configFile.options.outDir ?? dir ?? DEFAULT_DIR;
 
-        let files: string[];
-        if (include && Object.keys(include).length > 0) {
-          files = Object.values(include);
-        } else {
-          files = globSync(join(rootDir, '**/*.{ts,tsx,cts,mts}'), {
-            ignore: toArray(exclude),
-          });
-        }
-
-        files = files.filter(
-          file =>
-            !file.endsWith('.d.ts') &&
-            !file.endsWith('.d.cts') &&
-            !file.endsWith('.d.mts'),
+        const parsed = ts.parseJsonConfigFileContent(
+          {
+            ...configFile,
+            include,
+            exclude: [...toArray(exclude), '*.ts'],
+            compilerOptions: {
+              ...configFile.options,
+              outDir,
+              noEmit: false,
+              emitDeclarationOnly: true,
+              declaration: true,
+              declarationMap,
+            },
+          },
+          ts.sys,
+          cwd,
         );
 
-        const errors: any[] = [];
+        const program = ts.createProgram(
+          parsed.fileNames,
+          {
+            ...configFile.options,
+            outDir,
+            noEmit: false,
+            emitDeclarationOnly: true,
+            declaration: true,
+            declarationMap,
+          },
+          host,
+        );
 
-        for (const file of files) {
-          try {
-            const content = readFileSync(file, 'utf-8');
-            const result = transformSync(file, content, {
-              typescript: { declaration: { sourcemap: !!declarationMap } },
-              sourcemap: !!declarationMap,
-            });
+        const emitResult = program.emit();
 
-            if (result.errors && result.errors.length > 0) {
-              errors.push(...result.errors);
-            }
-
-            // Compute output path relative to rootDir
-            const relativePath = relative(rootDir, file);
-            let dtsName = relativePath;
-            if (relativePath.endsWith('.tsx')) {
-              dtsName = relativePath.slice(0, -4) + '.d.ts';
-            } else if (relativePath.endsWith('.ts')) {
-              dtsName = relativePath.slice(0, -3) + '.d.ts';
-            } else if (relativePath.endsWith('.cts')) {
-              dtsName = relativePath.slice(0, -4) + '.d.cts';
-            } else if (relativePath.endsWith('.mts')) {
-              dtsName = relativePath.slice(0, -4) + '.d.mts';
-            }
-
-            const outPath = join(outDir, dtsName);
-            const outMapPath = outPath + '.map';
-
-            // Ensure output directory exists
-            mkdirSync(dirname(outPath), { recursive: true });
-
-            let dtsCode = result.declaration ?? '';
-            if (declarationMap && result.declarationMap) {
-              dtsCode += `\n//# sourceMappingURL=${basename(dtsName)}.map\n`;
-              writeFileSync(
-                outMapPath,
-                JSON.stringify(result.declarationMap),
-                'utf-8',
-              );
-            }
-
-            writeFileSync(outPath, dtsCode, 'utf-8');
-          } catch (err: any) {
-            console.error(`[bemedev-dts] Failed to process ${file}:`, err);
-          }
-        }
+        const errors = ts
+          .getPreEmitDiagnostics(program)
+          .concat(emitResult.diagnostics)
+          .filter(d => d.category === ts.DiagnosticCategory.Error);
 
         if (errors.length > 0) {
-          console.error(`[bemedev-dts] Generation completed with errors:`);
-          for (const err of errors) {
-            console.error(
-              `Error in ${err.filename || 'unknown file'}: ${err.message}`,
-            );
-            if (err.codeframe) {
-              console.error(err.codeframe);
-            }
-          }
+          console.error(
+            ts.formatDiagnosticsWithColorAndContext(errors, host),
+          );
         }
 
         await replaceTscAliasPaths({ configFile: tsconfigPath, outDir });
