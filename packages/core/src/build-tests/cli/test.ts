@@ -1,5 +1,6 @@
 import { command, flag } from 'cmd-ts';
 import sh from 'shelljs';
+
 import { addTarball } from '../addTarball';
 import { cleanup } from '../cleanup';
 
@@ -19,15 +20,9 @@ export const test = command({
       long: 'posttest',
     }),
 
-    pre: flag({
-      description: 'The hook pretest',
-      long: 'pre',
-    }),
+    pre: flag({ description: 'The hook pretest', long: 'pre' }),
 
-    post: flag({
-      description: 'The hook posttest',
-      long: 'post',
-    }),
+    post: flag({ description: 'The hook posttest', long: 'post' }),
   },
 
   // Ignores coverage because of recursivity

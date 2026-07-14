@@ -5,6 +5,7 @@ export type NodeExternalsOptions = Parameters<typeof nodeExternals>[0];
 
 /**
  * Creates a configured node externals plugin instance
+ *
  * @param options - Configuration options for node externals
  * @returns Rolldown plugin
  */

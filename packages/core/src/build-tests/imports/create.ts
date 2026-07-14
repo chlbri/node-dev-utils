@@ -1,6 +1,7 @@
 import { describe, test } from 'vitest';
-import { helperFn } from './helper';
+
 import { toStringFlat } from '../../vitest-extended/toStringFlat';
+import { helperFn } from './helper';
 
 export type ImportArgs = {
   path?: string;

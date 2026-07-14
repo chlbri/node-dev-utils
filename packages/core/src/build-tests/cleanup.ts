@@ -1,4 +1,5 @@
 import sh from 'shelljs';
+
 import { TEARDOWN_COMMAND } from './constants';
 
 export const cleanup = () => {

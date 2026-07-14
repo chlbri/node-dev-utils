@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+
 import ts from 'typescript';
 
 const _readFile = (filePath: string): string | undefined => {

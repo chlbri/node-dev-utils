@@ -3,7 +3,7 @@ import type { Plugin } from 'rolldown';
 import tscAlias from 'rollup-plugin-tsc-alias';
 
 export type AliasOptions = {
-  /** path to tsconfig.json (relative to CWD) */
+  /** Path to tsconfig.json (relative to CWD) */
   configFile?: string;
   /** Observe file changes */
   watch?: boolean;
@@ -23,6 +23,7 @@ export type AliasOptions = {
 
 /**
  * Creates a configured tsc-alias plugin instance
+ *
  * @param options - Configuration options for tsc-alias
  * @returns Rolldown plugin
  */

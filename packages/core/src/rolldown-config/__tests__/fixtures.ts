@@ -1,9 +1,11 @@
 import { existsSync, writeFileSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
+
 import { rolldown, type RolldownOptions } from 'rolldown';
-import { toArray } from '../utils';
+
 import { THIS1 } from '../../build-tests/constants';
 import type { Params } from '../types';
+import { toArray } from '../utils';
 
 export const WAITER = 100_000;
 
@@ -44,10 +46,7 @@ export const useBundle = (options: RolldownOptions) => {
     WAITER,
   ] as const;
 
-  return {
-    writeEsm,
-    writeCjs,
-  };
+  return { writeEsm, writeCjs };
 };
 
 type Options = Partial<{
@@ -112,8 +111,5 @@ export const useRebuild = (additionals?: Params | undefined) => {
   const testEsm = () => [() => writeEsm[0](), WAITER] as const;
   const testCjs = () => [() => writeCjs[0](), WAITER] as const;
 
-  return {
-    testEsm,
-    testCjs,
-  };
+  return { testEsm, testCjs };
 };

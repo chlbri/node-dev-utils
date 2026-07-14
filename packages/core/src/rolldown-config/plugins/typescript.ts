@@ -1,10 +1,12 @@
-import { toArray } from '../utils';
 import { existsSync } from 'node:fs';
+
 import type { RolldownPluginOption } from 'rolldown';
 import { replaceTscAliasPaths } from 'tsc-alias';
 import ts from 'typescript';
-import { readTsConfig } from './typescript.config';
+
 import { DEFAULT_DIR } from '../constants';
+import { toArray } from '../utils';
+import { readTsConfig } from './typescript.config';
 
 type Props = {
   exclude?: string | string[];
@@ -90,10 +92,7 @@ export const typescript = ({
           );
         }
 
-        await replaceTscAliasPaths({
-          configFile: tsconfigPath,
-          outDir,
-        });
+        await replaceTscAliasPaths({ configFile: tsconfigPath, outDir });
 
         done = true;
         console.log('DTS generation complete');

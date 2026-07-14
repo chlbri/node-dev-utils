@@ -1,6 +1,8 @@
-import type { Fn } from '#utils/types';
 import editJsonFile from 'edit-json-file';
 import sortKeys from 'sort-keys';
+
+import type { Fn } from '#utils/types';
+
 import { BIN_KEY, EXPORT_KEY, EXPORT_KEYS } from './constants';
 import { getTypescriptOutdir } from './getTypescriptOutdir';
 

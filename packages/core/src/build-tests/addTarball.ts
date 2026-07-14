@@ -1,6 +1,7 @@
 import editJsonFile from 'edit-json-file';
 import sh from 'shelljs';
 import sortKeys from 'sort-keys';
+
 import { devKey, FILE_ORIGIN, PACKAGE_PATH, THIS1 } from './constants';
 import { pack } from './pack';
 

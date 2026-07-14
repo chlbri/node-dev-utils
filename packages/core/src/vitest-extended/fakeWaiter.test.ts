@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+
 import { createFakeWaiter } from './fakeWaiter';
 
 describe('fakeWaiter', () => {

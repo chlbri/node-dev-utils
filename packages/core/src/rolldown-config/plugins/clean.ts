@@ -1,8 +1,10 @@
 import { existsSync } from 'fs';
-import { globSync } from 'glob';
 import { relative } from 'node:path';
+
+import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
 import ts from 'typescript';
+
 import { DEFAULT_DIR, WARNING_CODES } from '../constants';
 import { cleanupJS, withoutExtension } from '../helpers';
 import { toArray } from '../utils';

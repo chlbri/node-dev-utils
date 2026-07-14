@@ -1,4 +1,5 @@
 import { beforeAll, vi } from 'vitest';
+
 import { useTFA } from './acceptation';
 import type { Fn } from './bemedev/globals/types';
 import type { _CreateTests_F } from './createTests.types';
@@ -58,38 +59,37 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
 };
 
 /**
- * Creates tests for function in a better way
- * NB : We use strict-equality, {@link useEach|see}
- * @param library The test library
- * @param f The function to test
- * @param
- * @returns A test.each like function to tests many cases
- *
- * NB: If the first argument is an array, wrap the value in another array,
+ * Creates tests for function in a better way NB : We use strict-equality,
+ * {@link useEach|see}
  *
  * @example
- * // ./add.ts
- *export const add = (args: string[]) => args.reduce(
- *    (acc, value) => {
- *      acc+=value
- *      return acc;
- *    },
- *  0)
+ *   // ./add.ts
+ *   *export const add = (args: string[]) => args.reduce(
+ *   (acc, value) => {
+ *   acc+=value
+ *   return acc;
+ *   },
+ *   0)
  *
  *
- * // .add.test.ts
- *import { createTests } from '@bemedev/vitest-extended';
- *import { add } from './add';
+ *   // .add.test.ts
+ *   *import { createTests } from '@bemedev/vitest-extended';
+ *   *import { add } from './add';
  *
- *const useTests = createTests(add)
+ *   *const useTests = createTests(add)
  *
- *useTests(
+ *   *useTests(
  *   {
- *     invite: 'For : 1,2,3,4,5,6,7,8,9',
- *     parameters: [[1, 2, 3, 4, 5, 6, 7, 8, 9]], // like this!
+ *   invite: 'For : 1,2,3,4,5,6,7,8,9',
+ *   parameters: [[1, 2, 3, 4, 5, 6, 7, 8, 9]], // like this!
  *   }
- *)
+ *   )
  *
+ * @param library The test library
+ * @param f The function to test
+ * @param *
+ * @returns A test.each like function to tests many cases NB: If the first
+ *   argument is an array, wrap the value in another array,
  */
 export const createTests = <F0 extends any[], F1, F2 = F1>(
   func: Fn<F0, F1>,

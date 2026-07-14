@@ -1,5 +1,6 @@
-import type { Fn } from './bemedev/globals/types';
 import { expect, test } from 'vitest';
+
+import type { Fn } from './bemedev/globals/types';
 import { isFunction } from './isFunction';
 
 export const useTestFunctionAcceptation = (f: Fn, _name?: string) => {
@@ -14,8 +15,5 @@ export const useTestFunctionAcceptation = (f: Fn, _name?: string) => {
   });
 };
 
-/**
- * For test only
- * useTestFunctionAcceptation
- */
+/** For test only useTestFunctionAcceptation */
 export const useTFA = useTestFunctionAcceptation;

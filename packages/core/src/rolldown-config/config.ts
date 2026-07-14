@@ -1,5 +1,6 @@
 import { defineConfig as _defineConfig } from 'rolldown';
 import { esmExternalRequirePlugin } from 'rolldown/plugins';
+
 import { DEFAULT_CIRCULAR_DEPS, DEFAULT_EXCLUDE } from './constants';
 import { buildInput } from './input';
 import { buildOutput } from './output';
@@ -32,10 +33,7 @@ const producePlugins = ({
         declarationMap,
         dir,
       }),
-    circulars: () =>
-      PLUGIN_BUILDERS.circulars({
-        exclude: circularDeps,
-      }),
+    circulars: () => PLUGIN_BUILDERS.circulars({ exclude: circularDeps }),
     externals: () =>
       PLUGIN_BUILDERS.externals({
         // exclude peerDependencies and dependencies
@@ -44,12 +42,7 @@ const producePlugins = ({
         include: excludesTS,
       }),
     tsPaths: () => PLUGIN_BUILDERS.tsPaths({ colors: true }),
-    clean: () =>
-      PLUGIN_BUILDERS.clean({
-        ignoresJS,
-        sourcemap,
-        dir,
-      }),
+    clean: () => PLUGIN_BUILDERS.clean({ ignoresJS, sourcemap, dir }),
   };
 
   const defaultOrdered = () => [
@@ -81,11 +74,7 @@ defineConfig.default = ({
   const external = rest.externals;
   const output = buildOutput(dir, sourcemap);
 
-  const plugins = producePlugins({
-    dir,
-    sourcemap,
-    ...rest,
-  });
+  const plugins = producePlugins({ dir, sourcemap, ...rest });
 
   return _defineConfig({
     input,

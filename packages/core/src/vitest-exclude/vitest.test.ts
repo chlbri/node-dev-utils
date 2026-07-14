@@ -1,4 +1,5 @@
 import { describe } from 'vitest';
+
 import { createTests } from '../vitest-extended/createTests';
 import { name } from './constants';
 import { exclude } from './vitest';
@@ -46,6 +47,7 @@ describe('vitest - exclude', () => {
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
+                'src/build-tests/test.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -89,6 +91,7 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/index.ts',
                   'src/build-tests/index.ts',
                   'src/build-tests/pack.ts',
+                  'src/build-tests/test.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                   'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -180,6 +183,7 @@ describe('vitest - exclude', () => {
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
+                'src/build-tests/test.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -294,6 +298,7 @@ describe('vitest - exclude', () => {
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
+                'src/build-tests/test.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -334,6 +339,7 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/create.ts',
                   'src/build-tests/imports/helper.ts',
                   'src/build-tests/pack.ts',
+                  'src/build-tests/test.test.ts',
 
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
@@ -425,6 +431,7 @@ describe('vitest - exclude', () => {
               include: [
                 'src/__tests__/package-exports.test.ts',
                 'src/build-tests/getTypescriptOutdir.test.ts',
+                'src/build-tests/test.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                 'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',
                 'src/rolldown-config/__tests__/bemedev/default.built.test.ts',
@@ -465,6 +472,7 @@ describe('vitest - exclude', () => {
                   'src/build-tests/imports/create.ts',
                   'src/build-tests/imports/helper.ts',
                   'src/build-tests/pack.ts',
+                  'src/build-tests/test.test.ts',
 
                   'src/rolldown-config/__tests__/bemedev/declarationMap.built.test.ts',
                   'src/rolldown-config/__tests__/bemedev/declarationMap.test.ts',

@@ -10,6 +10,7 @@ export default defineConfig({
       reportsDirectory: '.coverage',
       provider: 'v8',
     },
+
     projects: [
       'packages/core/vitest.config.ts',
       'packages/__tests__/project1/vitest.config.ts',

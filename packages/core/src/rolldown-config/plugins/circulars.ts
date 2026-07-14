@@ -1,20 +1,22 @@
-import { globSync } from 'glob';
 import { relative } from 'node:path';
+
+import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
 import { circularDependencies } from 'rollup-plugin-circular-dependencies';
+
 import { WARNING_CODES } from '../constants';
 import { withoutExtension } from '../helpers';
 import { toArray } from '../utils';
 
 export type CircularDependenciesOptions = Parameters<
   typeof circularDependencies
->[0] & {
-  exclude?: string | string[];
-};
+>[0] & { exclude?: string | string[] };
 
 /**
  * Creates a configured circular dependencies plugin instance
- * @param options - Configuration options for circular dependencies detection
+ *
+ * @param options - Configuration options for circular dependencies
+ *   detection
  * @returns Rolldown plugin
  */
 export function circulars(

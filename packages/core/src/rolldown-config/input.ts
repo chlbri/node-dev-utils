@@ -1,7 +1,9 @@
-import type { BuildInput_F } from './types';
-import { globSync } from 'glob';
 import { extname, relative } from 'node:path';
+
+import { globSync } from 'glob';
+
 import { DEFAULT_EXCLUDE } from './constants';
+import type { BuildInput_F } from './types';
 
 export const buildInput: BuildInput_F = (...ignores) =>
   Object.fromEntries(

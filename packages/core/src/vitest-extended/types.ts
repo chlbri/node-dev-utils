@@ -19,9 +19,7 @@ export type SimpleParams<F extends Fn, P extends RuA = Parameters<F>> =
 export type TestArgs<F extends Fn> = ({
   invite: string;
   expected: ReR<F>;
-  /**
-   * Optional test function for specific cases
-   */
+  /** Optional test function for specific cases */
   test?: TestFn<F>;
 } & SimpleParams<F>)[];
 
@@ -29,9 +27,7 @@ export type TestArgs2<F extends Fn> = [
   invite: string,
   parameters: Parameters<F>,
   expected: ReR<F>,
-  /**
-   * Optional test function for specific cases
-   */
+  /** Optional test function for specific cases */
   test?: TestFn<F>,
 ][];
 

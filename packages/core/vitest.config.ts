@@ -1,12 +1,11 @@
 import { defineProject } from 'vitest/config';
+
 import { IS_EXTENSION } from './src/rolldown-config/__tests__/constants';
 import { exclude } from './src/vitest-exclude';
 
 export default defineProject({
   root: '/Users/bri/Documents/GitHub/node-dev-utils/packages/core',
-  resolve: {
-    tsconfigPaths: true,
-  },
+  resolve: { tsconfigPaths: true },
 
   plugins: [
     exclude({

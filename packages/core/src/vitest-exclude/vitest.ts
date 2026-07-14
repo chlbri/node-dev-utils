@@ -1,3 +1,5 @@
+import type { Plugin } from 'vitest/config';
+
 import { name } from './constants';
 import type { Args, WithPattern } from './types';
 import {
@@ -5,13 +7,12 @@ import {
   defaultCovPattern,
   testPattern,
 } from './vitest.utils';
-import type { Plugin } from 'vitest/config';
 
 /**
  * Create includeTest and includeCoverage arrays from glob patterns
  *
  * @param args Globs to ignore for test and coverage files
- * @returns an object with includeTest and includeCoverage string arrays
+ * @returns An object with includeTest and includeCoverage string arrays
  */
 export async function create(args: Args[1] = {}, root?: string) {
   const firsts = {
@@ -43,13 +44,10 @@ create.withPattern = async (
 /**
  * Plugin to add files with glob patterns to vitest
  *
- * @param ignore globs to exclude inside
- * @returns a vitest config
- *
+ * @remarks You don't have to use test.exclude. The default search pattern is : './src/**\/*.ts'
+ * @param ignore Globs to exclude inside
+ * @returns A vitest config
  * @see {@link exclude.withPattern}
- * @remarks
- * You don't have to use test.exclude.
- * The default search patter is './src/**\/*.ts'
  */
 export function exclude(args: Args[1] = {}) {
   return {
@@ -76,10 +74,7 @@ export function exclude(args: Args[1] = {}) {
         test: {
           ...testConfig,
           include: all.files,
-          coverage: {
-            ...coverage,
-            include: all.coverage,
-          },
+          coverage: { ...coverage, include: all.coverage },
         },
       };
     },
@@ -90,8 +85,8 @@ export function exclude(args: Args[1] = {}) {
  * Plugin to add files with glob patterns to vitest
  *
  * @param pattern The pattern where searching files
- * @param ignore globs to exclude inside
- * @returns a vitest config
+ * @param ignore Globs to exclude inside
+ * @returns A vitest config
  */
 exclude.withPattern = ((
   { patternTest, patternCov },
@@ -116,10 +111,7 @@ exclude.withPattern = ((
         test: {
           ...testConfig,
           include: all.files,
-          coverage: {
-            ...coverage,
-            include: all.coverage,
-          },
+          coverage: { ...coverage, include: all.coverage },
         },
       };
     },

@@ -94,10 +94,7 @@ defaults.
 
 ```typescript
 exclude.withPattern(
-  {
-    patternTest: 'tests/**/*.test.ts',
-    patternCov: 'src/**/*.ts',
-  },
+  { patternTest: 'tests/**/*.test.ts', patternCov: 'src/**/*.ts' },
   { ignoreTestFiles: ['tests/fixtures/**'] },
 );
 ```
@@ -148,10 +145,7 @@ coverage discovery.
 import { create } from '@bemedev/dev-utils/vitest-exclude';
 
 const { files, coverage } = await create.withPattern(
-  {
-    patternTest: 'tests/**/*.test.ts',
-    patternCov: 'src/**/*.ts',
-  },
+  { patternTest: 'tests/**/*.test.ts', patternCov: 'src/**/*.ts' },
   { ignoreTestFiles: ['tests/fixtures/**'] },
 );
 ```

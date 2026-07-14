@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest';
+
 import { identity } from '../identity';
 import { toArrayVitest } from '../toArray';
 import type { _UseErrorEach_F, UseErrorEach_F } from './error.types';

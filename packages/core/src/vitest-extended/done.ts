@@ -1,5 +1,6 @@
-import { sleep } from '../utils/sleep';
 import { expect, test, type TestOptions } from 'vitest';
+
+import { sleep } from '../utils/sleep';
 import type { TestDoneFunction } from './types';
 
 const useDone = (ms = 0) => {
@@ -39,10 +40,11 @@ const objectify = (
 
 /**
  * Build a test with a done function with a timeout
+ *
  * @param invite The description of the test
  * @param fn Where you can test, Don't async this function
  * @param options Options for the test like TestAPI from vitest
- * @returns a vitest test
+ * @returns A vitest test
  */
 export const doneTest = (
   invite: string,
@@ -60,10 +62,11 @@ export const doneTest = (
 
 /**
  * Build a test that fails with a done function with a timeout
+ *
  * @param invite The description of the test
  * @param fn Where you can test, Don't async this function
  * @param options Options for the test like TestAPI from vitest
- * @returns a vitest test
+ * @returns A vitest test
  */
 doneTest.fails = (
   invite: string,
@@ -81,10 +84,11 @@ doneTest.fails = (
 
 /**
  * Build a concurrent test with a done function with a timeout
+ *
  * @param invite The description of the test
  * @param fn Where you can test, Don't async this function
  * @param options Options for the test like TestAPI from vitest
- * @returns a vitest test
+ * @returns A vitest test
  */
 doneTest.concurrent = (
   invite: string,

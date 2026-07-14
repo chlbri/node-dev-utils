@@ -1,6 +1,7 @@
 import { existsSync } from 'fs';
-import { glob } from 'glob';
 import { join } from 'node:path';
+
+import { glob } from 'glob';
 
 export const hasSrc = (root = process.cwd()) => {
   return existsSync(join(root, 'src'));
@@ -18,10 +19,7 @@ export const buildInclude = async (
   ignore?: string[],
   root = process.cwd(),
 ) => {
-  const include = await glob(pattern, {
-    ignore,
-    cwd: root,
-  });
+  const include = await glob(pattern, { ignore, cwd: root });
 
   return include.map(mapper).sort();
 };

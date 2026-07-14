@@ -1,4 +1,5 @@
 import { describe } from 'vitest';
+
 import { createTests } from '../createTests';
 import { addMany, expected, noArgs } from './coverage';
 
@@ -25,16 +26,8 @@ describe('#3 => addMany - to cov', () => {
 
   success(
     { expected: 0, invite: 'No Args' },
-    {
-      expected: 1,
-      invite: '1',
-      parameters: 1,
-    },
-    {
-      expected: 10,
-      invite: '10',
-      parameters: 10,
-    },
+    { expected: 1, invite: '1', parameters: 1 },
+    { expected: 10, invite: '10', parameters: 10 },
     {
       expected: 45,
       invite: '1,2,3,4,5,6,7,8,9',

@@ -1,10 +1,8 @@
 import { identity } from '#utils';
+
 import { THIS1 } from './constants';
 
-type Args<T = any> = {
-  path?: string;
-  fn: (out: any) => T;
-};
+type Args<T = any> = { path?: string; fn: (out: any) => T };
 
 type CustomImport_F = <T = any>(args: Args<T>) => Promise<T>;
 

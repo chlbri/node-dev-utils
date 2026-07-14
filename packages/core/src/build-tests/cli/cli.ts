@@ -1,4 +1,5 @@
 import { subcommands } from 'cmd-ts';
+
 import { posttest } from './post';
 import { pretest } from './pre';
 import { test } from './test';

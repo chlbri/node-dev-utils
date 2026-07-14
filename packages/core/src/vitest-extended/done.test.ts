@@ -1,26 +1,16 @@
 import { createMachine, interpret, typings } from '@bemedev/app-ts';
-import { sleep } from '../utils/sleep';
 import { afterAll, beforeEach, describe } from 'vitest';
+
+import { sleep } from '../utils/sleep';
 import { doneTest } from './done';
 
 const machine = createMachine(
   {
     initial: 'idle',
     states: {
-      idle: {
-        on: {
-          START: '/running',
-        },
-      },
-      running: {
-        on: {
-          STOP: '/idle',
-          FINISH: '/done',
-        },
-      },
-      done: {
-        entry: 'onDone',
-      },
+      idle: { on: { START: '/running' } },
+      running: { on: { STOP: '/idle', FINISH: '/done' } },
+      done: { entry: 'onDone' },
     },
   },
   typings({
@@ -45,9 +35,7 @@ describe('DoneTest', () => {
 
   doneTest('#1 => Simple', async done => {
     service.addOptions(({ voidAction }) => ({
-      actions: {
-        onDone: voidAction(done),
-      },
+      actions: { onDone: voidAction(done) },
     }));
 
     await service.start();
@@ -59,9 +47,7 @@ describe('DoneTest', () => {
 
   doneTest.fails('#2 => Fails', done => {
     service.addOptions(({ voidAction }) => ({
-      actions: {
-        onDone: voidAction(done),
-      },
+      actions: { onDone: voidAction(done) },
     }));
 
     service.send('START');
@@ -74,9 +60,7 @@ describe('DoneTest', () => {
     done => {
       const service = interpret(machine, { context: false });
       service.addOptions(({ voidAction }) => ({
-        actions: {
-          onDone: voidAction(done),
-        },
+        actions: { onDone: voidAction(done) },
       }));
 
       service.send('START');
@@ -94,9 +78,7 @@ describe('DoneTest', () => {
     '#4 => Not enough time',
     done => {
       service.addOptions(({ voidAction }) => ({
-        actions: {
-          onDone: voidAction(done),
-        },
+        actions: { onDone: voidAction(done) },
       }));
 
       service.send('START');
@@ -114,9 +96,7 @@ describe('DoneTest', () => {
     '#5 => Adding Async function for only 1 second plus will fails',
     async done => {
       service.addOptions(({ voidAction }) => ({
-        actions: {
-          onDone: voidAction(done),
-        },
+        actions: { onDone: voidAction(done) },
       }));
 
       service.send('START');

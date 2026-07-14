@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { useTFA } from '../acceptation';
 import { useEach } from '../each/pass';
 import { partialCallO } from './partialCall';

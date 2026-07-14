@@ -1,6 +1,7 @@
-import { _unknown } from './bemedev/globals/utils/_unknown';
 import { maxLength, minLength, multiChar } from '@bemedev/basifun';
 import { describe } from 'vitest';
+
+import { _unknown } from './bemedev/globals/utils/_unknown';
 import { createTests } from './createTests';
 
 describe('CreateTests - Coverage', () => {
@@ -11,11 +12,7 @@ describe('CreateTests - Coverage', () => {
   describe('#2 => CreateTests, funcTest is initialazed', () => {
     const { success, acceptation } = createTests.withImplementation(
       addTest,
-      {
-        instanciation: () => add,
-        name: 'add',
-        transform: async x => x,
-      },
+      { instanciation: () => add, name: 'add', transform: async x => x },
     );
 
     describe('#0 => Acceptation', acceptation);
@@ -23,21 +20,9 @@ describe('CreateTests - Coverage', () => {
     describe(
       'Success',
       success(
-        {
-          invite: '0 + 0 = 0',
-          parameters: [0, 0],
-          expected: 0,
-        },
-        {
-          invite: '99 + 1 = 0',
-          parameters: [99, 1],
-          expected: 100,
-        },
-        {
-          invite: '1 + 1 = 0',
-          parameters: [1, 1],
-          expected: 2,
-        },
+        { invite: '0 + 0 = 0', parameters: [0, 0], expected: 0 },
+        { invite: '99 + 1 = 0', parameters: [99, 1], expected: 100 },
+        { invite: '1 + 1 = 0', parameters: [1, 1], expected: 2 },
       ),
     );
   });
@@ -94,10 +79,7 @@ describe('CreateTests - Coverage', () => {
         fails(
           { invite: 'Equals', parameters: [2, 're'] },
           { invite: 'More +1', parameters: [2, 'rer'] },
-          {
-            invite: 'Less +6',
-            parameters: [4, multiChar('d', 10)],
-          },
+          { invite: 'Less +6', parameters: [4, multiChar('d', 10)] },
         ),
       );
 
@@ -128,13 +110,8 @@ describe('CreateTests - Coverage', () => {
         describe(
           '#1 => fails',
           fails(
-            {
-              invite: 'With provided error',
-              error,
-            },
-            {
-              invite: 'Without provided error',
-            },
+            { invite: 'With provided error', error },
+            { invite: 'Without provided error' },
           ),
         );
       });
@@ -148,13 +125,8 @@ describe('CreateTests - Coverage', () => {
         describe(
           '#1 => fails',
           fails(
-            {
-              invite: 'With provided error',
-              error,
-            },
-            {
-              invite: 'Without provided error',
-            },
+            { invite: 'With provided error', error },
+            { invite: 'Without provided error' },
           ),
         );
       });
@@ -170,14 +142,8 @@ describe('CreateTests - Coverage', () => {
       describe(
         '#1 => Fails',
         fails(
-          {
-            invite: 'Cov',
-            error: 'Cov',
-          },
-          {
-            invite: 'Cov - again',
-            error: 'Cov',
-          },
+          { invite: 'Cov', error: 'Cov' },
+          { invite: 'Cov - again', error: 'Cov' },
         ),
       );
     });

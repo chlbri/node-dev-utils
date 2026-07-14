@@ -1,4 +1,5 @@
 import { command } from 'cmd-ts';
+
 import { cleanup } from '../cleanup';
 
 export const posttest = command({

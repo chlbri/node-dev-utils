@@ -1,6 +1,9 @@
-import type { Fn } from '#utils/types';
-import editJsonFile, { type JsonEditor } from 'edit-json-file';
 import { resolve } from 'path';
+
+import editJsonFile, { type JsonEditor } from 'edit-json-file';
+
+import type { Fn } from '#utils/types';
+
 import { DEFAULT_OUT_DIR, DOT, PATH_OUT_DIR, TS_PATH } from './constants';
 
 type Fn1 = Fn<[], string>;

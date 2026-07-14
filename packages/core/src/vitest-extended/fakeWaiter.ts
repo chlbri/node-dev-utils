@@ -1,5 +1,6 @@
-import { sleep } from '../utils/sleep';
 import type { VitestUtils } from 'vitest';
+
+import { sleep } from '../utils/sleep';
 
 export type FakeWaiter1_F = (
   vi: VitestUtils,

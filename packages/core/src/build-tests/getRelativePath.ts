@@ -1,6 +1,8 @@
 import { relative } from 'node:path';
-import { TARBALL_EXTENSION } from './constants';
+
 import type { Fn } from '#utils/types';
+
+import { TARBALL_EXTENSION } from './constants';
 
 type GetRelativePath_F = Fn<[string], string>;
 

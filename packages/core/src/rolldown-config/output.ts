@@ -1,4 +1,5 @@
 import type { OutputOptions } from 'rolldown';
+
 import { DEFAULT_DIR } from './constants';
 
 export const buildOutput = (dir = DEFAULT_DIR, sourcemap: boolean) => {

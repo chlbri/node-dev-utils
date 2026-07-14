@@ -1,5 +1,6 @@
-import { sleep } from '../../utils/sleep';
 import { describe, expect } from 'vitest';
+
+import { sleep } from '../../utils/sleep';
 import { createTests } from '../createTests';
 import { useEach, useEachAsync } from './pass';
 
@@ -9,11 +10,7 @@ describe('#01 => Specific tests', () => {
     const tests = useEach(func, x => x.toLocaleString());
 
     tests(
-      {
-        invite: '1 + 2',
-        parameters: [1, 2],
-        expected: '3',
-      },
+      { invite: '1 + 2', parameters: [1, 2], expected: '3' },
       {
         invite: '1 + 2, with specific test',
         parameters: [1, 2],
@@ -33,11 +30,7 @@ describe('#01 => Specific tests', () => {
     const tests = useEachAsync(func, x => x.toLocaleString());
 
     tests(
-      {
-        invite: '1 + 2',
-        parameters: [1, 2],
-        expected: '3',
-      },
+      { invite: '1 + 2', parameters: [1, 2], expected: '3' },
       {
         invite: '1 + 2, with specific test',
         parameters: [1, 2],
@@ -58,11 +51,7 @@ describe('#01 => Specific tests', () => {
     describe(
       '#01 => Success Tests',
       success(
-        {
-          invite: '1 + 2',
-          parameters: [1, 2],
-          expected: '3',
-        },
+        { invite: '1 + 2', parameters: [1, 2], expected: '3' },
         {
           invite: '1 + 2, with specific test',
           parameters: [1, 2],

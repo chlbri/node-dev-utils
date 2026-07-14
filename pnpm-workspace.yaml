@@ -3,6 +3,7 @@ packages:
   - 'packages/__tests__/project1'
 
 allowBuilds:
+  '@swc/core': true
   esbuild: true
 
 minimumReleaseAge: 300
