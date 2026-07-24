@@ -45,7 +45,7 @@
     "posttest": "pnpm run -r posttest",
     "test:only": "pnpm run test --no-coverage",
     "rm": "pnpm clean lockfile && pnpx rimraf node_modules **/node_modules",
-    "up": "pnpm up --latest && pnpm dlx npm-check-updates -w -u --peer --dep peer,optional,prod,packageManager",
+    "up": "pnpm up -r --latest && pnpm dlx npm-check-updates -w -u --peer --dep peer,optional,prod",
     "prepare": "husky",
     "fmt": "oxfmt"
   },
@@ -60,10 +60,10 @@
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
     "onchange": "^7.1.0",
-    "oxfmt": "^0.59.0",
-    "oxlint": "^1.74.0",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
     "pretty-quick": "^4.2.2",
-    "rolldown": "^1.1.5",
+    "rolldown": "^1.2.0",
     "size-limit": "^12.1.0",
     "tslib": "^2.8.1",
     "tsx": "^4.23.1",
@@ -72,5 +72,5 @@
     "zod": "^4.4.3",
     "zx": "^8.8.5"
   },
-  "packageManager": "pnpm@11.13.0"
+  "packageManager": "pnpm@11.17.0"
 }

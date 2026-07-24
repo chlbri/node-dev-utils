@@ -5,6 +5,21 @@
 <details>
 <summary>
 
+## **[1.1.1] - 24/07/2026** => _15:13_
+
+</summary>
+
+- Update: upgrade `oxc-transform` dependency to `^0.141.0`
+- Update: upgrade `rolldown` dev and peer dependency to `^1.2.0`
+- Update: bump package version to `1.1.1`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.1.0] - 14/07/2026** => _14:09_
 
 </summary>
