@@ -11,12 +11,22 @@ import { DEFAULT_DIR, WARNING_CODES } from '../constants';
 import { cleanupJS, withoutExtension } from '../helpers';
 import { readTsConfig } from './typescript.config';
 
+/**
+ * Options for the post-bundle cleanup plugin.
+ */
 export type EndPluginOptions = {
   ignoresJS?: string | string[];
   sourcemap?: boolean;
   dir?: string;
 };
 
+/**
+ * Plugin to clean up intermediate JavaScript and sourcemap files for type-only entries.
+ *
+ * @param options - Configuration options of type {@linkcode EndPluginOptions}.
+ *
+ * @returns Rolldown plugin option of type {@linkcode RolldownPluginOption}.
+ */
 export const clean = (options: EndPluginOptions) => {
   const { ignoresJS, sourcemap = false, dir } = options;
 

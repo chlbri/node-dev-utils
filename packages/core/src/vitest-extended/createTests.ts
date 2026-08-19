@@ -4,11 +4,7 @@ import type { Fn } from '../utils/bemedev/globals/types';
 import { useTFA } from './acceptation';
 import type { _CreateTests_F } from './createTests.types';
 import { useErrorAsyncEach } from './each/error';
-import {
-  useEachAsync,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  type useEach,
-} from './each/pass';
+import { useEachAsync } from './each/pass';
 import { toStringFlat } from './toStringFlat';
 
 export type { _CreateTests_F };
@@ -59,37 +55,28 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
 };
 
 /**
- * Creates tests for function in a better way NB : We use strict-equality,
- * {@link useEach|see}
+ * Creates structured test suites with acceptation, success, and failure runners.
+ *
+ * @template `F0` - Function parameters array type.
+ * @template `F1` - Function return value type.
+ * @template `F2` - Transformed return value type, defaults to `F1`.
+ *
+ * @param func - Function under test of type {@linkcode Fn}.
+ * @param args - Configuration options.
+ * @param args.transform - Optional output transformer of type {@linkcode Fn}.
+ * @param args.toError - Optional error mapping function of type {@linkcode Fn}.
+ *
+ * @returns Test suite object with acceptation, success, and fails methods.
  *
  * @example
- *   // ./add.ts
- *   *export const add = (args: string[]) => args.reduce(
- *   (acc, value) => {
- *   acc+=value
- *   return acc;
- *   },
- *   0)
- *
- *
- *   // .add.test.ts
- *   *import { createTests } from '@bemedev/vitest-extended';
- *   *import { add } from './add';
- *
- *   *const useTests = createTests(add)
- *
- *   *useTests(
- *   {
- *   invite: 'For : 1,2,3,4,5,6,7,8,9',
- *   parameters: [[1, 2, 3, 4, 5, 6, 7, 8, 9]], // like this!
- *   }
- *   )
- *
- * @param library The test library
- * @param f The function to test
- * @param *
- * @returns A test.each like function to tests many cases NB: If the first
- *   argument is an array, wrap the value in another array,
+ * ```ts
+ * const useTests = createTests(add);
+ * useTests.success({
+ *   invite: 'For : 1,2,3',
+ *   parameters: [[1, 2, 3]],
+ *   expected: 6,
+ * })();
+ * ```
  */
 export const createTests = <F0 extends any[], F1, F2 = F1>(
   func: Fn<F0, F1>,
@@ -102,6 +89,22 @@ export const createTests = <F0 extends any[], F1, F2 = F1>(
   return _create(func, transform, toError);
 };
 
+/**
+ * Creates structured test suites with an async instantiation or mock implementation.
+ *
+ * @template `F0` - Function parameters array type.
+ * @template `F1` - Function return value type.
+ * @template `F2` - Transformed return value type, defaults to `F1`.
+ *
+ * @param f - Fallback or default function of type {@linkcode Fn}.
+ * @param options - Configuration options for instantiation and formatting.
+ * @param options.instanciation - Async function returning the target implementation.
+ * @param options.name - Name identifier for test descriptions.
+ * @param options.transform - Optional output transformer.
+ * @param options.toError - Optional error mapping function.
+ *
+ * @returns Test suite object with acceptation, success, and fails methods.
+ */
 createTests.withImplementation = <F0 extends any[], F1, F2 = F1>(
   f: Fn<NoInfer<F0>, NoInfer<F1>>,
   {

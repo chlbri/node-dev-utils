@@ -4,6 +4,9 @@ import sh from 'shelljs';
 import { addTarball } from '../addTarball';
 import { cleanup } from '../cleanup';
 
+/**
+ * CLI command to execute tests with optional lifecycle hooks (pre/post).
+ */
 export const test = command({
   name: 'test',
 

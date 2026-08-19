@@ -25,10 +25,7 @@
       "type": "enum",
       "description": "Type of changes",
       "options": [
-        {
-          "label": "---",
-          "value": ""
-        },
+        { "label": "---", "value": "" },
         {
           "label": "build",
           "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)"
@@ -41,18 +38,9 @@
           "label": "ci",
           "description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)"
         },
-        {
-          "label": "docs",
-          "description": "Documentation only changes"
-        },
-        {
-          "label": "feat",
-          "description": "A new feature"
-        },
-        {
-          "label": "fix",
-          "description": "A bug fix"
-        },
+        { "label": "docs", "description": "Documentation only changes" },
+        { "label": "feat", "description": "A new feature" },
+        { "label": "fix", "description": "A bug fix" },
         {
           "label": "perf",
           "description": "A code change that improves performance"
@@ -61,9 +49,7 @@
           "label": "refactor",
           "description": "A code change that neither fixes a bug nor adds a feature"
         },
-        {
-          "label": "revert"
-        },
+        { "label": "revert" },
         {
           "label": "style",
           "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"

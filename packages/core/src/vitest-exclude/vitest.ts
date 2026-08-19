@@ -9,10 +9,12 @@ import {
 } from './vitest.utils';
 
 /**
- * Create includeTest and includeCoverage arrays from glob patterns
+ * Creates include arrays for test and coverage files from glob patterns.
  *
- * @param args Globs to ignore for test and coverage files
- * @returns An object with includeTest and includeCoverage string arrays
+ * @param args - Glob patterns to ignore for test and coverage files.
+ * @param root - Optional root directory path.
+ *
+ * @returns An object with resolved `files` and `coverage` string arrays.
  */
 export async function create(args: Args[1] = {}, root?: string) {
   const firsts = {
@@ -23,6 +25,17 @@ export async function create(args: Args[1] = {}, root?: string) {
   return create.withPattern(firsts, args, root);
 }
 
+/**
+ * Creates include arrays using custom test and coverage glob patterns.
+ *
+ * @param patterns - Custom test and coverage pattern object.
+ * @param patterns.patternTest - Glob pattern for test files.
+ * @param patterns.patternCov - Glob pattern for coverage files.
+ * @param args - Ignore options for tests and coverage.
+ * @param root - Optional root directory path.
+ *
+ * @returns An object with resolved `files` and `coverage` string arrays.
+ */
 create.withPattern = async (
   { patternTest, patternCov }: Partial<Args[0]> = {},
   { ignoreTestFiles, ignoreCoverageFiles }: Args[1] = {},
@@ -42,12 +55,11 @@ create.withPattern = async (
 };
 
 /**
- * Plugin to add files with glob patterns to vitest
+ * Vitest plugin to configure test and coverage file inclusion via glob patterns.
  *
- * @remarks You don't have to use test.exclude. The default search pattern is : './src/**\/*.ts'
- * @param ignore Globs to exclude inside
- * @returns A vitest config
- * @see {@link exclude.withPattern}
+ * @param args - Globs to ignore for test and coverage files.
+ *
+ * @returns Vitest plugin of type {@linkcode Plugin}.
  */
 export function exclude(args: Args[1] = {}) {
   return {
@@ -81,11 +93,12 @@ export function exclude(args: Args[1] = {}) {
 }
 
 /**
- * Plugin to add files with glob patterns to vitest
+ * Vitest plugin to configure test and coverage file inclusion with custom search patterns.
  *
- * @param pattern The pattern where searching files
- * @param ignore Globs to exclude inside
- * @returns A vitest config
+ * @param patterns - Custom test and coverage glob patterns.
+ * @param ignore - Globs to exclude.
+ *
+ * @returns Vitest plugin of type {@linkcode Plugin}.
  */
 exclude.withPattern = ((
   { patternTest, patternCov },

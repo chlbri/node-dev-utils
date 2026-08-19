@@ -5,6 +5,14 @@ import { globSync } from 'glob';
 import { DEFAULT_EXCLUDE } from './constants';
 import type { BuildInput_F } from './types';
 
+/**
+ * Builds entry points record for Rolldown from all
+ * `src/[**]/*.ts]` files.
+ *
+ * @param ignores - Additional glob patterns to exclude from entry points.
+ *
+ * @returns An object mapping relative module names to absolute source paths.
+ */
 export const buildInput: BuildInput_F = (...ignores) =>
   Object.fromEntries(
     globSync('src/**/*.ts', {

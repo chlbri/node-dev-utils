@@ -8,6 +8,11 @@ import { getTypescriptOutdir } from './getTypescriptOutdir';
 
 type BuldPackageJson_F = Fn<[], { packageJson: object; outDir: string }>;
 
+/**
+ * Transforms `package.json` for packed distribution by adjusting paths and removing internal fields.
+ *
+ * @returns Object containing the modified `packageJson` and resolved `outDir`.
+ */
 export const buildPackageJson: BuldPackageJson_F = () => {
   const file = editJsonFile('./package.json');
   const outDir = getTypescriptOutdir();

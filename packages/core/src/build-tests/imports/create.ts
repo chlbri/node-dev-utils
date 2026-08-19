@@ -3,16 +3,29 @@ import { describe, test } from 'vitest';
 import { toStringFlat } from '../../vitest-extended/toStringFlat';
 import { helperFn } from './helper';
 
+/**
+ * Options defining expected exported and non-exported symbols.
+ */
 export type ImportArgs = {
   path?: string;
   FAILS?: string[];
   SUCCESS: string[];
 };
 
+/**
+ * Function type creating import test suites.
+ */
 export type CreateImportTest_F = (
   args: ImportArgs,
 ) => readonly [string, () => void];
 
+/**
+ * Creates Vitest test suites verifying that symbols are properly exported from a module.
+ *
+ * @param args - Import test arguments of type {@linkcode ImportArgs}.
+ *
+ * @returns Tuple of test description and test runner function.
+ */
 export const createImportFnTests: CreateImportTest_F = args => {
   const path = args.path;
   const invite = `Importing from ${path ?? 'index'}`;

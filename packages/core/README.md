@@ -16,6 +16,7 @@ testing utilities, and configuration management.
 | [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest             |
 | [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory       |
 | [`buildTests`](#buildtests)         | CLI tooling to build and test packages       |
+| [`plugins`](#plugins)               | Vite development helper plugins              |
 
 > **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path
 > alias resolution is now handled natively by Vite via `resolve.alias` with
@@ -52,6 +53,7 @@ import {
 } from '@bemedev/dev-utils/vitest-extended';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
+import { suppressWarnings } from '@bemedev/dev-utils/plugins';
 ```
 
 ---
@@ -645,6 +647,38 @@ console.log(THIS1); // 'this-gen-1'
 | Name          | Description                                                           |
 | ------------- | --------------------------------------------------------------------- |
 | `IndexImport` | Type of the module returned by a dynamic `import(THIS1)` call (`any`) |
+
+---
+
+## `plugins`
+
+Vite plugins for development and test workflows.
+
+### `suppressWarnings(...patterns)`
+
+Vite plugin that intercepts and suppresses noisy terminal stderr output
+(e.g., from Nitro, SSR workers, or third-party dependencies) matching
+specific strings or regular expressions during dev (`apply: 'serve'`).
+
+```typescript
+import { suppressWarnings } from '@bemedev/dev-utils/plugins';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [
+    suppressWarnings('ExperimentalWarning', /punycode/, '[Vue warn]'),
+  ],
+});
+```
+
+**Parameters**
+
+| Name          | Type                      | Description                                                           |
+| ------------- | ------------------------- | --------------------------------------------------------------------- |
+| `...patterns` | `Array<string \| RegExp>` | Strings or RegExp patterns to match against stderr chunks to suppress |
+
+**Returns** a Vite `Plugin`
+(`{ name: 'suppress-logs-plugin', apply: 'serve' }`).
 
 ---
 

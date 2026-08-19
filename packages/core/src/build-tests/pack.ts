@@ -11,6 +11,11 @@ import { getRelativePath0 } from './getRelativePath';
 
 type Pack_F = Fn<[], Promise<string>>;
 
+/**
+ * Creates distribution package.json and generates a packed `.tgz` tarball using `pnpm pack`.
+ *
+ * @returns Promise resolving to the relative path of the created tarball.
+ */
 export const pack: Pack_F = async () => {
   const { packageJson, outDir } = buildPackageJson();
 

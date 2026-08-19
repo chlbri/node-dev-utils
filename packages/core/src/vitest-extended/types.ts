@@ -5,6 +5,12 @@ type ReR<F extends Fn> = Awaited<ReturnType<F>>;
 type TestFn<F extends Fn> = Fn<[ReR<F>, ReR<F>], void>;
 type LengthOf<T> = T extends readonly any[] ? T['length'] : never;
 
+/**
+ * Normalizes function parameter types for test case options.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ * @template | {@linkcode RuA} `P` - Parameters tuple type.
+ */
 export type SimpleParams<F extends Fn, P extends RuA = Parameters<F>> =
   LengthOf<P> extends 0
     ? { parameters?: never }
@@ -16,6 +22,11 @@ export type SimpleParams<F extends Fn, P extends RuA = Parameters<F>> =
           : { parameters: P | P[0] }
       : { parameters: P };
 
+/**
+ * Array of test case definition objects for success assertions.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ */
 export type TestArgs<F extends Fn> = ({
   invite: string;
   expected: ReR<F>;
@@ -23,6 +34,11 @@ export type TestArgs<F extends Fn> = ({
   test?: TestFn<F>;
 } & SimpleParams<F>)[];
 
+/**
+ * Tuple representation of test cases for Vitest each execution.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ */
 export type TestArgs2<F extends Fn> = [
   invite: string,
   parameters: Parameters<F>,
@@ -31,47 +47,95 @@ export type TestArgs2<F extends Fn> = [
   test?: TestFn<F>,
 ][];
 
+/**
+ * Array of test case definition objects for failure assertions.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ */
 export type TestErrors<F extends Fn> = ({
   invite: string;
   error?: string;
 } & SimpleParams<F>)[];
 
+/**
+ * Tuple representation of error test cases for Vitest each execution.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ */
 export type TestErrors2<F extends Fn> = [
   invite: string,
   parameters: Parameters<F>,
   error?: string,
 ][];
 
+/**
+ * Interface for array conversion utilities.
+ */
 export interface ToArray_F {
   <T>(obj: any): T[];
   generic: <T>(obj: T) => T[];
 }
 
+/**
+ * Interface for Vitest test argument conversion utilities.
+ */
 export interface ToArrayVitest_F {
   <F extends Fn>(params: TestArgs<F>): TestArgs2<F>;
   error: <F extends Fn>(params: TestErrors<F>) => TestErrors2<F>;
 }
 
+/**
+ * Conditional return type for test definitions based on provided argument count.
+ *
+ * @template | {@linkcode Fn} `F` - Target function type.
+ * @template | {@linkcode TestArgs} `A` - Test arguments type.
+ */
 export type TestReturn<F extends Fn, A extends TestArgs<F>> =
   LengthOf<A> extends 0 ? Fn<TestArgs<F>, void> : void;
 
+/**
+ * Callback function type for asynchronous done testing.
+ */
 export type TestDoneFunction = Fn<[context: () => boolean], void>;
 
+/**
+ * Function type to construct test suites with custom implementation mocks.
+ */
 export type ToCreateTestsWithImplementation_F = <F extends Fn>(
   f: F,
   implementation: { instanciation: () => Promise<F> | F; name: string },
 ) => (...cases: TestArgs<F>) => void;
 
+/**
+ * Function type for timer advancement utilities.
+ */
 export type FakeWaiter_F = (params: {
   ms?: number;
   times?: number;
   fake: boolean;
 }) => Promise<void>;
 
+/**
+ * Transformer function type taking the return type of function `F`.
+ *
+ * @template | {@linkcode Fn} `F` - Function type.
+ * @template `R` - Output type.
+ */
 export type NextFn<F extends Fn, R = any> = Fn<[ReturnType<F>], R>;
 
+/**
+ * Identity transform type for return value of function `F`.
+ *
+ * @template | {@linkcode Fn} `F` - Function type.
+ */
 export type Identity<F extends Fn> = Fn<[ReturnType<F>], ReturnType<F>>;
 
+/**
+ * Chained function type combining parameters of `F` with return type of `T`.
+ *
+ * @template | {@linkcode Fn} `F` - Source function type.
+ * @template | {@linkcode NextFn} `T` - Transformer function type.
+ */
 export type ChainedFn<F extends Fn, T extends NextFn<F>> = Fn<
   Parameters<F>,
   ReR<T>

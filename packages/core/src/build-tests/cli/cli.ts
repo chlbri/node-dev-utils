@@ -4,8 +4,14 @@ import { posttest } from './post';
 import { pretest } from './pre';
 import { test } from './test';
 
+/**
+ * Binary command name for build tests.
+ */
 export const BIN = 'build-tests';
 
+/**
+ * CLI definition for package building and test execution.
+ */
 export const cli = subcommands({
   name: BIN,
   cmds: { posttest, pretest, test },

@@ -4,6 +4,9 @@ import { identity } from '../identity';
 import { toArrayVitest } from '../toArray';
 import type { _UseErrorEach_F, UseErrorEach_F } from './error.types';
 
+/**
+ * Runs error assertions for asynchronous test cases concurrently.
+ */
 export const useErrorAsyncEachCases: _UseErrorEach_F = (
   f,
   transform = identity as any,
@@ -25,6 +28,15 @@ export const useErrorAsyncEachCases: _UseErrorEach_F = (
   );
 };
 
+/**
+ * Higher-order function returning a test runner for asynchronous error assertions.
+ *
+ * @param f - Function to test.
+ * @param transform - Optional transformer applied to the resolved return value.
+ * @param toError - Optional function computing expected error message from arguments.
+ *
+ * @returns Function accepting error test cases to execute.
+ */
 export const useErrorAsyncEach: UseErrorEach_F = (
   f,
   transform,

@@ -9,6 +9,13 @@ import { buildOutput } from './output';
 import { PLUGIN_BUILDERS } from './plugins';
 import type { Config_F, Params } from './types';
 
+/**
+ * Generates Rolldown configuration using default or customized options.
+ *
+ * @param additionals - Optional build configuration parameters of type {@linkcode Params}.
+ *
+ * @returns Configured Rolldown options of type {@linkcode RolldownOptions}.
+ */
 export const defineConfig: Config_F = additionals => {
   return defineConfig.default(additionals);
 };

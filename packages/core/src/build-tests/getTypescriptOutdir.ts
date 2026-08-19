@@ -8,6 +8,11 @@ import { DEFAULT_OUT_DIR, DOT, PATH_OUT_DIR, TS_PATH } from './constants';
 
 type Fn1 = Fn<[], string>;
 
+/**
+ * Resolves the TypeScript output directory specified in `tsconfig.json`.
+ *
+ * @returns Output directory path string without leading `./`.
+ */
 export const getTypescriptOutdir: Fn1 = () => {
   let file: JsonEditor | undefined = editJsonFile(
     resolve(process.cwd(), TS_PATH),

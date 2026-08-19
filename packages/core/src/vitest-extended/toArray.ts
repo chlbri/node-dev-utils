@@ -1,6 +1,9 @@
 import { isDefined } from './isDefined';
 import type { ToArrayVitest_F, ToArray_F } from './types';
 
+/**
+ * Transforms test case arguments into the tuple format expected by Vitest each runners.
+ */
 export const toArrayVitest: ToArrayVitest_F = args => {
   return args.map(({ expected, invite, parameters: params, test }) => {
     const parameters = toArray(params);
@@ -15,6 +18,9 @@ toArrayVitest.error = args => {
   });
 };
 
+/**
+ * Normalizes a single value, array, null, or undefined into an array.
+ */
 export const toArray: ToArray_F = obj => {
   if (Array.isArray(obj)) {
     return obj;

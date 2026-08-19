@@ -5,6 +5,9 @@ import sortKeys from 'sort-keys';
 import { devKey, FILE_ORIGIN, PACKAGE_PATH, THIS1 } from './constants';
 import { pack } from './pack';
 
+/**
+ * Builds and installs a local tarball package as a temporary dev dependency for testing.
+ */
 export const addTarball = async () => {
   // #region Install the tarball
   const _packed = await pack();

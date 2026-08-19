@@ -6,6 +6,9 @@ import { externals } from './externals';
 import { typescript } from './typescript';
 import { typescriptFast } from './typescript.fast';
 
+/**
+ * Registry mapping plugin keys to their factory functions.
+ */
 export const PLUGIN_BUILDERS = {
   typescript,
   circulars,
@@ -15,6 +18,9 @@ export const PLUGIN_BUILDERS = {
   esm: esmExternalRequirePlugin,
 };
 
+/**
+ * Default ordering sequence for Rolldown build plugins.
+ */
 export const DEFAULT_PLUGINS_ORDER = Object.keys(
   PLUGIN_BUILDERS,
 ) as (keyof typeof PLUGIN_BUILDERS)[];

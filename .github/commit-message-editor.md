@@ -89,18 +89,9 @@ Vous pouvez créer un fichier de configuration JSON avec le schéma suivant :
       "name": "type",
       "type": "enum",
       "options": [
-        {
-          "label": "feat",
-          "description": "Nouvelle fonctionnalité"
-        },
-        {
-          "label": "fix",
-          "description": "Correction de bug"
-        },
-        {
-          "label": "docs",
-          "description": "Modification de documentation"
-        }
+        { "label": "feat", "description": "Nouvelle fonctionnalité" },
+        { "label": "fix", "description": "Correction de bug" },
+        { "label": "docs", "description": "Modification de documentation" }
       ],
       "description": "Type de changement"
     }
@@ -221,10 +212,7 @@ Basée sur les instructions de commit du projet (voir
           "label": "revert",
           "description": "Retour à un commit précédent (version patch)"
         },
-        {
-          "label": "chore",
-          "description": "Tâches de maintenance"
-        }
+        { "label": "chore", "description": "Tâches de maintenance" }
       ],
       "description": "Type de changement"
     },
@@ -303,17 +291,8 @@ Basée sur les instructions de commit du projet (voir
         { "label": "fix", "description": "Correction" }
       ]
     },
-    {
-      "label": "Description",
-      "name": "description",
-      "type": "text"
-    },
-    {
-      "label": "Corps",
-      "name": "body",
-      "type": "text",
-      "multiline": true
-    }
+    { "label": "Description", "name": "description", "type": "text" },
+    { "label": "Corps", "name": "body", "type": "text", "multiline": true }
   ]
 }
 ```

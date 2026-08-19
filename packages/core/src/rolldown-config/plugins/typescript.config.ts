@@ -61,6 +61,14 @@ const _host: ts.ParseConfigHost = {
   readFile: _readFile,
 };
 
+/**
+ * Loads and parses the closest `tsconfig.json` from the search path.
+ *
+ * @param searchPath - Directory path from which to locate the tsconfig.
+ * @param configName - Name of the configuration file, defaults to `'tsconfig.json'`.
+ *
+ * @returns Parsed TypeScript configuration object.
+ */
 export function getConfig(
   searchPath: string,
   configName: string = 'tsconfig.json',
@@ -75,6 +83,13 @@ export function getConfig(
   return configFile;
 }
 
+/**
+ * Reads and parses the specified `tsconfig.json` file path.
+ *
+ * @param path - Absolute or relative path to the tsconfig file.
+ *
+ * @returns Parsed TypeScript configuration object.
+ */
 export const readTsConfig = (path: string) => {
   const configFile = ts.readConfigFile(path, _readFile);
 

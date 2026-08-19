@@ -4,6 +4,14 @@ const log10: Fn<[value: number], number> = (value: number) => {
   return Math.floor(Math.log10(value));
 };
 
+/**
+ * Formats a number as a zero-padded string relative to the maximum length's magnitude.
+ *
+ * @param _value - Number value to format.
+ * @param _len - Maximum upper bound length for digit padding calculation.
+ *
+ * @returns Zero-padded string representation of `_value`.
+ */
 export const toStringFlat: Fn<[value: number, len: number], string> = (
   _value,
   _len,

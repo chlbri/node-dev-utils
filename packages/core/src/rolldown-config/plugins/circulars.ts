@@ -9,16 +9,19 @@ import { toArray } from '#utils';
 import { WARNING_CODES } from '../constants';
 import { withoutExtension } from '../helpers';
 
+/**
+ * Options for the circular dependencies plugin.
+ */
 export type CircularDependenciesOptions = Parameters<
   typeof circularDependencies
 >[0] & { exclude?: string | string[] };
 
 /**
- * Creates a configured circular dependencies plugin instance
+ * Creates a configured circular dependencies plugin instance with suppression for known patterns.
  *
- * @param options - Configuration options for circular dependencies
- *   detection
- * @returns Rolldown plugin
+ * @param options - Configuration options of type {@linkcode CircularDependenciesOptions}.
+ *
+ * @returns Rolldown plugin option of type {@linkcode RolldownPluginOption}.
  */
 export function circulars(
   options: CircularDependenciesOptions = {},

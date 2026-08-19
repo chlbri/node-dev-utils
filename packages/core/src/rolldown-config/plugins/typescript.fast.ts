@@ -17,6 +17,9 @@ import { toArray } from '#utils';
 import { DEFAULT_DIR } from '../constants';
 import { readTsConfig } from './typescript.config';
 
+/**
+ * Options for the fast TypeScript DTS generation plugin.
+ */
 type Props = {
   exclude?: string | string[];
   include?: Record<string, string>;
@@ -24,6 +27,13 @@ type Props = {
   dir?: string;
 };
 
+/**
+ * Fast Rolldown plugin using `oxc-transform` for generating TypeScript declaration files (`.d.ts`).
+ *
+ * @param props - Configuration options.
+ *
+ * @returns Rolldown plugin option of type {@linkcode RolldownPluginOption}.
+ */
 export const typescriptFast = ({
   exclude,
   include,

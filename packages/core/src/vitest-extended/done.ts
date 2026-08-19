@@ -40,12 +40,13 @@ const objectify = (
 // #endregion
 
 /**
- * Build a test with a done function with a timeout
+ * Build a test with a done callback function and a timeout.
  *
- * @param invite The description of the test
- * @param fn Where you can test, Don't async this function
- * @param options Options for the test like TestAPI from vitest
- * @returns A vitest test
+ * @param invite - The description of the test.
+ * @param fn - Test callback function of type {@linkcode TestDoneFunction}.
+ * @param options - Timeout in milliseconds or test options of type {@linkcode TestOptions}.
+ *
+ * @returns A Vitest test execution result.
  */
 export const doneTest = (
   invite: string,
@@ -62,12 +63,13 @@ export const doneTest = (
 };
 
 /**
- * Build a test that fails with a done function with a timeout
+ * Build a test expected to fail with a done callback function and a timeout.
  *
- * @param invite The description of the test
- * @param fn Where you can test, Don't async this function
- * @param options Options for the test like TestAPI from vitest
- * @returns A vitest test
+ * @param invite - The description of the test.
+ * @param fn - Test callback function of type {@linkcode TestDoneFunction}.
+ * @param options - Timeout in milliseconds or test options of type {@linkcode TestOptions}.
+ *
+ * @returns A Vitest test execution result.
  */
 doneTest.fails = (
   invite: string,
@@ -84,12 +86,13 @@ doneTest.fails = (
 };
 
 /**
- * Build a concurrent test with a done function with a timeout
+ * Build a concurrent test with a done callback function and a timeout.
  *
- * @param invite The description of the test
- * @param fn Where you can test, Don't async this function
- * @param options Options for the test like TestAPI from vitest
- * @returns A vitest test
+ * @param invite - The description of the test.
+ * @param fn - Test callback function of type {@linkcode TestDoneFunction}.
+ * @param options - Timeout in milliseconds or test options of type {@linkcode TestOptions}.
+ *
+ * @returns A Vitest test execution result.
  */
 doneTest.concurrent = (
   invite: string,

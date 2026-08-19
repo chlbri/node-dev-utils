@@ -25,26 +25,12 @@ const useEachCases: _UseEach_F = (
 };
 
 /**
- * A better version of **test.each**
+ * Runs parameterized tests with strict equality checks across multiple cases.
  *
- * Type parameters
+ * @param func - Function to test.
+ * @param transform - Optional transformer applied to the return value.
  *
- * @type A Parameters of the function, extends Array type
- * @type R ReturnType of the function
- * @param func The function to test
- * @param cases The cases to test, The invite is the first arguments. It's
- *   an array of Array.
- *
- *   - #1 The first arg is the invite of the test
- *   - #2 The second arg is the parameters to to pass to the function. It's
- *     an array (param array).
- *   - #3 The third arg is the expected result
- *
- *   Example: For a function like **_(arg1: string)=>any**_, the second arg
- *   with be : **_[string]**_
- * @if R are not provided, the return is a function to test with TestArgs arguments
- *
- * @else It tests every cases provided
+ * @returns Function accepting test cases to execute.
  */
 export const useEach: UseEach_F = (func, transform) => {
   return (...cases) => useEachCases(func, transform, ...cases);
@@ -68,11 +54,15 @@ const useEachAsyncCases: _UseAsyncEach_F = (
 };
 
 /**
- * Same as _**useEach**_
+ * Runs asynchronous parameterized tests with strict equality checks across multiple cases.
  *
- * But for async functions
+ * @param func - Async function to test.
+ * @param transform - Optional transformer applied to the resolved return value.
+ *
+ * @returns Function accepting test cases to execute.
  */
 export const useEachAsync: UseAsyncEach_F = (func, transform) => {
   return (...cases) => useEachAsyncCases(func, transform, ...cases);
 };
+
 // #endregion

@@ -11,6 +11,11 @@ type TFunc = ReturnType<typeof transformZTF<z.ZodString>>;
 type TT = (zod: Any) => TestReturn<TFunc, []>;
 // #endregion
 
+/**
+ * Reusable test workflow verifying Zod test functions against various schema types.
+ *
+ * @param createTest - Test creator function.
+ */
 export const useWorkflow = (createTest: TT) => {
   describe('#1 => string', () => {
     const useTest = createTest(z.string());
@@ -101,6 +106,13 @@ export const useWorkflow = (createTest: TT) => {
   });
 };
 
+/**
+ * Acceptance test helper validating that a creator produces a function.
+ *
+ * @template | {@linkcode Fn} `F` - Target factory function type.
+ *
+ * @param f - Factory function.
+ */
 export const _useTFA = <F extends Fn>(f: F) => {
   describe('#0 => Accceptation', () => useTFA(f));
 

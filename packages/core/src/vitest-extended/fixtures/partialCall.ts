@@ -1,9 +1,14 @@
 /**
- * Reducer for function with _**one object**_ parameter which
+ * Creates a partially applied function for a single object parameter function.
  *
- * @param f The function to test
- * @param headArgs First arguments for reducing
- * @returns A new function without the **_headArgs**_ provided
+ * @template | {@linkcode object} `T` - Partial argument shape.
+ * @template `U` - Full argument shape extending `T`.
+ * @template `R` - Return type.
+ *
+ * @param f - Target function.
+ * @param headArgs - Initial partial argument values.
+ *
+ * @returns Function accepting remaining arguments.
  */
 export function partialCallO<T extends object, U extends T, R>(
   f: (arg: U) => R,

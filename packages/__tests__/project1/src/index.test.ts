@@ -1,4 +1,5 @@
 import { sleep } from '@bemedev/dev-utils/utils';
+
 import { todo } from './index';
 
 describe('project1 tests', () => {

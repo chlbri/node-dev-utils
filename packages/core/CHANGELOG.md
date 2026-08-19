@@ -5,6 +5,27 @@
 <details>
 <summary>
 
+## **[1.2.0] - 19/08/2026** => _14:10_
+
+</summary>
+
+- Add: `./plugins` export providing `suppressWarnings` Vite plugin to
+  filter noisy stderr/stdout warnings during development
+- Docs: comprehensive JSDoc documentation across all modules
+- Refactor: refined TypeScript type definitions and helper interfaces in
+  `vitest-extended` and `vitest-exclude`
+- Update: upgrade dependencies (`oxc-transform` `^0.145.0`, `rolldown`
+  `^1.2.4`, `@typescript/typescript6` `^6.0.2`, `@types/node` `^26.2.0`)
+- Update: bump package version to `1.2.0`
+- <u>Test coverage **_76%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.1.1] - 24/07/2026** => _15:13_
 
 </summary>

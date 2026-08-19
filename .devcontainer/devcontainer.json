@@ -3,26 +3,16 @@
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   // 4 GB RAM for the container
   "runArgs": ["--memory=4g", "--memory-swap=4g", "--cpus=2"],
-  "hostRequirements": {
-    "memory": "4gb"
-  },
+  "hostRequirements": { "memory": "4gb" },
   // pnpm via corepack (ships with Node 24) + install deps
   "postCreateCommand": "corepack use pnpm@latest && pnpm install --frozen-lockfile",
   // Forward vitest --ui port, also Ollama
   "forwardPorts": [51204, 11434],
   "portsAttributes": {
-    "51204": {
-      "label": "Vitest UI",
-      "onAutoForward": "notify"
-    },
-    "11434": {
-      "label": "Ollama",
-      "onAutoForward": "notify"
-    }
+    "51204": { "label": "Vitest UI", "onAutoForward": "notify" },
+    "11434": { "label": "Ollama", "onAutoForward": "notify" }
   },
-  "containerEnv": {
-    "OLLAMA_HOST": "http://host.docker.internal:11434"
-  },
+  "containerEnv": { "OLLAMA_HOST": "http://host.docker.internal:11434" },
   "remoteEnv": {
     "NODE_ENV": "development",
     // Give Node.js ~3 GB for heap

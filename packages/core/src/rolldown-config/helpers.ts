@@ -1,10 +1,24 @@
 import { rmSync } from 'node:fs';
 import { extname, relative, resolve } from 'node:path';
 
+/**
+ * Strips the extension from a file path.
+ *
+ * @param file - File path string.
+ *
+ * @returns File path without file extension.
+ */
 export const withoutExtension = (file: string) => {
   return file.slice(0, file.length - extname(file).length);
 };
 
+/**
+ * Removes compiled JavaScript and sourcemap files for specified sources.
+ *
+ * @param files - Set of source file paths.
+ * @param dir - Target output directory.
+ * @param sourcemap - Whether sourcemap files should also be deleted.
+ */
 export const cleanupJS = (
   files: Set<string>,
   dir: string,
