@@ -16,11 +16,7 @@ const machine = createMachine(
   },
   typings({
     context: 'boolean',
-    eventsMap: {
-      START: 'primitive',
-      STOP: 'primitive',
-      FINISH: 'primitive',
-    },
+    eventsMap: { START: 'primitive', STOP: 'primitive', FINISH: 'primitive' },
   }),
 );
 

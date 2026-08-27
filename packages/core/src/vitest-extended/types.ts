@@ -136,7 +136,4 @@ export type Identity<F extends Fn> = Fn<[ReturnType<F>], ReturnType<F>>;
  * @template | {@linkcode Fn} `F` - Source function type.
  * @template | {@linkcode NextFn} `T` - Transformer function type.
  */
-export type ChainedFn<F extends Fn, T extends NextFn<F>> = Fn<
-  Parameters<F>,
-  ReR<T>
->;
+export type ChainedFn<F extends Fn, T extends NextFn<F>> = Fn<Parameters<F>, ReR<T>>;

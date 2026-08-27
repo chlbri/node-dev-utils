@@ -45,9 +45,7 @@ describe('#01 => Specific tests', () => {
 
   describe('#01 => With createTests', () => {
     const func = (a: number, b: number) => a + b;
-    const { success } = createTests(func, {
-      transform: x => x.toLocaleString(),
-    });
+    const { success } = createTests(func, { transform: x => x.toLocaleString() });
 
     describe(
       '#01 => Success Tests',

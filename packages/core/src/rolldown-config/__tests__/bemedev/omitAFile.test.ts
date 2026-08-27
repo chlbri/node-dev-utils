@@ -5,9 +5,7 @@ useBuild();
 
 describe('bemedev omit "fileInt"', () => {
   const { writeCjs, writeEsm } = useBundle(
-    defineConfig.bemedev({
-      ignoresJS: `${process.cwd()}/src/**/${path}.ts`,
-    }),
+    defineConfig.bemedev({ ignoresJS: `${process.cwd()}/src/**/${path}.ts` }),
   );
 
   test('#1 Write esm', ...writeEsm);

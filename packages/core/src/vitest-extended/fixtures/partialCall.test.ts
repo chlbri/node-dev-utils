@@ -34,21 +34,13 @@ describe('partialCallO', () => {
       const useTest = createTest(1);
 
       useTest(
-        {
-          invite: '#1 => b = 1 ===>> a + b = 2',
-          parameters: { b: 1 },
-          expected: 2,
-        },
+        { invite: '#1 => b = 1 ===>> a + b = 2', parameters: { b: 1 }, expected: 2 },
         {
           invite: '#2 => b = 10 ===>> a + b = 11',
           parameters: { b: 10 },
           expected: 11,
         },
-        {
-          invite: '#3 => b = 4 ===>> a + b = 5',
-          parameters: { b: 4 },
-          expected: 5,
-        },
+        { invite: '#3 => b = 4 ===>> a + b = 5', parameters: { b: 4 }, expected: 5 },
       );
     });
 

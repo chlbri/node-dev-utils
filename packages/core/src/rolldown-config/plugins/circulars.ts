@@ -48,9 +48,7 @@ export function circulars(
         ) {
           const STARS = '*'.repeat(20);
           console.log(STARS);
-          console.log(
-            '[bemedev] Skipping circular dependency warnings for:',
-          );
+          console.log('[bemedev] Skipping circular dependency warnings for:');
           names?.forEach(name => console.log(`  -> 📄 ${name}`));
           console.log(STARS);
           console.log();

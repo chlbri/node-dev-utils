@@ -6,18 +6,12 @@ import { helperFn } from './helper';
 /**
  * Options defining expected exported and non-exported symbols.
  */
-export type ImportArgs = {
-  path?: string;
-  FAILS?: string[];
-  SUCCESS: string[];
-};
+export type ImportArgs = { path?: string; FAILS?: string[]; SUCCESS: string[] };
 
 /**
  * Function type creating import test suites.
  */
-export type CreateImportTest_F = (
-  args: ImportArgs,
-) => readonly [string, () => void];
+export type CreateImportTest_F = (args: ImportArgs) => readonly [string, () => void];
 
 /**
  * Creates Vitest test suites verifying that symbols are properly exported from a module.

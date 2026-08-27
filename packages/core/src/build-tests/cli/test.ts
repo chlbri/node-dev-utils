@@ -11,11 +11,7 @@ export const test = command({
   name: 'test',
 
   args: {
-    pretest: flag({
-      description: 'The hook pretest',
-      short: 'b',
-      long: 'pretest',
-    }),
+    pretest: flag({ description: 'The hook pretest', short: 'b', long: 'pretest' }),
 
     posttest: flag({
       description: 'The hook posttest',

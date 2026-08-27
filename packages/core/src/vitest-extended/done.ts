@@ -24,9 +24,7 @@ const getTimeout = (options?: TestOptions | number) => {
   return min100(options?.timeout);
 };
 
-const objectify = (
-  options?: TestOptions | number,
-): [TestOptions, number] => {
+const objectify = (options?: TestOptions | number): [TestOptions, number] => {
   const _timeout = getTimeout(options);
   const timeout = _timeout + 100;
 

@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { resolve, isAbsolute } from 'path';
+import { isAbsolute, resolve } from 'path';
 
 import { type Plugin } from 'vitest/config';
 
@@ -7,42 +7,24 @@ import { toArray } from '#utils/array';
 import { clamp } from '#utils/clamp';
 import type { SoA } from '#utils/types';
 
-/**
- * Configuration options for the HMR add-on plugin.
- */
 export type HmrPluginProps = {
-  /** Single file path or array of file paths of type {@linkcode SoA} to watch for changes. */
-  paths?: SoA<string>;
-
-  /** Single shell command or array of shell commands of type {@linkcode SoA} to execute when a change is detected. */
-  scripts?: SoA<string>;
+  /**
+   * Map of watched file/directory paths to one or many shell commands to execute
+   * when changes are detected.
+   */
+  paths?: Record<string, SoA<string>>;
 
   /** Optional interval in milliseconds to wait before allowing another build. */
   debounce?: number;
 };
 
-/**
- * Normalizes backslashes in a file path to forward slashes.
- *
- * @param path - File path to normalize.
- *
- * @returns Normalized path string.
- */
 const normalizePath = (path: string) => path.replace(/\\/g, '/');
 
-/**
- * Vite plugin providing Hot Module Reloading (HMR) capabilities for external
- * file paths by watching files and executing build scripts on changes.
- *
- * @param props - Configuration properties of type {@linkcode HmrPluginProps}.
- *
- * @returns A Vite plugin object of type {@linkcode Plugin}.
- */
 export const hmr = (props?: HmrPluginProps): Plugin => {
   // Lock variable to prevent infinite build loops
   let isBuilding = false;
   const debounce = clamp(props?.debounce ?? 500, 500, 10_000);
-  const paths: string[] = [];
+  const pathMap = new Map<string, string[]>();
   let isDev = false;
 
   return {
@@ -52,18 +34,24 @@ export const hmr = (props?: HmrPluginProps): Plugin => {
       isDev = !config.isProduction;
       if (!isDev) return;
 
-      // Resolve relative paths based on Vite project root
-      const resolvedPaths = toArray(props?.paths)
-        .map(p => (isAbsolute(p) ? p : resolve(config.root, p)))
-        .map(normalizePath);
+      pathMap.clear();
+      const rawPaths = props?.paths ?? {};
 
-      paths.push(...resolvedPaths);
+      Object.entries(rawPaths).forEach(([pathKey, rawScripts]) => {
+        const resolved = isAbsolute(pathKey)
+          ? pathKey
+          : resolve(config.root, pathKey);
+
+        const normalized = normalizePath(resolved);
+        const scripts = toArray(rawScripts);
+        pathMap.set(normalized, scripts);
+      });
     },
 
     configureServer(server) {
       if (!isDev) return;
 
-      server.watcher.add(paths);
+      server.watcher.add(Array.from(pathMap.keys()));
     },
 
     handleHotUpdate(ctx) {
@@ -72,24 +60,25 @@ export const hmr = (props?: HmrPluginProps): Plugin => {
       // 1. If a build is already in progress, ignore ALL changes (prevents loops)
       if (isBuilding) return ctx.modules;
       const normalizedFile = normalizePath(ctx.file);
-      const checks = paths.some(p => normalizedFile.includes(p));
 
-      if (checks) {
-        console.log(
-          `\n⚡ External file modified: ${ctx.file}. Starting build...`,
-        );
+      // Find all matching path entries for the changed file
+      const matchingScripts = new Set<string>();
+      for (const [watchedPath, scripts] of pathMap.entries()) {
+        if (normalizedFile.includes(watchedPath)) {
+          scripts.forEach(matchingScripts.add);
+        }
+      }
+
+      if (matchingScripts.size > 0) {
+        console.log(`\n⚡ External file modified: ${ctx.file}. Starting build...`);
 
         try {
           // 2. Acquire lock before starting the build
           isBuilding = true;
-          const scripts = toArray(props?.scripts);
-
-          scripts.forEach(script => {
-            execSync(script, { stdio: 'inherit' });
-          });
 
           // Invalidate module graph so Vite reads fresh built files from disk
           ctx.server.moduleGraph.invalidateAll();
+          matchingScripts.forEach(script => execSync(script, { stdio: 'inherit' }));
           ctx.server.ws.send({ type: 'full-reload' });
         } catch (error) {
           console.error('❌ Command execution failed during HMR:', error);
@@ -98,9 +87,7 @@ export const hmr = (props?: HmrPluginProps): Plugin => {
           // Vite to ignore generated build files, then release the lock.
           setTimeout(() => {
             isBuilding = false;
-            console.log(
-              '✅ Build completed. Ready for subsequent changes.',
-            );
+            console.log('✅ Build completed. Ready for subsequent changes.');
           }, debounce);
         }
       }

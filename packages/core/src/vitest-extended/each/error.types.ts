@@ -16,10 +16,7 @@ export type ToError_F<F extends Fn> = (
  * @template | {@linkcode Fn} `F` - Target function type.
  * @template | {@linkcode NextFn} `T` - Transformer function type, defaults to {@linkcode Identity}.
  */
-export type _UseErrorEach_F = <
-  F extends Fn,
-  T extends NextFn<F> = Identity<F>,
->(
+export type _UseErrorEach_F = <F extends Fn, T extends NextFn<F> = Identity<F>>(
   f: F,
   transform?: T,
   toError?: ToError_F<F>,
@@ -32,10 +29,7 @@ export type _UseErrorEach_F = <
  * @template | {@linkcode Fn} `F` - Target function type.
  * @template | {@linkcode NextFn} `T` - Transformer function type, defaults to {@linkcode Identity}.
  */
-export type UseErrorEach_F = <
-  F extends Fn,
-  T extends NextFn<F> = Identity<F>,
->(
+export type UseErrorEach_F = <F extends Fn, T extends NextFn<F> = Identity<F>>(
   f: F,
   transform?: T,
   toError?: ToError_F<F>,

@@ -41,10 +41,7 @@ const _readDirectory: ts.ParseConfigHost['readDirectory'] = (
 
       if (stat.isDirectory()) {
         walk(fullPath, currentDepth + 1);
-      } else if (
-        !extensions ||
-        extensions.some(ext => entry.endsWith(ext))
-      ) {
+      } else if (!extensions || extensions.some(ext => entry.endsWith(ext))) {
         results.push(fullPath);
       }
     }
@@ -69,15 +66,8 @@ const _host: ts.ParseConfigHost = {
  *
  * @returns Parsed TypeScript configuration object.
  */
-export function getConfig(
-  searchPath: string,
-  configName: string = 'tsconfig.json',
-) {
-  const tsconfigPath = ts.findConfigFile(
-    searchPath,
-    existsSync,
-    configName,
-  )!;
+export function getConfig(searchPath: string, configName: string = 'tsconfig.json') {
+  const tsconfigPath = ts.findConfigFile(searchPath, existsSync, configName)!;
 
   const configFile = readTsConfig(tsconfigPath);
   return configFile;

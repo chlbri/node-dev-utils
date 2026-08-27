@@ -149,16 +149,12 @@ describe('vitest - exclude', () => {
     file => !file.match(/\.test\.[jt]sx?$/),
   );
 
-  const coverageNoIndex = coverageAll.filter(
-    file => !file.endsWith('index.ts'),
-  );
+  const coverageNoIndex = coverageAll.filter(file => !file.endsWith('index.ts'));
 
   const { acceptation, success } = createTests(exclude, {
     transform: async ({ config: c, name }) => {
       const _fn = c as Fn;
-      const config = await _fn({
-        test: { environment, coverage: { enabled } },
-      });
+      const config = await _fn({ test: { environment, coverage: { enabled } } });
       return { config, name };
     },
   });

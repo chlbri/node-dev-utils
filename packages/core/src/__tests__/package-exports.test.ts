@@ -28,18 +28,8 @@ describe('Built package exports', () => {
   describe(
     ...createImportFnTests({
       path: 'build-tests',
-      SUCCESS: [
-        'addTarball',
-        'cleanup',
-        'customImport',
-        'createImportFnTests',
-      ],
-      FAILS: [
-        'notAFunction',
-        'missingExport',
-        'buildPackageJson',
-        'defineConfig',
-      ],
+      SUCCESS: ['addTarball', 'cleanup', 'customImport', 'createImportFnTests'],
+      FAILS: ['notAFunction', 'missingExport', 'buildPackageJson', 'defineConfig'],
     }),
   );
 

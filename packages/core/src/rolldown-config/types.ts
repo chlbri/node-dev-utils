@@ -31,9 +31,7 @@ export type Params = {
 /**
  * Function type building the input entry points record from glob patterns.
  */
-export type BuildInput_F = (
-  ...ignores: string[]
-) => Record<string, string>;
+export type BuildInput_F = (...ignores: string[]) => Record<string, string>;
 
 /**
  * Rolldown configuration generator with predefined presets (`bemedev`, `fast`, `default`).

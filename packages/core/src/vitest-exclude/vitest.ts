@@ -2,11 +2,7 @@ import type { Plugin } from 'vitest/config';
 
 import { name } from './constants';
 import type { Args, WithPattern } from './types';
-import {
-  buildInclude,
-  defaultCovPattern,
-  testPattern,
-} from './vitest.utils';
+import { buildInclude, defaultCovPattern, testPattern } from './vitest.utils';
 
 /**
  * Creates include arrays for test and coverage files from glob patterns.

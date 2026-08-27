@@ -1,12 +1,11 @@
 # @bemedev/dev-utils
 
-A collection of utilities for Node.js development, including build tools,
-testing utilities, and configuration management.
+A collection of utilities for Node.js development, including build tools, testing
+utilities, and configuration management.
 
 ## HOTFIX fix for version 1.0.*
 
-> It doesn't type declarations well, if you're not put directly the output
-> type
+> It doesn't type declarations well, if you're not put directly the output type
 
 ## Modules
 
@@ -19,11 +18,11 @@ testing utilities, and configuration management.
 | [`plugins`](#plugins)               | Vite development helper plugins              |
 | [`utils`](#utils)                   | Utility functions and helpers                |
 
-> **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path
-> alias resolution is now handled natively by Vite via `resolve.alias` with
-> `vite-tsconfig-paths` or the built-in `resolve.tsConfigPaths` option.
-> Remove any `aliasTs()` / `createAlias()` usage and configure aliases
-> directly in your `vite` / `vitest` config.
+> **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path alias
+> resolution is now handled natively by Vite via `resolve.alias` with
+> `vite-tsconfig-paths` or the built-in `resolve.tsConfigPaths` option. Remove any
+> `aliasTs()` / `createAlias()` usage and configure aliases directly in your `vite` /
+> `vitest` config.
 
 <br/>
 
@@ -43,15 +42,12 @@ yarn add @bemedev/dev-utils
 
 ## Usage
 
-Each module is available as a dedicated sub-path export — there is no root
-barrel export:
+Each module is available as a dedicated sub-path export — there is no root barrel
+export:
 
 ```typescript
 import { exclude } from '@bemedev/dev-utils/vitest-exclude';
-import {
-  createTests,
-  createFakeWaiter,
-} from '@bemedev/dev-utils/vitest-extended';
+import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
 import { suppressWarnings, hmr } from '@bemedev/dev-utils/plugins';
@@ -62,14 +58,13 @@ import { clamp, toArray, identity, sleep } from '@bemedev/dev-utils/utils';
 
 ## `vitestExclude`
 
-Vitest plugin that uses glob patterns to dynamically build `test.include`
-and `coverage.include` lists — no need to maintain `test.exclude` manually.
+Vitest plugin that uses glob patterns to dynamically build `test.include` and
+`coverage.include` lists — no need to maintain `test.exclude` manually.
 
 ### `exclude(args?)`
 
 Uses default patterns (`src/**/*.ts` for coverage,
-`src/**/*.{test,spec}.{ts,js,tsx,jsx}` for tests) and applies optional
-ignore lists.
+`src/**/*.{test,spec}.{ts,js,tsx,jsx}` for tests) and applies optional ignore lists.
 
 ```typescript
 import { exclude } from '@bemedev/dev-utils/vitest-exclude';
@@ -98,8 +93,7 @@ export default defineConfig({
 
 ### `exclude.withPattern(patterns, args)`
 
-Same as `exclude`, but lets you provide custom glob patterns instead of the
-defaults.
+Same as `exclude`, but lets you provide custom glob patterns instead of the defaults.
 
 ```typescript
 exclude.withPattern(
@@ -147,8 +141,8 @@ const { files, coverage } = await create({
 
 ### `create.withPattern(patterns, args)`
 
-Same as `create`, but accepts custom glob patterns for both test and
-coverage discovery.
+Same as `create`, but accepts custom glob patterns for both test and coverage
+discovery.
 
 ```typescript
 import { create } from '@bemedev/dev-utils/vitest-exclude';
@@ -177,8 +171,8 @@ Extended helpers for writing structured, type-safe Vitest tests.
 
 ### `createTests(func, args?)`
 
-Creates a reusable test suite for a function with `acceptation`, `success`,
-and `fails` runners.
+Creates a reusable test suite for a function with `acceptation`, `success`, and
+`fails` runners.
 
 ```typescript
 import { createTests } from '@bemedev/dev-utils/vitest-extended';
@@ -225,8 +219,8 @@ describe('add', () => {
 
 ### `createTests.withImplementation(f, opts)`
 
-Same as `createTests` but replaces the implementation with a `vi.fn()` mock
-before the test suite runs.
+Same as `createTests` but replaces the implementation with a `vi.fn()` mock before
+the test suite runs.
 
 ```typescript
 const { acceptation, success } = createTests.withImplementation(myFn, {
@@ -248,9 +242,9 @@ const { acceptation, success } = createTests.withImplementation(myFn, {
 
 ### `doneTest(invite, fn, options?)`
 
-Wraps a callback-style (done-based) test into a Vitest `test`. The test
-passes only when `done()` is called within the timeout. Supports both sync
-and async test functions.
+Wraps a callback-style (done-based) test into a Vitest `test`. The test passes only
+when `done()` is called within the timeout. Supports both sync and async test
+functions.
 
 ```typescript
 import { doneTest } from '@bemedev/dev-utils/vitest-extended';
@@ -287,8 +281,8 @@ doneTest('fires callback', done => {
 
 ### `createFakeWaiter(vi)`
 
-Creates a fake-timer-aware async waiter. If fake timers are active it
-advances them; otherwise it uses a real `sleep`.
+Creates a fake-timer-aware async waiter. If fake timers are active it advances them;
+otherwise it uses a real `sleep`.
 
 ```typescript
 import { createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
@@ -352,10 +346,8 @@ Same as `useEach` but awaits the function result.
 Runs async error cases using `expect(fn).rejects.toThrowError(error)`.
 
 ```typescript
-const runErrors = vitestExtended.useErrorAsyncEach(
-  divide,
-  undefined,
-  ([_, b]) => (b === 0 ? 'Division by zero' : undefined),
+const runErrors = vitestExtended.useErrorAsyncEach(divide, undefined, ([_, b]) =>
+  b === 0 ? 'Division by zero' : undefined,
 );
 
 runErrors(['divide by 0', [1, 0], undefined]);
@@ -365,8 +357,7 @@ runErrors(['divide by 0', [1, 0], undefined]);
 
 ### `useTestFunctionAcceptation(f, name?)` / `useTFA`
 
-Runs two acceptation checks: the function is defined and is actually a
-function.
+Runs two acceptation checks: the function is defined and is actually a function.
 
 ```typescript
 vitestExtended.useTFA(myFunction, 'myFunction');
@@ -376,14 +367,13 @@ vitestExtended.useTFA(myFunction, 'myFunction');
 
 ### `defineProject(config)`
 
-A wrapper around Vitest's `defineProject` / `defineConfig` that injects
-default configurations.
+A wrapper around Vitest's `defineProject` / `defineConfig` that injects default
+configurations.
 
-> [!IMPORTANT] **HOT FIX**: Use this instead of standard `defineProject`
-> from `vitest/config` to automatically resolve path aliases (via
-> `tsconfigPaths: true`), set `globals: true`, configure
-> `logHeapUsage: false`, and set the `NODE_ENV` environment variable to
-> `'test'` by default.
+> [!IMPORTANT] **HOT FIX**: Use this instead of standard `defineProject` from
+> `vitest/config` to automatically resolve path aliases (via `tsconfigPaths: true`),
+> set `globals: true`, configure `logHeapUsage: false`, and set the `NODE_ENV`
+> environment variable to `'test'` by default.
 
 ```typescript
 import { defineProject } from '@bemedev/dev-utils/vitest-extended';
@@ -425,8 +415,7 @@ Produces a full Rolldown config with the default plugin pipeline:
    (`rollup-plugin-circular-dependency`)
 2. **externals** — marks `dependencies` and `peerDependencies` as external
    (`rollup-plugin-node-externals`)
-3. **typescript** — emits `.d.ts` declarations via the TypeScript compiler
-   API
+3. **typescript** — emits `.d.ts` declarations via the TypeScript compiler API
 4. **clean** — removes JS outputs for files that produce empty chunks
 
 ```typescript
@@ -473,31 +462,28 @@ src/fixtures/**/*.ts
 Opinionated preset that extends `defineConfig.default` with:
 
 - Sourcemaps **enabled by default**
-- `DEFAULT_CIRCULAR_DEPS` merged into `circularDeps` (`**/types.ts`,
-  `**/*.types.ts`, …)
+- `DEFAULT_CIRCULAR_DEPS` merged into `circularDeps` (`**/types.ts`, `**/*.types.ts`,
+  …)
 - `DEFAULT_EXCLUDE` merged into `excludesTS`
 - `DEFAULT_CIRCULAR_DEPS` merged into `ignoresJS`
 
 ```typescript
-export default defineConfig.bemedev({
-  excludesTS: ['src/my-fixtures/**'],
-});
+export default defineConfig.bemedev({ excludesTS: ['src/my-fixtures/**'] });
 ```
 
 ---
 
 ### `defineConfig.fast(params?)`
 
-A fast build configuration preset that optimizes TypeScript declaration
-emitting. It uses the `fast` (`typescriptFast`) plugin wrapping
-`oxc-transform` instead of the standard compiler API.
+A fast build configuration preset that optimizes TypeScript declaration emitting. It
+uses the `fast` (`typescriptFast`) plugin wrapping `oxc-transform` instead of the
+standard compiler API.
 
 It runs the following plugin pipeline:
 
 1. **circulars** — warns on circular dependencies
 2. **externals** — marks `dependencies` and `peerDependencies` as external
-3. **esm** — injects ESM external require helpers
-   (`esmExternalRequirePlugin`)
+3. **esm** — injects ESM external require helpers (`esmExternalRequirePlugin`)
 4. **fast** — generates `.d.ts` files quickly using `oxc-transform`
 5. **clean** — removes empty JS chunks
 
@@ -520,8 +506,7 @@ Individual plugin factories are available for custom pipeline assembly:
 | `fast`       | `fast(options?)`       | `oxc-transform` + `tsc-alias`, for ONLY compilerOptions.isolatedDeclarations set to `true` |
 | `clean`      | `clean(options?)`      | Custom post-build JS cleanup                                                               |
 
-Pass plugin keys as strings in the `plugins` array to reorder or subset
-them:
+Pass plugin keys as strings in the `plugins` array to reorder or subset them:
 
 ```typescript
 defineConfig.default({ plugins: ['externals', 'typescript'] });
@@ -531,9 +516,9 @@ defineConfig.default({ plugins: ['externals', 'typescript'] });
 
 ## `buildTests`
 
-CLI tooling that packs your built library as a local tarball, installs it
-under the alias `this-gen-1`, runs your test suite against the real
-distributable, then tears down.
+CLI tooling that packs your built library as a local tarball, installs it under the
+alias `this-gen-1`, runs your test suite against the real distributable, then tears
+down.
 
 Available as a sub-path export:
 
@@ -578,8 +563,8 @@ build-tests post
 
 Programmatic API for the `pre` step:
 
-1. Builds the `package.json` for the `outDir` (strips `scripts`,
-   `devDependencies`, `files`; fixes paths)
+1. Builds the `package.json` for the `outDir` (strips `scripts`, `devDependencies`,
+   `files`; fixes paths)
 2. Runs `pnpm pack` into `.pack/`
 3. Installs the resulting `.tgz` as `this-gen-1` in `devDependencies`
 
@@ -608,8 +593,8 @@ cleanup();
 
 ### `customImport(fn?)`
 
-Dynamically imports the installed package (`this-gen-1`) and optionally
-transforms its exports via a mapper function.
+Dynamically imports the installed package (`this-gen-1`) and optionally transforms
+its exports via a mapper function.
 
 ```typescript
 import { customImport } from '@bemedev/dev-utils/build-tests';
@@ -633,8 +618,8 @@ const myFn = await customImport(mod => mod.myFn);
 
 ### `THIS1`
 
-Constant string `'this-gen-1'` — the package alias used by `addTarball` and
-`cleanup` when installing/removing the local tarball.
+Constant string `'this-gen-1'` — the package alias used by `addTarball` and `cleanup`
+when installing/removing the local tarball.
 
 ```typescript
 import { THIS1 } from '@bemedev/dev-utils/build-tests';
@@ -658,18 +643,16 @@ Vite plugins for development and test workflows.
 
 ### `suppressWarnings(...patterns)`
 
-Vite plugin that intercepts and suppresses noisy terminal stderr output
-(e.g., from Nitro, SSR workers, or third-party dependencies) matching
-specific strings or regular expressions during dev (`apply: 'serve'`).
+Vite plugin that intercepts and suppresses noisy terminal stderr output (e.g., from
+Nitro, SSR workers, or third-party dependencies) matching specific strings or regular
+expressions during dev (`apply: 'serve'`).
 
 ```typescript
 import { suppressWarnings } from '@bemedev/dev-utils/plugins';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [
-    suppressWarnings('ExperimentalWarning', /punycode/, '[Vue warn]'),
-  ],
+  plugins: [suppressWarnings('ExperimentalWarning', /punycode/, '[Vue warn]')],
 });
 ```
 
@@ -679,16 +662,14 @@ export default defineConfig({
 | ------------- | ------------------------- | --------------------------------------------------------------------- |
 | `...patterns` | `Array<string \| RegExp>` | Strings or RegExp patterns to match against stderr chunks to suppress |
 
-**Returns** a Vite `Plugin`
-(`{ name: 'suppress-logs-plugin', apply: 'serve' }`).
+**Returns** a Vite `Plugin` (`{ name: 'suppress-logs-plugin', apply: 'serve' }`).
 
 ---
 
 ### `hmr(props?)`
 
-Vite plugin providing Hot Module Reloading (HMR) capabilities for external
-file paths by watching files and executing build scripts when changes are
-detected.
+Vite plugin providing Hot Module Reloading (HMR) capabilities for external file paths
+by watching files and executing build scripts when changes are detected.
 
 ```typescript
 import { hmr } from '@bemedev/dev-utils/plugins';
@@ -719,8 +700,7 @@ export default defineConfig({
 
 ## `utils`
 
-General development utility helpers available via the `./utils` sub-path
-export.
+General development utility helpers available via the `./utils` sub-path export.
 
 ### `clamp(value, min, max)`
 
@@ -777,8 +757,7 @@ MIT
 
 ## CHANGELOG
 
-Read [CHANGELOG.md](CHANGELOG.md) for details about all changes and
-versions.
+Read [CHANGELOG.md](CHANGELOG.md) for details about all changes and versions.
 
 <br/>
 

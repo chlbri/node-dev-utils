@@ -10,20 +10,14 @@ import { type Plugin } from 'vitest/config';
  *
  * @returns A Vite plugin object of type {@linkcode Plugin}.
  */
-export function suppressWarnings(
-  ...patterns: Array<string | RegExp>
-): Plugin {
+export function suppressWarnings(...patterns: Array<string | RegExp>): Plugin {
   let isInitialized = false;
 
   const shouldSuppress = (chunk: unknown): boolean => {
     const str =
-      typeof chunk === 'string'
-        ? chunk
-        : (chunk as any)?.toString?.() || '';
+      typeof chunk === 'string' ? chunk : (chunk as any)?.toString?.() || '';
     return patterns.some(pattern =>
-      typeof pattern === 'string'
-        ? str.includes(pattern)
-        : pattern.test(str),
+      typeof pattern === 'string' ? str.includes(pattern) : pattern.test(str),
     );
   };
 

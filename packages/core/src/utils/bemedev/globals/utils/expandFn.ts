@@ -11,10 +11,7 @@ import type { Fn, FnBasic } from '../types';
  *
  * @returns Extended function of type {@linkcode FnBasic}.
  */
-export const expandFn = <
-  Main extends Fn,
-  const Tr extends object = object,
->(
+export const expandFn = <Main extends Fn, const Tr extends object = object>(
   main: Main,
   extensions?: Tr,
 ): FnBasic<Main, Tr> => {

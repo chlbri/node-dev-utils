@@ -37,18 +37,8 @@ describe('bemedev options', () => {
         input: false,
         types: false,
       },
-      '.js.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
-      '.cjs.map': {
-        config: false,
-        constants: false,
-        input: false,
-        types: false,
-      },
+      '.js.map': { config: true, constants: true, input: true, types: false },
+      '.cjs.map': { config: false, constants: false, input: false, types: false },
     }),
   );
 
@@ -85,18 +75,8 @@ describe('bemedev options', () => {
         input: false,
         types: false,
       },
-      '.js.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
-      '.cjs.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
+      '.js.map': { config: true, constants: true, input: true, types: false },
+      '.cjs.map': { config: true, constants: true, input: true, types: false },
     }),
   );
 });

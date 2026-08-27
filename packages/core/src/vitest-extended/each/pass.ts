@@ -10,11 +10,7 @@ import type {
 } from './pass.types';
 
 // #region Sync
-const useEachCases: _UseEach_F = (
-  func,
-  transform = identity as any,
-  ...cases
-) => {
+const useEachCases: _UseEach_F = (func, transform = identity as any, ...cases) => {
   test.concurrent.each(toArrayVitest(cases))(
     '%s',
     (_, args, expected, test = defaultEquality) => {

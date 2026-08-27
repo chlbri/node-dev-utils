@@ -35,11 +35,7 @@ export type FakeWaiter2_F = (
  */
 export type FakeWaiter3_F = (
   vi: VitestUtils,
-) => (
-  index: number,
-  ms?: number,
-  times?: number,
-) => [string, () => Promise<void>];
+) => (index: number, ms?: number, times?: number) => [string, () => Promise<void>];
 
 /**
  * Composite fake waiter function with helper properties.

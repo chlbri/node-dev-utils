@@ -3,10 +3,7 @@ import { useBuild, useRebuild, useTests } from '../fixtures';
 useBuild();
 
 describe('bemedev options - with declarationMap', () => {
-  const { testCjs, testEsm } = useRebuild({
-    declarationMap: true,
-    sourcemap: true,
-  });
+  const { testCjs, testEsm } = useRebuild({ declarationMap: true, sourcemap: true });
 
   test('#1 Write esm', ...testEsm());
 
@@ -41,18 +38,8 @@ describe('bemedev options - with declarationMap', () => {
         input: true,
         types: true,
       },
-      '.js.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
-      '.cjs.map': {
-        config: false,
-        constants: false,
-        input: false,
-        types: false,
-      },
+      '.js.map': { config: true, constants: true, input: true, types: false },
+      '.cjs.map': { config: false, constants: false, input: false, types: false },
     }),
   );
 
@@ -89,18 +76,8 @@ describe('bemedev options - with declarationMap', () => {
         input: true,
         types: true,
       },
-      '.js.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
-      '.cjs.map': {
-        config: true,
-        constants: true,
-        input: true,
-        types: false,
-      },
+      '.js.map': { config: true, constants: true, input: true, types: false },
+      '.cjs.map': { config: true, constants: true, input: true, types: false },
     }),
   );
 });

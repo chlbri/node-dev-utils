@@ -9,11 +9,7 @@ describe('isFunction', () => {
   describe(
     'Success',
     success(
-      {
-        invite: 'Function type',
-        parameters: [function () {}],
-        expected: true,
-      },
+      { invite: 'Function type', parameters: [function () {}], expected: true },
       { invite: 'Arrow function', parameters: [() => {}], expected: true },
       {
         invite: 'Async function',
@@ -27,11 +23,7 @@ describe('isFunction', () => {
       },
       { invite: 'Array Class', parameters: [Array], expected: true },
       { invite: 'Symbol Class', parameters: [Symbol], expected: true },
-      {
-        invite: 'Empty Object => false',
-        parameters: [{}],
-        expected: false,
-      },
+      { invite: 'Empty Object => false', parameters: [{}], expected: false },
       {
         invite: 'Plain Object => false',
         parameters: [{ a: 3, b: 'b' }],
@@ -40,11 +32,7 @@ describe('isFunction', () => {
       { invite: 'true => false', parameters: [true], expected: false },
       { invite: 'false => false', parameters: [false], expected: false },
       { invite: '0 => false', parameters: [0], expected: false },
-      {
-        invite: 'ALLO (string) => false',
-        parameters: ['ALLO'],
-        expected: false,
-      },
+      { invite: 'ALLO (string) => false', parameters: ['ALLO'], expected: false },
     ),
   );
 });

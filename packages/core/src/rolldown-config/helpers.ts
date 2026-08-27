@@ -19,11 +19,7 @@ export const withoutExtension = (file: string) => {
  * @param dir - Target output directory.
  * @param sourcemap - Whether sourcemap files should also be deleted.
  */
-export const cleanupJS = (
-  files: Set<string>,
-  dir: string,
-  sourcemap: boolean,
-) => {
+export const cleanupJS = (files: Set<string>, dir: string, sourcemap: boolean) => {
   for (const file of files) {
     const withoutExt = withoutExtension(file);
     const rel = relative('src', withoutExt);

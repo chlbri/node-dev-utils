@@ -49,11 +49,7 @@ export const typescript = ({
         if (done) return;
         const cwd = process.cwd();
 
-        const tsconfigPath = ts.findConfigFile(
-          cwd,
-          existsSync,
-          'tsconfig.json',
-        )!;
+        const tsconfigPath = ts.findConfigFile(cwd, existsSync, 'tsconfig.json')!;
 
         const configFile = readTsConfig(tsconfigPath);
         const host = ts.createCompilerHost(configFile.options);
@@ -98,9 +94,7 @@ export const typescript = ({
           .filter(d => d.category === ts.DiagnosticCategory.Error);
 
         if (errors.length > 0) {
-          console.error(
-            ts.formatDiagnosticsWithColorAndContext(errors, host),
-          );
+          console.error(ts.formatDiagnosticsWithColorAndContext(errors, host));
         }
 
         await replaceTscAliasPaths({ configFile: tsconfigPath, outDir });

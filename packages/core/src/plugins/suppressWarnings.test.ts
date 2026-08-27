@@ -38,9 +38,7 @@ describe('suppressWarnings', () => {
 
       beforeEach(() => {
         suppressWarnings('nitro');
-        result = process.stderr.write(
-          'warning: [nitro] something' as any,
-        ) as any;
+        result = process.stderr.write('warning: [nitro] something' as any) as any;
       });
 
       test('#01 => returns true', () => expect(result).toBe(true));
@@ -65,11 +63,7 @@ describe('suppressWarnings', () => {
       });
 
       test('#01 => calls original write with all args', () => {
-        expect(spy).toHaveBeenCalledWith(
-          'info: normal message',
-          'utf-8',
-          cb,
-        );
+        expect(spy).toHaveBeenCalledWith('info: normal message', 'utf-8', cb);
       });
 
       test('#02 => returns original write result', () => {
@@ -91,9 +85,7 @@ describe('suppressWarnings', () => {
 
       beforeEach(() => {
         suppressWarnings(/deprecated/i);
-        result = process.stderr.write(
-          'DEPRECATED: feature x' as any,
-        ) as any;
+        result = process.stderr.write('DEPRECATED: feature x' as any) as any;
       });
 
       test('#01 => returns true', () => expect(result).toBe(true));

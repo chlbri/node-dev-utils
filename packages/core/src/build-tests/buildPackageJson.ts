@@ -51,10 +51,7 @@ export const buildPackageJson: BuldPackageJson_F = () => {
   // #endregion
 
   // #region Set bin
-  const bin1 = file.get(BIN_KEY) as
-    | Record<string, string>
-    | undefined
-    | string;
+  const bin1 = file.get(BIN_KEY) as Record<string, string> | undefined | string;
 
   if (bin1) {
     if (typeof bin1 === 'string') {

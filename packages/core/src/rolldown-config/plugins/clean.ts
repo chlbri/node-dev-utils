@@ -65,11 +65,7 @@ export const clean = (options: EndPluginOptions) => {
       handler: () => {
         const cwd = process.cwd();
 
-        const tsconfigPath = findConfigFile(
-          cwd,
-          existsSync,
-          'tsconfig.json',
-        )!;
+        const tsconfigPath = findConfigFile(cwd, existsSync, 'tsconfig.json')!;
         const _outDir = readTsConfig(tsconfigPath).options.outDir;
         const outDir = _outDir ?? dir ?? DEFAULT_DIR;
         if (_ignoresJS.length > 0) {

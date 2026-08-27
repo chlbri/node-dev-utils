@@ -5,12 +5,26 @@
 <details>
 <summary>
 
+## **[1.4.0] - 27/08/2026** => _14:41_
+
+</summary>
+
+- Refactor: update formatting configuration (`printWidth: 85`) and reformat codebase
+- Update: bump package version to `1.4.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.3.1] - 27/08/2026** => _13:34_
 
 </summary>
 
-- Fix: remove `configEnvironment` hook from `hmr` plugin to prevent
-  overriding development environment status
+- Fix: remove `configEnvironment` hook from `hmr` plugin to prevent overriding
+  development environment status
 - Update: bump package version to `1.3.1`
 
 </details>
@@ -24,16 +38,16 @@
 
 </summary>
 
-- Add: `hmr` Vite plugin in `./plugins` export for Hot Module Reloading on
-  external file changes with automated script execution
-- Add: `clamp` utility in `./utils` export to restrict values within
-  min/max boundaries
-- Add: `SoA<T>` type helper in `./utils` export representing single or
-  array values (`T | T[] | ReadonlyArray<T>`)
-- Docs: comprehensive JSDoc comments across all exported functions,
-  plugins, and types
-- Enhance: `toArray` and `ToArray_F` in `./utils` to support
-  `ReadonlyArray<T>` inputs
+- Add: `hmr` Vite plugin in `./plugins` export for Hot Module Reloading on external
+  file changes with automated script execution
+- Add: `clamp` utility in `./utils` export to restrict values within min/max
+  boundaries
+- Add: `SoA<T>` type helper in `./utils` export representing single or array values
+  (`T | T[] | ReadonlyArray<T>`)
+- Docs: comprehensive JSDoc comments across all exported functions, plugins, and
+  types
+- Enhance: `toArray` and `ToArray_F` in `./utils` to support `ReadonlyArray<T>`
+  inputs
 - Update: bump package version to `1.3.0`
 
 </details>
@@ -47,13 +61,13 @@
 
 </summary>
 
-- Add: `./plugins` export providing `suppressWarnings` Vite plugin to
-  filter noisy stderr/stdout warnings during development
+- Add: `./plugins` export providing `suppressWarnings` Vite plugin to filter noisy
+  stderr/stdout warnings during development
 - Docs: comprehensive JSDoc documentation across all modules
 - Refactor: refined TypeScript type definitions and helper interfaces in
   `vitest-extended` and `vitest-exclude`
-- Update: upgrade dependencies (`oxc-transform` `^0.145.0`, `rolldown`
-  `^1.2.4`, `@typescript/typescript6` `^6.0.2`, `@types/node` `^26.2.0`)
+- Update: upgrade dependencies (`oxc-transform` `^0.145.0`, `rolldown` `^1.2.4`,
+  `@typescript/typescript6` `^6.0.2`, `@types/node` `^26.2.0`)
 - Update: bump package version to `1.2.0`
 - <u>Test coverage **_76%_**</u>
 
@@ -84,23 +98,21 @@
 </summary>
 
 - Add: fast compilation plugin `typescriptFast` (key `fast`) that uses
-  `oxc-transform` to generate `.d.ts` declaration files quickly without
-  using the full TypeScript compiler
-- Add: `defineConfig.fast` configuration target to compile packages using
-  the fast compile plugin
-- Add: `getConfig` utility to dynamically read and parse `tsconfig.json`
-  relative to the search path
-- Add: `#bemedev/*` path alias mapping in `tsconfig.json` for internal
-  utilities
-- Refactor: relocate the internal `bemedev/globals` types and utilities
-  directory from `vitest-extended` to `utils` workspace under path alias
-  `#bemedev/globals/` and rewrite all imports across the codebase
+  `oxc-transform` to generate `.d.ts` declaration files quickly without using the
+  full TypeScript compiler
+- Add: `defineConfig.fast` configuration target to compile packages using the fast
+  compile plugin
+- Add: `getConfig` utility to dynamically read and parse `tsconfig.json` relative to
+  the search path
+- Add: `#bemedev/*` path alias mapping in `tsconfig.json` for internal utilities
+- Refactor: relocate the internal `bemedev/globals` types and utilities directory
+  from `vitest-extended` to `utils` workspace under path alias `#bemedev/globals/`
+  and rewrite all imports across the codebase
 - Refactor: resolve output directories dynamically in `buildOutput` using
   `tsconfig.json`'s `outDir` configuration
-- Update: export `esmExternalRequirePlugin` (`esm`) and `typescriptFast`
-  (`fast`) builders in `PLUGIN_BUILDERS` for custom pipeline configuration
-- Update: bump package version to `1.1.0` and upgrade `oxc-transform` to
-  `^0.140.0`
+- Update: export `esmExternalRequirePlugin` (`esm`) and `typescriptFast` (`fast`)
+  builders in `PLUGIN_BUILDERS` for custom pipeline configuration
+- Update: bump package version to `1.1.0` and upgrade `oxc-transform` to `^0.140.0`
 
 </details>
 
@@ -113,16 +125,15 @@
 
 </summary>
 
-- Fix: resolve Vitest workspace configuration error by removing
-  machine-specific hardcoded absolute paths
-- Refactor: export `defineProject` wrapper in `vitest-extended` for unified
-  workspace test defaults and alias resolution
+- Fix: resolve Vitest workspace configuration error by removing machine-specific
+  hardcoded absolute paths
+- Refactor: export `defineProject` wrapper in `vitest-extended` for unified workspace
+  test defaults and alias resolution
 - Refactor: migrate typescript plugin from `oxc-transform` to
   `@typescript/typescript6` for generating declaration files
-- Remove: delete redundant `packages/core/src/build-tests/test.test.ts`
-  test file
-- Update: remove `rollup-plugin-tsc-alias`, `rollup-plugin-tsconfig-paths`,
-  and standard `typescript` dependencies
+- Remove: delete redundant `packages/core/src/build-tests/test.test.ts` test file
+- Update: remove `rollup-plugin-tsc-alias`, `rollup-plugin-tsconfig-paths`, and
+  standard `typescript` dependencies
 - Update: add `@typescript/typescript6` and `unplugin-dts` dependencies
 
 </details>
@@ -150,17 +161,15 @@
 </summary>
 
 - Remove: `tsPaths` plugin for import path resolution
-- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and
-  analyze test files
-- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration
-  plugins
-- Refactor: consolidate utility modules (move `utils.ts` to
-  `utils/array.ts`) and remove redundant test suites
-  (`declarationMap.built.test.ts`, `default.built.test.ts`,
-  `withoutOptions.test.ts`)
+- Add: test utility (`test.test.ts`) using `oxc-parser` to parse and analyze test
+  files
+- Refactor: custom `tsconfig.json` reading logic in Rolldown configuration plugins
+- Refactor: consolidate utility modules (move `utils.ts` to `utils/array.ts`) and
+  remove redundant test suites (`declarationMap.built.test.ts`,
+  `default.built.test.ts`, `withoutOptions.test.ts`)
 - Update: upgrade global TypeScript to version `7.0.2`
-- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and
-  `rolldown` to `^1.1.5`
+- Update: upgrade `vitest` and `@vitest/ui` to version `4.1.10`, and `rolldown` to
+  `^1.1.5`
 - Update: upgrade `pnpm` package manager to version `11.13.0`
 - Update: improve global upgrade script (`up`) using
   `pnpm up --latest && npm-check-updates`
@@ -176,13 +185,13 @@
 
 </summary>
 
-- Enhance: `getTypescriptOutdir` résout désormais `tsconfig.json`
-  relativement au répertoire de travail actuel (`process.cwd()`) au lieu du
-  chemin absolu du fichier source
-- Enhance: ajout d'une valeur par défaut (`./lib`) si `outDir` n'est pas
-  défini dans le fichier de configuration TypeScript (`tsconfig.json`)
-- Update dépendances dev: `@types/node` `^26.0.0` → `^26.0.1`, `globals`
-  `^17.6.0` → `^17.7.0`, `rolldown` `1.1.2` → `1.1.3`
+- Enhance: `getTypescriptOutdir` résout désormais `tsconfig.json` relativement au
+  répertoire de travail actuel (`process.cwd()`) au lieu du chemin absolu du fichier
+  source
+- Enhance: ajout d'une valeur par défaut (`./lib`) si `outDir` n'est pas défini dans
+  le fichier de configuration TypeScript (`tsconfig.json`)
+- Update dépendances dev: `@types/node` `^26.0.0` → `^26.0.1`, `globals` `^17.6.0` →
+  `^17.7.0`, `rolldown` `1.1.2` → `1.1.3`
 
 </details>
 
@@ -197,11 +206,11 @@
 
 - Remove: `.vscode/tasks.json` supprimé — tâches automatiques `git pull` et
   `pnpm install` à l'ouverture du dossier retirées
-- Fix: script `rm:lib` du projet de test `project1` corrigé — cible
-  `./dist` au lieu de `./lib`
+- Fix: script `rm:lib` du projet de test `project1` corrigé — cible `./dist` au lieu
+  de `./lib`
 - Update: `pnpm-workspace.yaml` — ajout de `minimumReleaseAge: 300`
-- Update dépendances dev: `oxfmt` `^0.55.0` → `^0.56.0`, `oxlint` `^1.70.0`
-  → `^1.71.0`, `pnpm` `11.1.1` → `11.7.0`
+- Update dépendances dev: `oxfmt` `^0.55.0` → `^0.56.0`, `oxlint` `^1.70.0` →
+  `^1.71.0`, `pnpm` `11.1.1` → `11.7.0`
 
 </details>
 
@@ -214,10 +223,10 @@
 
 </summary>
 
-- Remove: export `./vitest-alias` supprimé — la résolution des alias est
-  désormais prise en charge nativement par Vite via `resolve.tsConfigPaths`
-- Refactor: migration vers une architecture pnpm monorepo (séparation du
-  core et des projets de test)
+- Remove: export `./vitest-alias` supprimé — la résolution des alias est désormais
+  prise en charge nativement par Vite via `resolve.tsConfigPaths`
+- Refactor: migration vers une architecture pnpm monorepo (séparation du core et des
+  projets de test)
 
 </details>
 
@@ -230,14 +239,12 @@
 
 </summary>
 
-- Enhance: vitest-alias supports loading tsconfig.json automatically and
-  custom config paths
+- Enhance: vitest-alias supports loading tsconfig.json automatically and custom
+  config paths
 - Add: export types Undefiny, Fn, and RuA from vitest-extended
-- Update: guide against single-test describe blocks in test organization
-  guidelines
+- Update: guide against single-test describe blocks in test organization guidelines
 - Refactor: rename .claude configuration directory to .agents
-- Refactor: replace pre-commit hook with verifying background loop in
-  commit-msg hook
+- Refactor: replace pre-commit hook with verifying background loop in commit-msg hook
 - Update: development dependencies (vitest, rolldown, oxlint, oxfmt, tsx,
   @types/node)
 - <u>Test coverage **_89.49%_**</u>
@@ -254,10 +261,10 @@
 </summary>
 
 - Refactor: unified publish workflows (beta, canary, latest) into a single
-  `publish-NPM.yml` with conditional type selection — removed
-  `publish-beta.yml` and `publish-canary.yml`
-- Update: devcontainer now uses `pnpm@latest` and adds
-  `anthropic.claude-code` VS Code extension
+  `publish-NPM.yml` with conditional type selection — removed `publish-beta.yml` and
+  `publish-canary.yml`
+- Update: devcontainer now uses `pnpm@latest` and adds `anthropic.claude-code` VS
+  Code extension
 - Update: vitest, @vitest/coverage-v8 and @vitest/ui bumped to 4.1.6
 - Update: oxfmt bumped to 0.49.0, oxlint to 1.64.0, @types/node to 25.7.0
 - Update: pnpm package manager updated to 11.1.1
@@ -322,18 +329,17 @@
 
 </summary>
 
-- Add : tests de fonctions d'import améliorés avec cas d'erreur
-  additionnels
-- Fix : compilation TypeScript — initialisation améliorée du compilateur
-  avec gestion correcte de la localisation des lib TypeScript
-- Fix : configuration du compilateur TypeScript — utilisation de
-  `configFile.options` pour les options du compilateur
+- Add : tests de fonctions d'import améliorés avec cas d'erreur additionnels
+- Fix : compilation TypeScript — initialisation améliorée du compilateur avec gestion
+  correcte de la localisation des lib TypeScript
+- Fix : configuration du compilateur TypeScript — utilisation de `configFile.options`
+  pour les options du compilateur
 - Refactor : réordonnancement du plugin TypeScript dans `producePlugins`,
   amélioration de la configuration TypeScript et du traitement des tests
-- Refactor : types améliorés et gestion asynchrone optimisée dans
-  `vitest-exclude` et `vitest-extended`
-- Update dépendances dev : `oxfmt` `^0.47.0` → `^0.48.0`, `oxlint`
-  `^1.62.0` → `^1.63.0`, `typescript` `^6.0.2` → `^6.0.3`
+- Refactor : types améliorés et gestion asynchrone optimisée dans `vitest-exclude` et
+  `vitest-extended`
+- Update dépendances dev : `oxfmt` `^0.47.0` → `^0.48.0`, `oxlint` `^1.62.0` →
+  `^1.63.0`, `typescript` `^6.0.2` → `^6.0.3`
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -345,14 +351,13 @@
 
 </summary>
 
-- Fix : `createImportFnTests` support optionnel `FAILS` et
-  `describe.skipIf` pour éviter les sections vides
-- Update : tests `Built package exports` enrichis avec de nouveaux cas
-  d'import
-- Update dépendances dev : `@bemedev/app-ts` `3.0.1` → `3.0.2`, `globals`
-  `^17.5.0` → `^17.6.0`, `oxfmt` `^0.46.0` → `^0.47.0`, `oxlint` `^1.61.0`
-  → `^1.62.0`, `rolldown` `1.0.0-rc.17` → `1.0.0-rc.18`, `zod` `^4.3.6` →
-  `^4.4.2`, `tsc-alias` `^1.8.16` → `^1.8.17`
+- Fix : `createImportFnTests` support optionnel `FAILS` et `describe.skipIf` pour
+  éviter les sections vides
+- Update : tests `Built package exports` enrichis avec de nouveaux cas d'import
+- Update dépendances dev : `@bemedev/app-ts` `3.0.1` → `3.0.2`, `globals` `^17.5.0` →
+  `^17.6.0`, `oxfmt` `^0.46.0` → `^0.47.0`, `oxlint` `^1.61.0` → `^1.62.0`,
+  `rolldown` `1.0.0-rc.17` → `1.0.0-rc.18`, `zod` `^4.3.6` → `^4.4.2`, `tsc-alias`
+  `^1.8.16` → `^1.8.17`
 
 </details>
 
@@ -363,14 +368,14 @@
 
 </summary>
 
-- Fix : `build-tests` export mis à jour pour utiliser `./imports` au lieu
-  de l'ancien `types`
-- Update : `customImport()` accepte maintenant un `path` optionnel et
-  résout dynamiquement le module cible
+- Fix : `build-tests` export mis à jour pour utiliser `./imports` au lieu de l'ancien
+  `types`
+- Update : `customImport()` accepte maintenant un `path` optionnel et résout
+  dynamiquement le module cible
 - Fix : tests `vitest-exclude` enrichis avec les nouveaux chemins de
   `src/__tests__/package-exports.test.ts` et `src/build-tests/imports/*`
-- Fix : tests `vitest-extended` — numérotation des cas d'acceptation
-  alignée sur le format `#01`, `#02`
+- Fix : tests `vitest-extended` — numérotation des cas d'acceptation alignée sur le
+  format `#01`, `#02`
 - Add : dépendance dev `zx` ajoutée
 
 </details>
@@ -382,12 +387,11 @@
 
 </summary>
 
-- Fix : typage amélioré de `createTests` et
-  `createTests.withImplementation` dans `vitest-extended`
+- Fix : typage amélioré de `createTests` et `createTests.withImplementation` dans
+  `vitest-extended`
 - Fix : conversion `transform` prise en charge correctement pour les appels
   asynchrones de `useErrorAsyncEach` et `useEachAsync`
-- Fix : export de type `_CreateTests_F` restructuré pour un usage plus
-  propre
+- Fix : export de type `_CreateTests_F` restructuré pour un usage plus propre
 
 </details>
 
@@ -400,14 +404,13 @@
 
 - Fix : gestion asynchrone améliorée dans `vitest-extended` — `pass` attend
   maintenant les transformations asynchrones
-- Fix : correction des types de plugin dans `vitest-exclude` pour une
-  compatibilité Vitest plus simple
-- Add : fixture de test de couverture `createTests.cov.test.ts` enrichie
-  avec un transformateur asynchrone
-- Update dépendances dev : `@vitest/coverage-v8` `4.1.4` → `4.1.5`,
-  `@vitest/ui` `4.1.4` → `4.1.5`, `oxfmt` `^0.45.0` → `^0.46.0`, `oxlint`
-  `^1.60.0` → `^1.61.0`, `rolldown` `1.0.0-rc.16` → `1.0.0-rc.17`, `vitest`
-  `4.1.4` → `4.1.5`
+- Fix : correction des types de plugin dans `vitest-exclude` pour une compatibilité
+  Vitest plus simple
+- Add : fixture de test de couverture `createTests.cov.test.ts` enrichie avec un
+  transformateur asynchrone
+- Update dépendances dev : `@vitest/coverage-v8` `4.1.4` → `4.1.5`, `@vitest/ui`
+  `4.1.4` → `4.1.5`, `oxfmt` `^0.45.0` → `^0.46.0`, `oxlint` `^1.60.0` → `^1.61.0`,
+  `rolldown` `1.0.0-rc.16` → `1.0.0-rc.17`, `vitest` `4.1.4` → `4.1.5`
 
 </details>
 
@@ -419,16 +422,13 @@
 </summary>
 
 - Fix : compilateur TypeScript — amélioration de l'initialisation du
-  `createCompilerHost()` avec gestion correcte du répertoire des lib de
-  TypeScript
-- Fix : configuration du compilateur TypeScript — utilisation de
-  `configFile.options` pour les options du compilateur avec support des
-  paramètres d'émission
-- Update : ordre des plugins dans rolldown config — le plugin TypeScript
-  s'exécute maintenant après `esmExternalRequirePlugin()` pour une
-  meilleure interopérabilité
-- Update : vitest-extended — support des opérations asynchrones dans
-  `doneTest` avec await sur les appels de service
+  `createCompilerHost()` avec gestion correcte du répertoire des lib de TypeScript
+- Fix : configuration du compilateur TypeScript — utilisation de `configFile.options`
+  pour les options du compilateur avec support des paramètres d'émission
+- Update : ordre des plugins dans rolldown config — le plugin TypeScript s'exécute
+  maintenant après `esmExternalRequirePlugin()` pour une meilleure interopérabilité
+- Update : vitest-extended — support des opérations asynchrones dans `doneTest` avec
+  await sur les appels de service
 - Fix : types TypeScript — correction des affectations de type dans
   `createTests.withImplementation()`
 - <u>Test coverage **_100%_**</u>
@@ -445,16 +445,15 @@
 </summary>
 
 - Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
-  `configFile.options` au lieu d'un objet vide pour une meilleure cohérence
-  avec les options du compilateur
-- Add : plugin TypeScript plugin externe `typescript.config.ts` avec
-  support configurable pour les transformations de compiler options
+  `configFile.options` au lieu d'un objet vide pour une meilleure cohérence avec les
+  options du compilateur
+- Add : plugin TypeScript plugin externe `typescript.config.ts` avec support
+  configurable pour les transformations de compiler options
 - Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
-- Refactor : réorganisation de la structure `.github/skills/` vers
-  `.claude/skills/` pour une meilleure intégration des Copilot skills
-- Enhance : documentation des skills mise à jour avec instructions
-  détaillées pour `update-docs`, `analyze-tests`, `check-spacing`,
-  `organize-tests`
+- Refactor : réorganisation de la structure `.github/skills/` vers `.claude/skills/`
+  pour une meilleure intégration des Copilot skills
+- Enhance : documentation des skills mise à jour avec instructions détaillées pour
+  `update-docs`, `analyze-tests`, `check-spacing`, `organize-tests`
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -469,12 +468,12 @@
 </summary>
 
 - Fix : compilateur TypeScript — `createCompilerHost()` utilise maintenant
-  `configFile.options` au lieu d'un objet vide, et active le host
-  compilateur pour l'émission de programme
-- Update dépendances dev : `prettier` `^3.8.2` → `^3.8.3`, `rolldown`
-  `1.0.0-rc.15` → `1.0.0-rc.16`, `typescript` `^6.0.2` → `^6.0.3`
-- Update `vitest.config.ts` : réduction des timeouts (`bail` `1000` →
-  `100`, `testTimeout` et `hookTimeout` `100000` → `50000`)
+  `configFile.options` au lieu d'un objet vide, et active le host compilateur pour
+  l'émission de programme
+- Update dépendances dev : `prettier` `^3.8.2` → `^3.8.3`, `rolldown` `1.0.0-rc.15` →
+  `1.0.0-rc.16`, `typescript` `^6.0.2` → `^6.0.3`
+- Update `vitest.config.ts` : réduction des timeouts (`bail` `1000` → `100`,
+  `testTimeout` et `hookTimeout` `100000` → `50000`)
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -488,14 +487,14 @@
 
 </summary>
 
-- Add `.husky/commit-msg` hook exécutable : déclenche `npm run ci` à chaque
-  commit sauf si le message contient `_NO_CI`
+- Add `.husky/commit-msg` hook exécutable : déclenche `npm run ci` à chaque commit
+  sauf si le message contient `_NO_CI`
 - Update dépendances : `rollup-plugin-node-externals` `^8.1.2` → `^9.0.1`
-- Update dépendances dev : `@size-limit/file` `^12.0.1` → `^12.1.0`,
-  `@types/node` `^25.5.2` → `^25.6.0`, `globals` `^17.4.0` → `^17.5.0`,
-  `jsdom` `^29.0.1` → `^29.0.2`, `oxfmt` `^0.43.0` → `^0.45.0`, `oxlint`
-  `^1.58.0` → `^1.60.0`, `prettier` `^3.8.1` → `^3.8.2`, `rolldown`
-  `1.0.0-rc.13` → `1.0.0-rc.15`, `size-limit` `^12.0.1` → `^12.1.0`
+- Update dépendances dev : `@size-limit/file` `^12.0.1` → `^12.1.0`, `@types/node`
+  `^25.5.2` → `^25.6.0`, `globals` `^17.4.0` → `^17.5.0`, `jsdom` `^29.0.1` →
+  `^29.0.2`, `oxfmt` `^0.43.0` → `^0.45.0`, `oxlint` `^1.58.0` → `^1.60.0`,
+  `prettier` `^3.8.1` → `^3.8.2`, `rolldown` `1.0.0-rc.13` → `1.0.0-rc.15`,
+  `size-limit` `^12.0.1` → `^12.1.0`
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -532,15 +531,12 @@
 - Add `src/build-tests/types.ts` : type `IndexImport`
 - Add `src/utils/identity.ts` : fonction générique `identity`
 - Add export `./utils` dans `package.json`
-- Rename `this1` → `THIS1` dans `constants.ts` (convention
-  SCREAMING_SNAKE_CASE)
-- Fix `buildPackageJson` : gestion du champ `bin` sous forme de `string` en
-  plus d'`object`
+- Rename `this1` → `THIS1` dans `constants.ts` (convention SCREAMING_SNAKE_CASE)
+- Fix `buildPackageJson` : gestion du champ `bin` sous forme de `string` en plus
+  d'`object`
 - Remove `FIXTURES` constant de `constants.ts` (commenté)
-- Update `tsconfig.json` : ajout du path alias `#utils` vers
-  `src/utils/index.ts`
-- Update `rolldown.config.ts` : exclusion de `**/fixtures.ts` et
-  `**/*.fixtures.ts`
+- Update `tsconfig.json` : ajout du path alias `#utils` vers `src/utils/index.ts`
+- Update `rolldown.config.ts` : exclusion de `**/fixtures.ts` et `**/*.fixtures.ts`
 - Update dépendances : `@types/node` `^25.5.1` → `^25.5.2`
 - <u>Test coverage **_100%_**</u>
 
@@ -555,10 +551,10 @@
 
 </summary>
 
-- Add `create` function dans `vitest-exclude` : prend `Args[1]` (listes
-  d'ignorés) et retourne `{ files, coverage }`
-- Add `create.withPattern` : prend les `Args` complets (patterns +
-  ignorés), délégation interne pour les deux cas d'usage
+- Add `create` function dans `vitest-exclude` : prend `Args[1]` (listes d'ignorés) et
+  retourne `{ files, coverage }`
+- Add `create.withPattern` : prend les `Args` complets (patterns + ignorés),
+  délégation interne pour les deux cas d'usage
 - Refactor `exclude.withPattern` pour déléguer à `create.withPattern`
 
 </details>
@@ -572,12 +568,11 @@
 
 </summary>
 
-- Refactor `rolldown-config/config.ts` : remplace
-  `transform.inject.require` par `esmExternalRequirePlugin()` de
-  `rolldown/plugins`
+- Refactor `rolldown-config/config.ts` : remplace `transform.inject.require` par
+  `esmExternalRequirePlugin()` de `rolldown/plugins`
 - Remove import `path` from `node:path` (plus nécessaire)
-- Update dépendances : `rolldown` rc.12 → rc.13, `oxlint` 1.57 → 1.58,
-  `oxfmt` 0.42 → 0.43, `@types/node` 25.5.0 → 25.5.1
+- Update dépendances : `rolldown` rc.12 → rc.13, `oxlint` 1.57 → 1.58, `oxfmt` 0.42 →
+  0.43, `@types/node` 25.5.0 → 25.5.1
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -623,12 +618,12 @@
 
 </summary>
 
-- Refactor CI hooks: move `npm run ci` from `pre-commit` to `commit-msg`
-  hook for better hook separation
+- Refactor CI hooks: move `npm run ci` from `pre-commit` to `commit-msg` hook for
+  better hook separation
 - Add `this-gen-1` local tarball dependency for integration testing
   (`file:.pack/bemedev-dev-utils-0.2.0.tgz`)
-- Refactor `rolldown-config` fixtures: simplify `beforeAll` arrow syntax
-  and clean up whitespace
+- Refactor `rolldown-config` fixtures: simplify `beforeAll` arrow syntax and clean up
+  whitespace
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -645,8 +640,8 @@
 - Refactor `src/index.ts`: remplace les re-exports par modules
   (`export * from './module'`) par des re-exports explicites par fichier
   (`export * from './module/file'`) pour une surface d'API plus précise
-- Fix `vitest-alias`: remplace le type `UserConfig` par `ViteUserConfig`
-  depuis `vitest/config` (type non déprécié)
+- Fix `vitest-alias`: remplace le type `UserConfig` par `ViteUserConfig` depuis
+  `vitest/config` (type non déprécié)
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -660,11 +655,11 @@
 
 </summary>
 
-- Refactor main entry to flat re-exports (replace namespace exports
-  `export * as X` with `export * from`)
+- Refactor main entry to flat re-exports (replace namespace exports `export * as X`
+  with `export * from`)
 - Remove `types` re-exports from `rolldown-config` and `vitest-extended`
-- Remove Solid.js testing environment (drop `solid()` plugin, `jsdom`
-  environment, `@solidjs/testing-library`, `@testing-library/jest-dom`,
+- Remove Solid.js testing environment (drop `solid()` plugin, `jsdom` environment,
+  `@solidjs/testing-library`, `@testing-library/jest-dom`,
   `@testing-library/user-event`, `vite-plugin-solid`)
 - Remove `types` fields from `exports` sub-path entries in `package.json`
 - Remove `@testing-library/jest-dom` from `tsconfig.json` types
@@ -686,8 +681,7 @@
 - Add `exports` sub-path entries in `package.json` for all modules (`.`,
   `./build-tests`, `./rolldown`, `./vitest-alias`, `./vitest-exclude`,
   `./vitest-extended`)
-- Fix import path in rolldown-config fixtures to use new `./rolldown`
-  sub-path export
+- Fix import path in rolldown-config fixtures to use new `./rolldown` sub-path export
 - <u>Test coverage **_100%_**</u>
 
 </details>
@@ -702,10 +696,9 @@
 </summary>
 
 - Add inline @bemedev/\* packages as src subfolders with re-exports
-- Add vitest.alias, vitest.exclude, rolldown.config, vitest.extended,
-  build-tests modules
-- Disable test parallelism and add build-tests CLI to pretest/posttest
-  hooks
+- Add vitest.alias, vitest.exclude, rolldown.config, vitest.extended, build-tests
+  modules
+- Disable test parallelism and add build-tests CLI to pretest/posttest hooks
 - Refactor bin entry in package.json to object structure
 - Move vitest and rolldown to peer dependencies
 - Move glob to production dependencies and add TypeScript peerDependencies

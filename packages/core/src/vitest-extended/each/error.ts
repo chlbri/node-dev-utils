@@ -13,19 +13,16 @@ export const useErrorAsyncEachCases: _UseErrorEach_F = (
   toError = () => undefined,
   ...cases
 ) => {
-  test.concurrent.each(toArrayVitest.error(cases))(
-    '%s',
-    async (_, args, _error) => {
-      const actual = async () => {
-        const out = await f(...args);
-        return transform(out);
-      };
-      const check = _error === undefined;
-      const error = check ? toError(...args) : _error;
+  test.concurrent.each(toArrayVitest.error(cases))('%s', async (_, args, _error) => {
+    const actual = async () => {
+      const out = await f(...args);
+      return transform(out);
+    };
+    const check = _error === undefined;
+    const error = check ? toError(...args) : _error;
 
-      await expect(actual).rejects.toThrowError(error);
-    },
-  );
+    await expect(actual).rejects.toThrowError(error);
+  });
 };
 
 /**
@@ -37,11 +34,6 @@ export const useErrorAsyncEachCases: _UseErrorEach_F = (
  *
  * @returns Function accepting error test cases to execute.
  */
-export const useErrorAsyncEach: UseErrorEach_F = (
-  f,
-  transform,
-  toError,
-) => {
-  return (...cases) =>
-    useErrorAsyncEachCases(f, transform, toError, ...cases);
+export const useErrorAsyncEach: UseErrorEach_F = (f, transform, toError) => {
+  return (...cases) => useErrorAsyncEachCases(f, transform, toError, ...cases);
 };

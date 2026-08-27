@@ -33,12 +33,7 @@ const producePlugins = ({
   const exclude = DEFAULT_EXCLUDE.concat(toArray(excludesTS));
   const unordered = {
     typescript: () =>
-      PLUGIN_BUILDERS.typescript({
-        include,
-        exclude,
-        declarationMap,
-        dir,
-      }),
+      PLUGIN_BUILDERS.typescript({ include, exclude, declarationMap, dir }),
     circulars: () => PLUGIN_BUILDERS.circulars({ exclude: circularDeps }),
     externals: () =>
       PLUGIN_BUILDERS.externals({
@@ -49,12 +44,7 @@ const producePlugins = ({
       }),
     clean: () => PLUGIN_BUILDERS.clean({ ignoresJS, sourcemap, dir }),
     fast: () => {
-      return PLUGIN_BUILDERS.fast({
-        include,
-        exclude,
-        declarationMap,
-        dir,
-      });
+      return PLUGIN_BUILDERS.fast({ include, exclude, declarationMap, dir });
     },
     esm: esmExternalRequirePlugin,
   };
@@ -84,13 +74,7 @@ defineConfig.default = ({ dir, sourcemap = false, ...rest } = {}) => {
 
   const plugins = producePlugins({ dir, sourcemap, ...rest });
 
-  return _defineConfig({
-    input,
-    plugins,
-    external,
-    output,
-    platform: 'node',
-  });
+  return _defineConfig({ input, plugins, external, output, platform: 'node' });
 };
 
 defineConfig.fast = rest => {
@@ -105,13 +89,9 @@ defineConfig.bemedev = additionals => {
   const circularDeps = DEFAULT_CIRCULAR_DEPS.concat(
     toArray(additionals?.circularDeps),
   );
-  const ignoresJS = toArray(additionals?.ignoresJS).concat(
-    DEFAULT_CIRCULAR_DEPS,
-  );
+  const ignoresJS = toArray(additionals?.ignoresJS).concat(DEFAULT_CIRCULAR_DEPS);
 
-  const excludesTS = DEFAULT_EXCLUDE.concat(
-    toArray(additionals?.excludesTS),
-  );
+  const excludesTS = DEFAULT_EXCLUDE.concat(toArray(additionals?.excludesTS));
   const _sourcemap = additionals?.sourcemap;
   const sourcemap = _sourcemap === undefined || _sourcemap === true;
   // #endregion

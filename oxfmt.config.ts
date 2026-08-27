@@ -6,7 +6,7 @@ export default defineConfig({
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
   bracketSameLine: false,
-  printWidth: 75,
+  printWidth: 85,
   proseWrap: 'always',
   requirePragma: false,
   objectWrap: 'collapse',

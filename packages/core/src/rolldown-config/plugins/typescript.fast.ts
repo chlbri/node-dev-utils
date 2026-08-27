@@ -1,9 +1,4 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, relative } from 'node:path';
 
 import ts from '@typescript/typescript6';
@@ -57,11 +52,7 @@ export const typescriptFast = ({
         if (done) return;
         const cwd = process.cwd();
 
-        const tsconfigPath = ts.findConfigFile(
-          cwd,
-          existsSync,
-          'tsconfig.json',
-        )!;
+        const tsconfigPath = ts.findConfigFile(cwd, existsSync, 'tsconfig.json')!;
 
         const configFile = readTsConfig(tsconfigPath);
         const outDir = configFile.options.outDir ?? dir ?? DEFAULT_DIR;

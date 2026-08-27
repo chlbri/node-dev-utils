@@ -11,10 +11,11 @@ describe('CreateTests - Coverage', () => {
   const addTest = _unknown<Add_F>();
 
   describe('#2 => CreateTests, funcTest is initialazed', () => {
-    const { success, acceptation } = createTests.withImplementation(
-      addTest,
-      { instanciation: () => add, name: 'add', transform: async x => x },
-    );
+    const { success, acceptation } = createTests.withImplementation(addTest, {
+      instanciation: () => add,
+      name: 'add',
+      transform: async x => x,
+    });
 
     describe('#0 => Acceptation', acceptation);
 
@@ -30,12 +31,14 @@ describe('CreateTests - Coverage', () => {
 
   describe('#3 => Test errors', () => {
     describe('#1 => minLength', () => {
-      const { fails, success, acceptation } =
-        createTests.withoutImplementation(minLength, {
+      const { fails, success, acceptation } = createTests.withoutImplementation(
+        minLength,
+        {
           toError: (min, value) => {
             return `"${value}" is shorter or equal than ${min}`;
           },
-        });
+        },
+      );
 
       describe('#0 => Acceptation', acceptation);
 
@@ -151,23 +154,13 @@ describe('CreateTests - Coverage', () => {
 
     describe('#5 => transform', () => {
       const add = (a: number, b: number) => a + b;
-      const { success } = createTests(add, {
-        transform: x => `Result is ${x}`,
-      });
+      const { success } = createTests(add, { transform: x => `Result is ${x}` });
 
       describe(
         '#1 => Success',
         success(
-          {
-            invite: '1 + 2 = 3',
-            parameters: [1, 2],
-            expected: 'Result is 3',
-          },
-          {
-            invite: '5 + 5 = 10',
-            parameters: [5, 5],
-            expected: 'Result is 10',
-          },
+          { invite: '1 + 2 = 3', parameters: [1, 2], expected: 'Result is 3' },
+          { invite: '5 + 5 = 10', parameters: [5, 5], expected: 'Result is 10' },
         ),
       );
     });

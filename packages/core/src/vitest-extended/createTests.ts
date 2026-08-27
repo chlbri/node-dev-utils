@@ -17,11 +17,7 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
       const length = cases.length;
 
       return () => {
-        const useTests = useErrorAsyncEach(
-          func,
-          transform as any,
-          toError,
-        );
+        const useTests = useErrorAsyncEach(func, transform as any, toError);
 
         const _cases: any = cases.map(
           ({ invite: _invite, parameters, error }, index) => {
@@ -80,10 +76,7 @@ const _create: _CreateTests_F = (func, transform, toError, name) => {
  */
 export const createTests = <F0 extends any[], F1, F2 = F1>(
   func: Fn<F0, F1>,
-  args?: {
-    transform?: Fn<[Awaited<F1>], F2>;
-    toError?: Fn<F0, string | undefined>;
-  },
+  args?: { transform?: Fn<[Awaited<F1>], F2>; toError?: Fn<F0, string | undefined> },
 ) => {
   const { transform, toError } = args || {};
   return _create(func, transform, toError);

@@ -13,8 +13,6 @@ export type NodeExternalsOptions = Parameters<typeof nodeExternals>[0];
  *
  * @returns Rolldown plugin option of type {@linkcode RolldownPluginOption}.
  */
-export function externals(
-  options: NodeExternalsOptions = {},
-): RolldownPluginOption {
+export function externals(options: NodeExternalsOptions = {}): RolldownPluginOption {
   return nodeExternals(options);
 }

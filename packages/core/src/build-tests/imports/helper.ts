@@ -6,10 +6,7 @@ import { customImport } from '../import';
 /**
  * Helper function type for verifying exported functions.
  */
-export type Helper_F = (args: {
-  path?: string;
-  fn: string;
-}) => Promise<void>;
+export type Helper_F = (args: { path?: string; fn: string }) => Promise<void>;
 
 /**
  * Asserts that a specified function is defined and exported from a module.
