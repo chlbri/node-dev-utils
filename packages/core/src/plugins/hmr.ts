@@ -60,10 +60,6 @@ export const hmr = (props?: HmrPluginProps): Plugin => {
       paths.push(...resolvedPaths);
     },
 
-    configEnvironment(name) {
-      isDev = name === 'dev';
-    },
-
     configureServer(server) {
       if (!isDev) return;
 

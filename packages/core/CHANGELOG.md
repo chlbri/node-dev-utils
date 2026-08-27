@@ -5,6 +5,21 @@
 <details>
 <summary>
 
+## **[1.3.1] - 27/08/2026** => _13:34_
+
+</summary>
+
+- Fix: remove `configEnvironment` hook from `hmr` plugin to prevent
+  overriding development environment status
+- Update: bump package version to `1.3.1`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.3.0] - 27/08/2026** => _12:39_
 
 </summary>
