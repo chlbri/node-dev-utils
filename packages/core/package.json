@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -108,7 +108,7 @@
     "cmd-ts": "^0.15.0",
     "edit-json-file": "^1.8.1",
     "glob": "^13.0.6",
-    "oxc-transform": "^0.145.0",
+    "oxc-transform": "^0.147.0",
     "rollup-plugin-circular-dependencies": "^2.0.1",
     "rollup-plugin-node-externals": "^9.0.1",
     "shelljs": "^0.10.0",
@@ -120,17 +120,17 @@
     "@bemedev/basifun": "0.5.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/edit-json-file": "^1.7.4",
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.4.0",
     "@types/shelljs": "^0.10.0",
     "@vitest/ui": "4.1.11",
-    "rolldown": "^1.2.4",
+    "rolldown": "^1.2.6",
     "unplugin-dts": "^1.0.3",
     "vitest": "4.1.11",
     "zod": "^4.4.3",
     "zx": "^8.8.5"
   },
   "peerDependencies": {
-    "rolldown": "^1.2.4",
+    "rolldown": "^1.2.6",
     "vitest": "4.1.11"
   }
 }

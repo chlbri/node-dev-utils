@@ -12,7 +12,9 @@ export default defineProject({
         '**/types.ts',
         '**/__tests__/**',
       ],
-      ignoreTestFiles: IS_EXTENSION ? ['**/*.built.test.ts'] : undefined,
+      ignoreTestFiles: IS_EXTENSION
+        ? ['**/*.built.test.ts', '**/__tests__/**']
+        : undefined,
     }),
   ],
   test: {

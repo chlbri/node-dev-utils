@@ -5,6 +5,29 @@
 <details>
 <summary>
 
+## **[1.3.0] - 27/08/2026** => _12:39_
+
+</summary>
+
+- Add: `hmr` Vite plugin in `./plugins` export for Hot Module Reloading on
+  external file changes with automated script execution
+- Add: `clamp` utility in `./utils` export to restrict values within
+  min/max boundaries
+- Add: `SoA<T>` type helper in `./utils` export representing single or
+  array values (`T | T[] | ReadonlyArray<T>`)
+- Docs: comprehensive JSDoc comments across all exported functions,
+  plugins, and types
+- Enhance: `toArray` and `ToArray_F` in `./utils` to support
+  `ReadonlyArray<T>` inputs
+- Update: bump package version to `1.3.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.2.0] - 19/08/2026** => _14:10_
 
 </summary>

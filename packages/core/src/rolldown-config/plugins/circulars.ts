@@ -4,7 +4,7 @@ import { globSync } from 'glob';
 import type { RolldownPluginOption } from 'rolldown';
 import { circularDependencies } from 'rollup-plugin-circular-dependencies';
 
-import { toArray } from '#utils';
+import { toArray, type SoA } from '#utils';
 
 import { WARNING_CODES } from '../constants';
 import { withoutExtension } from '../helpers';
@@ -12,9 +12,10 @@ import { withoutExtension } from '../helpers';
 /**
  * Options for the circular dependencies plugin.
  */
-export type CircularDependenciesOptions = Parameters<
-  typeof circularDependencies
->[0] & { exclude?: string | string[] };
+export type CircularDependenciesOptions = Omit<
+  Parameters<typeof circularDependencies>[0],
+  'exclude'
+> & { exclude?: SoA<string> };
 
 /**
  * Creates a configured circular dependencies plugin instance with suppression for known patterns.
@@ -30,6 +31,7 @@ export function circulars(
   const exclude = toArray(options.exclude);
 
   const CIRCULAR_CHUNKS = exclude
+    .filter(Boolean)
     .map(f => globSync(f, { nodir: true }))
     .flat()
     .map(withoutExtension)

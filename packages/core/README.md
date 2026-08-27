@@ -17,6 +17,7 @@ testing utilities, and configuration management.
 | [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory       |
 | [`buildTests`](#buildtests)         | CLI tooling to build and test packages       |
 | [`plugins`](#plugins)               | Vite development helper plugins              |
+| [`utils`](#utils)                   | Utility functions and helpers                |
 
 > **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path
 > alias resolution is now handled natively by Vite via `resolve.alias` with
@@ -53,7 +54,8 @@ import {
 } from '@bemedev/dev-utils/vitest-extended';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
-import { suppressWarnings } from '@bemedev/dev-utils/plugins';
+import { suppressWarnings, hmr } from '@bemedev/dev-utils/plugins';
+import { clamp, toArray, identity, sleep } from '@bemedev/dev-utils/utils';
 ```
 
 ---
@@ -679,6 +681,91 @@ export default defineConfig({
 
 **Returns** a Vite `Plugin`
 (`{ name: 'suppress-logs-plugin', apply: 'serve' }`).
+
+---
+
+### `hmr(props?)`
+
+Vite plugin providing Hot Module Reloading (HMR) capabilities for external
+file paths by watching files and executing build scripts when changes are
+detected.
+
+```typescript
+import { hmr } from '@bemedev/dev-utils/plugins';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [
+    hmr({
+      paths: ['../packages/*/src/**'],
+      scripts: ['pnpm --filter ./packages/* build'],
+      debounce: 1000,
+    }),
+  ],
+});
+```
+
+**Parameters (`props`)**
+
+| Property   | Type                  | Default | Description                                                            |
+| ---------- | --------------------- | ------- | ---------------------------------------------------------------------- |
+| `paths`    | `string \| string[]`  | `[]`    | File path(s) to watch for changes                                      |
+| `scripts`  | `string \| string[]`  | `[]`    | Shell command(s) to execute on file changes                            |
+| `debounce` | `number \| undefined` | `500`   | Cooldown interval in milliseconds to prevent build loops (500–10000ms) |
+
+**Returns** a Vite `Plugin` (`{ name: 'hmr-add-on' }`).
+
+---
+
+## `utils`
+
+General development utility helpers available via the `./utils` sub-path
+export.
+
+### `clamp(value, min, max)`
+
+Restricts a number between a minimum and maximum boundary.
+
+```typescript
+import { clamp } from '@bemedev/dev-utils/utils';
+
+clamp(5, 0, 10); // 5
+clamp(-5, 0, 10); // 0
+clamp(15, 0, 10); // 10
+```
+
+### `toArray(value)`
+
+Normalizes a single value, array, null, or undefined into an array.
+
+```typescript
+import { toArray } from '@bemedev/dev-utils/utils';
+
+toArray('foo'); // ['foo']
+toArray(['a', 'b']); // ['a', 'b']
+toArray(undefined); // []
+toArray(null); // []
+```
+
+### `identity(value)`
+
+Returns the passed argument unchanged.
+
+```typescript
+import { identity } from '@bemedev/dev-utils/utils';
+
+identity('test'); // 'test'
+```
+
+### `sleep(ms)`
+
+Asynchronously pauses execution for a given number of milliseconds.
+
+```typescript
+import { sleep } from '@bemedev/dev-utils/utils';
+
+await sleep(1000); // waits 1 second
+```
 
 ---
 

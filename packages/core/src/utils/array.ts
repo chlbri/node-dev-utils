@@ -13,7 +13,7 @@ export const toArray: ToArray_F = value => {
   if (check1) return [];
   if (Array.isArray(value)) return value;
 
-  return [value];
+  return [value] as any;
 };
 
 export { type ToArray_F };
