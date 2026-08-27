@@ -5,6 +5,22 @@
 <details>
 <summary>
 
+## **[1.5.0] - 27/08/2026** => _14:52_
+
+</summary>
+
+- Breaking: refactor `HmrPluginProps` in `hmr` plugin to map watched path patterns
+  directly to execution scripts via `paths: Record<string, SoA<string>>`
+- Docs: update README and JSDoc documentation for `hmr` plugin
+- Update: bump package version to `1.5.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.4.0] - 27/08/2026** => _14:41_
 
 </summary>

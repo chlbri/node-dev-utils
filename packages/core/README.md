@@ -669,7 +669,7 @@ export default defineConfig({
 ### `hmr(props?)`
 
 Vite plugin providing Hot Module Reloading (HMR) capabilities for external file paths
-by watching files and executing build scripts when changes are detected.
+by watching files and executing mapped build scripts when changes are detected.
 
 ```typescript
 import { hmr } from '@bemedev/dev-utils/plugins';
@@ -678,8 +678,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [
     hmr({
-      paths: ['../packages/*/src/**'],
-      scripts: ['pnpm --filter ./packages/* build'],
+      paths: { '../packages/*/src/**': 'pnpm --filter ./packages/* build' },
       debounce: 1000,
     }),
   ],
@@ -688,11 +687,10 @@ export default defineConfig({
 
 **Parameters (`props`)**
 
-| Property   | Type                  | Default | Description                                                            |
-| ---------- | --------------------- | ------- | ---------------------------------------------------------------------- |
-| `paths`    | `string \| string[]`  | `[]`    | File path(s) to watch for changes                                      |
-| `scripts`  | `string \| string[]`  | `[]`    | Shell command(s) to execute on file changes                            |
-| `debounce` | `number \| undefined` | `500`   | Cooldown interval in milliseconds to prevent build loops (500–10000ms) |
+| Property   | Type                                 | Default     | Description                                                            |
+| ---------- | ------------------------------------ | ----------- | ---------------------------------------------------------------------- |
+| `paths`    | `Record<string, string \| string[]>` | `undefined` | Map of watched path patterns to command(s) to execute on file changes  |
+| `debounce` | `number \| undefined`                | `500`       | Cooldown interval in milliseconds to prevent build loops (500–10000ms) |
 
 **Returns** a Vite `Plugin` (`{ name: 'hmr-add-on' }`).
 

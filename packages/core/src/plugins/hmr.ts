@@ -7,10 +7,15 @@ import { toArray } from '#utils/array';
 import { clamp } from '#utils/clamp';
 import type { SoA } from '#utils/types';
 
+/**
+ * Configuration options for the HMR add-on plugin.
+ */
 export type HmrPluginProps = {
   /**
    * Map of watched file/directory paths to one or many shell commands to execute
    * when changes are detected.
+   * Map of watched file or directory paths to one or many shell commands of
+   * type {@linkcode SoA} to execute when changes are detected.
    */
   paths?: Record<string, SoA<string>>;
 
@@ -18,8 +23,23 @@ export type HmrPluginProps = {
   debounce?: number;
 };
 
+/**
+ * Normalizes backslashes in a file path to forward slashes.
+ *
+ * @param path - File path to normalize.
+ *
+ * @returns Normalized path string.
+ */
 const normalizePath = (path: string) => path.replace(/\\/g, '/');
 
+/**
+ * Vite plugin providing Hot Module Reloading (HMR) capabilities for external
+ * file paths by watching files and executing mapped build scripts on changes.
+ *
+ * @param props - Configuration properties of type {@linkcode HmrPluginProps}.
+ *
+ * @returns A Vite plugin object of type {@linkcode Plugin}.
+ */
 export const hmr = (props?: HmrPluginProps): Plugin => {
   // Lock variable to prevent infinite build loops
   let isBuilding = false;
@@ -65,7 +85,7 @@ export const hmr = (props?: HmrPluginProps): Plugin => {
       const matchingScripts = new Set<string>();
       for (const [watchedPath, scripts] of pathMap.entries()) {
         if (normalizedFile.includes(watchedPath)) {
-          scripts.forEach(matchingScripts.add);
+          scripts.forEach(d => matchingScripts.add(d));
         }
       }
 
