@@ -70,7 +70,7 @@ defineConfig.default = ({
   const output = buildOutput(config.options.outDir ?? dir, sourcemap);
   const neverBundle = toArray(externals);
 
-  const _defaultDts: DtsOptions = { generator: 'tsgo', sourcemap: declarationMap };
+  const _defaultDts: DtsOptions = { generator: 'tsc', sourcemap: declarationMap };
 
   const __dts: DtsOptions = !dts
     ? config.options.declaration === true

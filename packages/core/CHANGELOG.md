@@ -5,6 +5,22 @@
 <details>
 <summary>
 
+## **[1.5.2] - 06/11/2026** => _17:50_
+
+</summary>
+
+- Fix: use the `tsc` declaration generator as the default in `pack`
+  `defineConfig.default` instead of `tsgo`
+- Update: bump package version to `1.5.2`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.5.1] - 06/11/2026** => _17:30_
 
 </summary>

@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "keywords": [
     "build-tools",
