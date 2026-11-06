@@ -6,6 +6,9 @@ import { cleanup } from '../cleanup';
 
 /**
  * CLI command to execute tests with optional lifecycle hooks (pre/post).
+ *
+ * The hooks delegate to {@linkcode addTarball} for preparation and
+ * {@linkcode cleanup} for teardown.
  */
 export const test = command({
   name: 'test',

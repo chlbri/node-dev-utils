@@ -5,6 +5,33 @@
 <details>
 <summary>
 
+## **[1.5.1] - 06/11/2026** => _17:30_
+
+</summary>
+
+- Add: `./pack` export providing a Vite+ Pack configuration factory (`defineConfig`,
+  `defineConfig.default`, `defineConfig.fast`, `defineConfig.bemedev`), entry/output
+  builders, circular dependency plugin and `defineProject` helper
+- Add: `NOmit<T, K>` utility type in `./utils` to omit keys from a type
+- Enhance: Rolldown `externals` plugin now externalizes optional dependencies
+  (`optDeps: true`)
+- Enhance: `defineProject` in `./vitest-extended` merges `resolve` and `test` options
+  and delegates to Vitest's `defineProject`
+- Fix: re-export `project` and `constants` from `./pack` so `defineProject` and
+  default patterns are publicly available
+- Docs: enhance JSDoc documentation across core sources
+- Dependencies: add `vite-plus` as optional peer dependency and upgrade `glob`,
+  `oxc-transform` and `tsc-alias`
+- Update: bump package version to `1.5.1`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.5.0] - 27/08/2026** => _14:52_
 
 </summary>

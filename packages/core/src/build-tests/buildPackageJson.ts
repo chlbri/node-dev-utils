@@ -6,12 +6,24 @@ import type { Fn } from '#utils';
 import { BIN_KEY, EXPORT_KEY, EXPORT_KEYS } from './constants';
 import { getTypescriptOutdir } from './getTypescriptOutdir';
 
+/**
+ * Function type building the distribution `package.json` and resolving the
+ * TypeScript output directory.
+ *
+ * @see -- type {@linkcode Fn}
+ */
 type BuldPackageJson_F = Fn<[], { packageJson: object; outDir: string }>;
 
 /**
- * Transforms `package.json` for packed distribution by adjusting paths and removing internal fields.
+ * Transforms `package.json` for packed distribution by adjusting paths and
+ * removing internal fields.
  *
- * @returns Object containing the modified `packageJson` and resolved `outDir`.
+ * Rewrites the {@linkcode EXPORT_KEYS} entries, the `exports` map and the
+ * `bin` field so that they point to the packed output, then removes
+ * `files`, `scripts` and `devDependencies`.
+ *
+ * @returns Object containing the modified `packageJson` and the `outDir`
+ * resolved by {@linkcode getTypescriptOutdir}.
  */
 export const buildPackageJson: BuldPackageJson_F = () => {
   const file = editJsonFile('./package.json');

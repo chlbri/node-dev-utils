@@ -37,8 +37,8 @@ const producePlugins = ({
     circulars: () => PLUGIN_BUILDERS.circulars({ exclude: circularDeps }),
     externals: () =>
       PLUGIN_BUILDERS.externals({
-        // exclude peerDependencies and dependencies
-        optDeps: false,
+        // Externalize dependencies, peer dependencies and optional dependencies
+        optDeps: true,
         builtinsPrefix: 'strip',
         include: excludesTS,
       }),

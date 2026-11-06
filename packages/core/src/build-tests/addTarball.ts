@@ -6,7 +6,13 @@ import { devKey, FILE_ORIGIN, PACKAGE_PATH, THIS1 } from './constants';
 import { pack } from './pack';
 
 /**
- * Builds and installs a local tarball package as a temporary dev dependency for testing.
+ * Builds and installs a local tarball package as a temporary dev dependency
+ * for testing.
+ *
+ * Packs the current package through {@linkcode pack}, registers the resulting
+ * tarball in `devDependencies` and re-sorts the dependency keys.
+ *
+ * @returns Promise resolving once the temporary dependency is installed.
  */
 export const addTarball = async () => {
   // #region Install the tarball

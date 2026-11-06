@@ -11,6 +11,9 @@ export const BIN = 'build-tests';
 
 /**
  * CLI definition for package building and test execution.
+ *
+ * Combines the {@linkcode posttest}, {@linkcode pretest} and
+ * {@linkcode test} subcommands under the {@linkcode BIN} binary name.
  */
 export const cli = subcommands({
   name: BIN,

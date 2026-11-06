@@ -9,20 +9,25 @@ utilities, and configuration management.
 
 ## Modules
 
-| Module                              | Description                                  |
-| ----------------------------------- | -------------------------------------------- |
-| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude |
-| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest             |
-| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory       |
-| [`buildTests`](#buildtests)         | CLI tooling to build and test packages       |
-| [`plugins`](#plugins)               | Vite development helper plugins              |
-| [`utils`](#utils)                   | Utility functions and helpers                |
+| Module                              | Description                                     |
+| ----------------------------------- | ----------------------------------------------- |
+| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude    |
+| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest                |
+| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory (legacy) |
+| [`pack`](#pack)                     | Vite+ Pack configuration factory                |
+| [`buildTests`](#buildtests)         | CLI tooling to build and test packages          |
+| [`plugins`](#plugins)               | Vite development helper plugins                 |
+| [`utils`](#utils)                   | Utility functions and helpers                   |
 
 > **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path alias
 > resolution is now handled natively by Vite via `resolve.alias` with
 > `vite-tsconfig-paths` or the built-in `resolve.tsConfigPaths` option. Remove any
 > `aliasTs()` / `createAlias()` usage and configure aliases directly in your `vite` /
 > `vitest` config.
+
+> **NB (next version):** The next version will use **Vite+ only**. The standalone
+> `./rolldown` export (`@bemedev/dev-utils/rolldown`) will be dropped; migrate to the
+> [`pack`](#pack) export before upgrading.
 
 <br/>
 
@@ -36,7 +41,9 @@ npm install @bemedev/dev-utils
 yarn add @bemedev/dev-utils
 ```
 
-**Peer dependencies:** `typescript ^5 || ^6`
+**Peer dependencies:** `typescript ^5 || ^6`, `rolldown ^1.3.0`, `vitest 5.1.0`.
+`vite-plus ^1.5.0` is an optional peer dependency, only required for the `pack`
+export.
 
 <br/>
 
@@ -47,6 +54,7 @@ export:
 
 ```typescript
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
+import { defineConfig as definePackConfig } from '@bemedev/dev-utils/pack';
 import { suppressWarnings, hmr } from '@bemedev/dev-utils/plugins';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { clamp, toArray, identity, sleep } from '@bemedev/dev-utils/utils';
@@ -403,6 +411,9 @@ export default defineProject({
 Rolldown bundler configuration factory with built-in plugins for TypeScript
 declarations, circular dependency detection, and tree-shaking externals.
 
+> **Deprecated:** This export will be dropped in the next version, which uses Vite+
+> only. Migrate to the [`pack`](#pack) export.
+
 ### `defineConfig(additionals?)`
 
 Shorthand for `defineConfig.default`.
@@ -510,6 +521,66 @@ Pass plugin keys as strings in the `plugins` array to reorder or subset them:
 
 ```typescript
 defineConfig.default({ plugins: ['externals', 'typescript'] });
+```
+
+---
+
+## `pack`
+
+Vite+ Pack configuration factory that generates unbundled ESM distributions with
+declaration files, circular dependency suppression and automatic cleanup.
+
+> **Note:** this export requires the optional `vite-plus` peer dependency (`^1.5.0`).
+
+### `defineConfig(additionals?)`
+
+Shorthand for `defineConfig.default`.
+
+### `defineConfig.default(params?)`
+
+Produces a Vite+ Pack configuration with the default plugin pipeline:
+
+1. **circulars** — suppresses warnings for known circular type files
+2. **clean** — removes stale JS outputs for type-only entries
+
+```typescript
+import { defineConfig } from '@bemedev/dev-utils/pack';
+// vite.config.ts
+import { defineConfig as defineViteConfig } from 'vite-plus';
+
+export default defineViteConfig({
+  pack: defineConfig.default({ dir: 'lib', sourcemap: true }),
+});
+```
+
+`params` accepts `dir`, `sourcemap`, `declarationMap`, `excludesTS`, `circularDeps`,
+`ignoresJS`, `externals`, `dts` and `plugins`, plus any remaining `PackUserConfig`
+fields. Outputs are unbundled, with fixed extensions disabled and ESM as the target
+format.
+
+### `defineConfig.bemedev(params?)`
+
+Opinionated preset that enables sourcemaps by default and merges `DEFAULT_EXCLUDE`
+into `excludesTS` and `DEFAULT_CIRCULAR_DEPS` into `circularDeps`.
+
+### `defineConfig.fast(params?)`
+
+Preset that eagerly generates declarations with the `oxc` generator for faster
+builds.
+
+### `defineProject(config)`
+
+Wrapper around Vite+'s `defineProject` that enables `tsconfigPaths`, `globals` and
+sets `NODE_ENV` to `'test'` by default.
+
+```typescript
+import { defineProject } from '@bemedev/dev-utils/pack';
+
+export default defineProject({
+  test: {
+    // your config here
+  },
+});
 ```
 
 ---

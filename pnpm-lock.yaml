@@ -220,6 +220,9 @@ importers:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
+      vite-plus:
+        specifier: ^1.5.0
+        version: 1.5.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(esbuild@0.28.2)(tsx@4.23.15)(typescript@7.0.2)
       vitest:
         specifier: 5.1.0
         version: 5.1.0(@types/node@26.6.6)(@vitest/browser-preview@5.1.0)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))
@@ -329,9 +332,6 @@ importers:
       rolldown:
         specifier: ^1.3.0
         version: 1.3.0
-      this-gen-1:
-        specifier: file:.pack/bemedev-dev-utils-1.5.0.tgz
-        version: '@bemedev/dev-utils@file:packages/core/.pack/bemedev-dev-utils-1.5.0.tgz(rolldown@1.3.0)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))(vitest@5.1.0)'
       unplugin-dts:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.28.2)(rolldown@1.3.0)(rollup@4.67.5)(typescript@7.0.2)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))
@@ -344,6 +344,10 @@ importers:
       zx:
         specifier: ^8.8.5
         version: 8.8.5
+    optionalDependencies:
+      vite-plus:
+        specifier: ^1.5.0
+        version: 1.5.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(esbuild@0.28.2)(tsx@4.23.15)(typescript@7.0.2)
 
 packages:
 
@@ -396,15 +400,6 @@ packages:
   '@bemedev/decompose@2.3.0':
     resolution: {integrity: sha512-/Tzc/9TH2inlVuGRXLUbKHWN4ob07t414yXGc/Y4XSUFLnHVJiRJE56tlDGZedVQzKvamPEV1n9vIaIJhfLEVg==}
     engines: {node: '>=24'}
-
-  '@bemedev/dev-utils@file:packages/core/.pack/bemedev-dev-utils-1.5.0.tgz':
-    resolution: {integrity: sha512-W/sudxT+hnvkzv9Ev1A2VXbWLCHdYETq9kG3bUSEyPgReUo6ey9YHHPv2bmP4XZGggUF1ARPO7bt4dv58xDTdw==, tarball: file:packages/core/.pack/bemedev-dev-utils-1.5.0.tgz}
-    version: 1.5.0
-    engines: {node: '>=24'}
-    hasBin: true
-    peerDependencies:
-      rolldown: ^1.3.0
-      vitest: 5.1.0
 
   '@bemedev/interval2@0.1.3':
     resolution: {integrity: sha512-RWbferVoFH0CkpeNZ7DW2MFdl04clqp4Q9WaiQAqlW8kgsizQltXhy780QDtWkQi+cRLWZ9j/ItYcVJ1nr+vDQ==}
@@ -2875,25 +2870,6 @@ snapshots:
     dependencies:
       ts-deepmerge: 8.0.0
 
-  '@bemedev/dev-utils@file:packages/core/.pack/bemedev-dev-utils-1.5.0.tgz(rolldown@1.3.0)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))(vitest@5.1.0)':
-    dependencies:
-      '@typescript/typescript6': 6.0.2
-      cmd-ts: 0.15.0
-      edit-json-file: 1.8.1
-      glob: 14.0.4
-      oxc-transform: 0.157.0
-      rolldown: 1.3.0
-      rollup-plugin-circular-dependencies: 2.0.1(rollup@4.67.5)
-      rollup-plugin-node-externals: 9.0.1(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))
-      shelljs: 0.10.0
-      sort-keys: 6.0.1
-      tsc-alias: 1.9.10
-      vitest: 5.1.0(@types/node@26.6.6)(@vitest/browser-preview@5.1.0)(@vitest/coverage-v8@5.1.0)(@vitest/ui@5.1.0)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - vite
-
   '@bemedev/interval2@0.1.3':
     dependencies:
       '@bemedev/sleep': 0.1.2
@@ -4718,7 +4694,7 @@ snapshots:
       why-is-node-running: 3.2.1
     optionalDependencies:
       '@types/node': 26.6.6
-      '@vitest/browser-preview': 5.1.0(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15))(vitest@5.1.0)
+      '@vitest/browser-preview': 5.1.0(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(typescript@7.0.2))(vitest@5.1.0)
       '@vitest/coverage-v8': 5.1.0(@vitest/browser@5.1.0)(vitest@5.1.0)
       '@vitest/ui': 5.1.0(vitest@5.1.0)
     transitivePeerDependencies:
