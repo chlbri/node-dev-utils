@@ -25,3 +25,5 @@ export type RuA = readonly unknown[];
  * @template `T` - Inner type.
  */
 export type Undefiny<T> = T | undefined | null;
+
+export type NOmit<T, K extends keyof T> = Omit<T, K>;

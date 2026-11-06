@@ -1,6 +1,7 @@
 packages:
   - 'packages/core'
   - 'packages/__tests__/project1'
+  - 'packages/__tests__/vite-plus'
 
 allowBuilds:
   '@parcel/watcher': true

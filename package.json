@@ -2,17 +2,12 @@
   "name": "@bemedev/dev-utils-monorepo",
   "private": true,
   "description": "Monorepo workspace root for dev-utils",
+  "license": "MIT",
   "author": {
-    "email": "bri_lvi@icloud.com",
     "name": "chlbri",
+    "email": "bri_lvi@icloud.com",
     "url": "https://bemedev.vercel.app"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chlbri/node-dev-utils"
-  },
-  "license": "MIT",
-  "type": "module",
   "maintainers": [
     {
       "email": "bri_lvi@icloud.com",
@@ -27,9 +22,11 @@
       "url": "https://bemedev.vercel.app"
     }
   ],
-  "engines": {
-    "node": ">=24"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chlbri/node-dev-utils"
   },
+  "type": "module",
   "scripts": {
     "_ci": "pnpm run -r --sort --sequential _ci",
     "ci": "CIN=$(date +%s) && pnpm install && pnpm run rm:lib && pnpm run lint && pnpm run pretest && pnpm run test:only && pnpm run posttest && echo \"\n✅ CI takes $(($(date +%s) - CIN))s\n\"",
@@ -48,34 +45,37 @@
     "posttest": "pnpm run -r posttest",
     "test:only": "pnpm run -r test:only",
     "rm": "pnpm run rimraf -- node_modules pnpm-lock.yaml && pnpm clean lockfile",
-    "up": "pnpm -r update --latest !typescript && pnpm run check-updates",
+    "up": "pnpm -r update --latest && pnpm run check-updates",
     "check-updates": "pnpm dlx npm-check-updates -w -u --dep peer,optional,prod",
     "prepare": "husky",
     "rm:lib": "pnpm -r --sort --sequential run rm:lib",
     "p-q": "pretty-quick"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^12.3.0",
-    "@size-limit/file": "^13.0.3",
-    "@types/node": "^26.4.0",
+    "@rollup/plugin-typescript": "^12.3.1",
+    "@size-limit/file": "^14.3.0",
+    "@types/node": "^26.6.6",
     "@types/shelljs": "^0.10.0",
-    "@vitest/coverage-v8": "4.1.11",
-    "@vitest/ui": "4.1.11",
-    "globals": "^17.11.0",
+    "@vitest/coverage-v8": "5.1.0",
+    "@vitest/ui": "5.1.0",
+    "globals": "^17.14.0",
     "husky": "^9.1.7",
     "is-in-ci": "^2.0.0",
     "onchange": "^7.1.0",
-    "oxfmt": "^0.65.0",
-    "oxlint": "^1.80.0",
+    "oxfmt": "^0.76.0",
+    "oxlint": "^1.91.0",
     "pretty-quick": "^4.2.2",
-    "rolldown": "^1.2.6",
-    "size-limit": "^13.0.3",
-    "tslib": "^2.8.1",
-    "tsx": "^4.23.12",
+    "rolldown": "^1.3.0",
+    "size-limit": "^14.3.0",
+    "tslib": "^2.9.1",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "4.1.11",
-    "zod": "^4.4.3",
+    "vitest": "5.1.0",
+    "zod": "^4.6.7",
     "zx": "^8.8.5"
   },
-  "packageManager": "pnpm@11.22.0"
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@12.18.0"
 }

@@ -46,12 +46,12 @@ Each module is available as a dedicated sub-path export — there is no root bar
 export:
 
 ```typescript
-import { exclude } from '@bemedev/dev-utils/vitest-exclude';
-import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
-import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { addTarball, cleanup } from '@bemedev/dev-utils/build-tests';
 import { suppressWarnings, hmr } from '@bemedev/dev-utils/plugins';
+import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { clamp, toArray, identity, sleep } from '@bemedev/dev-utils/utils';
+import { exclude } from '@bemedev/dev-utils/vitest-exclude';
+import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
 ```
 
 ---

@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@bemedev/dev-utils": "workspace:^",
-    "@vitest/coverage-v8": "4.1.11",
-    "@vitest/ui": "4.1.11",
-    "rolldown": "1.2.6",
+    "@vitest/coverage-v8": "5.1.0",
+    "@vitest/ui": "5.1.0",
+    "rolldown": "1.3.0",
     "typescript": "^7.0.2",
-    "vitest": "4.1.11"
+    "vitest": "5.1.0"
   }
 }
