@@ -3,7 +3,6 @@ import { relative } from 'node:path';
 import { globSync } from 'glob';
 import { circularDependencies } from 'rollup-plugin-circular-dependencies';
 import type { TsdownPluginOption } from 'vite-plus/pack';
-import {} from 'vite-plus/pack';
 
 import { toArray, type SoA } from '#utils';
 
