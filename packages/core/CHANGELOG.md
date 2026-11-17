@@ -5,6 +5,29 @@
 <details>
 <summary>
 
+## **[1.6.0] - 17/11/2026** => _17:50_
+
+</summary>
+
+- Add: `createImportTests` in `vitest-extended`, generating Vitest suites that
+  assert a module's exported symbols exist and that listed missing symbols are
+  absent
+- Add: export the `PackageImportArgs` and `CreatePackageImportTest_F` types from
+  `vitest-extended`
+- Refactor: exclude `src/vitest-extended/createImportTests.ts` from the coverage
+  globs
+- Update: root `fmt` and CI scripts now use `vp fmt`, and drop the legacy
+  `oxfmt.config.ts` and `oxlint.config.ts` files
+- Update: exclude `rolldown.config.ts` from the root TypeScript project
+- Update: bump package version to `1.6.0`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.5.4] - 17/11/2026** => _11:08_
 
 </summary>

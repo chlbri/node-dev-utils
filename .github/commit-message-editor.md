@@ -1,14 +1,14 @@
 # Configuration Commit Message Editor
 
-Ce document décrit la configuration de l'extension VS Code **Commit Message
-Editor** (`adam-bender.commit-message-editor`) pour standardiser les
-messages de commit dans ce projet.
+Ce document décrit la configuration de l'extension VS Code **Commit Message Editor**
+(`adam-bender.commit-message-editor`) pour standardiser les messages de commit dans
+ce projet.
 
 ## À propos de l'extension
 
-**Commit Message Editor** permet d'éditer les messages de commit dans un
-formulaire personnalisable, facilitant l'utilisation d'un format
-standardisé. L'extension offre :
+**Commit Message Editor** permet d'éditer les messages de commit dans un formulaire
+personnalisable, facilitant l'utilisation d'un format standardisé. L'extension offre
+:
 
 - Un formulaire personnalisable pour les messages de commit
 - Configuration portable partageable avec l'équipe
@@ -37,12 +37,10 @@ code --install-extension adam-bender.commit-message-editor
 
 ### Commandes disponibles
 
-- `Commit Message Editor: Open Editor` - Ouvre l'éditeur de message de
-  commit
-- `Commit Message Editor: Open Settings Page` - Ouvre la page de
-  configuration
-- `Commit Message Editor: Copy from SCM Input Box` - Copie depuis la boîte
-  d'entrée SCM
+- `Commit Message Editor: Open Editor` - Ouvre l'éditeur de message de commit
+- `Commit Message Editor: Open Settings Page` - Ouvre la page de configuration
+- `Commit Message Editor: Copy from SCM Input Box` - Copie depuis la boîte d'entrée
+  SCM
 
 ### Ouverture de l'éditeur
 
@@ -54,8 +52,8 @@ code --install-extension adam-bender.commit-message-editor
 
 ### Éditeur de configuration
 
-Le moyen le plus simple de personnaliser le formulaire est d'utiliser
-l'éditeur de configuration intégré :
+Le moyen le plus simple de personnaliser le formulaire est d'utiliser l'éditeur de
+configuration intégré :
 
 1. Ouvrez la palette de commandes
 2. Exécutez `Commit Message Editor: Open Settings Page`
@@ -111,8 +109,8 @@ Template pour la vue texte, tableau de chaînes (une ligne par élément)
 
 ### dynamicTemplate
 
-Template pour la vue formulaire, tableau de chaînes. Les champs du
-formulaire peuvent être référencés avec le format `{nom_token}`
+Template pour la vue formulaire, tableau de chaînes. Les champs du formulaire peuvent
+être référencés avec le format `{nom_token}`
 
 ### tokens
 
@@ -184,10 +182,7 @@ Basée sur les instructions de commit du projet (voir
           "label": "feat",
           "description": "Nouvelle fonctionnalité (version mineure)"
         },
-        {
-          "label": "fix",
-          "description": "Correction de bug (version patch)"
-        },
+        { "label": "fix", "description": "Correction de bug (version patch)" },
         {
           "label": "hot-fix",
           "description": "Correction de bug critique (version patch)"
@@ -269,8 +264,7 @@ Basée sur les instructions de commit du projet (voir
 1. Ouvrez l'éditeur de configuration
 2. Cliquez sur le bouton "Import"
 3. Sélectionnez votre fichier de configuration JSON
-4. Choisissez si vous voulez sauvegarder dans les paramètres utilisateur ou
-   workspace
+4. Choisissez si vous voulez sauvegarder dans les paramètres utilisateur ou workspace
 
 ## Exemples de configurations
 
@@ -299,16 +293,15 @@ Basée sur les instructions de commit du projet (voir
 
 ### Configuration avec Gitmoji
 
-L'extension fournit également des configurations pré-construites incluant
-le support des Gitmoji. Vous pouvez les trouver dans les
+L'extension fournit également des configurations pré-construites incluant le support
+des Gitmoji. Vous pouvez les trouver dans les
 [exemples de configuration](https://github.com/bendera/vscode-commit-message-editor/tree/main/example-configs).
 
 ## Paramètres VS Code
 
 L'extension ajoute les paramètres suivants dans VS Code :
 
-- `commit-message-editor.confirmAmend` : Confirmer avant de modifier un
-  commit
+- `commit-message-editor.confirmAmend` : Confirmer avant de modifier un commit
 - `commit-message-editor.defaultView` : Vue par défaut (`text` ou `form`)
 - `commit-message-editor.tokens` : Configuration des tokens
 - `commit-message-editor.staticTemplate` : Template statique

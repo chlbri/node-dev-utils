@@ -6,8 +6,8 @@
     "paths": {
       "#utils/*": ["./src/utils/*"],
       "#utils": ["./src/utils/index.ts"],
-      "#bemedev/*": ["./src/utils/bemedev/*"],
-    },
+      "#bemedev/*": ["./src/utils/bemedev/*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*"]
 }

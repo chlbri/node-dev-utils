@@ -41,9 +41,8 @@ npm install @bemedev/dev-utils
 yarn add @bemedev/dev-utils
 ```
 
-**Peer dependencies:** `typescript ^5 || ^6`, `rolldown ^1.3.0`, `vitest 5.1.0`.
-`vite-plus ^1.5.0` is an optional peer dependency, only required for the `pack`
-export.
+**Peer dependencies:** `rolldown ^1.3.2`, `vitest 5.1.0`. `vite-plus ^1.7.0` is an
+optional peer dependency, only required for the `pack` export.
 
 <br/>
 
@@ -59,7 +58,11 @@ import { suppressWarnings, hmr } from '@bemedev/dev-utils/plugins';
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 import { clamp, toArray, identity, sleep } from '@bemedev/dev-utils/utils';
 import { exclude } from '@bemedev/dev-utils/vitest-exclude';
-import { createTests, createFakeWaiter } from '@bemedev/dev-utils/vitest-extended';
+import {
+  createTests,
+  createFakeWaiter,
+  createImportTests,
+} from '@bemedev/dev-utils/vitest-extended';
 ```
 
 ---
@@ -261,6 +264,39 @@ export const createValibotTests: ReturnR<typeof validate> =
     instanciation: async () => realValidate,
   });
 ```
+
+---
+
+### `createImportTests(packageName)`
+
+Creates Vitest suites that check a module's public surface: every symbol listed in
+`SUCCESS` must be exported, and every symbol listed in `FAILS` must be absent. Only
+the existence of the symbols is checked, not their type.
+
+```typescript
+import { createImportTests } from '@bemedev/dev-utils/vitest-extended';
+
+const createTests = createImportTests('@bemedev/dev-utils');
+
+describe(
+  ...createTests({
+    path: 'vitest-extended',
+    SUCCESS: ['createTests', 'createImportTests', 'defineProject'],
+    FAILS: ['addTarball'],
+  }),
+);
+```
+
+**Parameters (`args`)**
+
+| Property  | Type                    | Description                                                        |
+| --------- | ----------------------- | ------------------------------------------------------------------ |
+| `path`    | `string \| undefined`   | Sub-path appended to `packageName` (e.g. `'vitest-extended'`)      |
+| `SUCCESS` | `string[]`              | Export names expected to exist; suite is skipped when empty        |
+| `FAILS`   | `string[] \| undefined` | Export names expected to be missing; checked with `test.fails`     |
+
+**Returns** a `readonly [string, () => void]` tuple, ready to spread into
+`describe(...)`.
 
 ---
 

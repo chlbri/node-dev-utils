@@ -58,11 +58,7 @@
           "label": "test",
           "description": "Adding missing tests or correcting existing tests"
         },
-        {
-          "label": "hotfix",
-          "value": "hotfix",
-          "description": "A bug fix"
-        }
+        { "label": "hotfix", "value": "hotfix", "description": "A bug fix" }
       ]
     },
     {
@@ -102,12 +98,7 @@
       "type": "text",
       "multiline": true
     },
-    {
-      "label": "_noci",
-      "name": "NOCI",
-      "type": "boolean",
-      "value": "_NO_CI"
-    },
+    { "label": "_noci", "name": "NOCI", "type": "boolean", "value": "_NO_CI" },
     {
       "label": "chlbri",
       "name": "chlbri",

@@ -120,6 +120,7 @@ describe('vitest - exclude', () => {
     'src/vitest-exclude/vitest.ts',
     'src/vitest-exclude/vitest.utils.ts',
     'src/vitest-extended/acceptation.ts',
+    'src/vitest-extended/createImportTests.ts',
     'src/vitest-extended/createTests.cov.test.ts',
     'src/vitest-extended/createTests.ts',
     'src/vitest-extended/createTests.types.ts',

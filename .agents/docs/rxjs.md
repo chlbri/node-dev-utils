@@ -8,19 +8,18 @@
 
 ## Vue d'ensemble
 
-RxJS (Reactive Extensions for JavaScript) est une bibliothèque pour la
-programmation réactive utilisant des Observables, rendant plus facile la
-composition de code asynchrone ou basé sur des callbacks. Cette
-bibliothèque est une réécriture de Reactive-Extensions/RxJS avec de
-meilleures performances, une meilleure modularité, de meilleures piles
-d'appel déboguables, tout en restant majoritairement rétrocompatible.
+RxJS (Reactive Extensions for JavaScript) est une bibliothèque pour la programmation
+réactive utilisant des Observables, rendant plus facile la composition de code
+asynchrone ou basé sur des callbacks. Cette bibliothèque est une réécriture de
+Reactive-Extensions/RxJS avec de meilleures performances, une meilleure modularité,
+de meilleures piles d'appel déboguables, tout en restant majoritairement
+rétrocompatible.
 
 ### Caractéristiques principales
 
-- **Programmation réactive** : Utilise des Observables pour gérer les flux
-  de données asynchrones
-- **Composition** : Facilite la composition d'opérations asynchrones
-  complexes
+- **Programmation réactive** : Utilise des Observables pour gérer les flux de données
+  asynchrones
+- **Composition** : Facilite la composition d'opérations asynchrones complexes
 - **Performance améliorée** : ~50% plus petite que les versions précédentes
 - **Meilleur typage** : Support TypeScript natif avec des typages améliorés
 - **APIs cohérentes** : APIs plus consistantes et simplifiées
@@ -99,8 +98,8 @@ range(1, 200)
 
 ### Observable
 
-Un Observable représente un flux de données qui peut émettre des valeurs au
-fil du temps :
+Un Observable représente un flux de données qui peut émettre des valeurs au fil du
+temps :
 
 ```javascript
 import { Observable } from 'rxjs';
@@ -123,8 +122,7 @@ observable.subscribe({
 
 ### Opérateurs
 
-Les opérateurs permettent de transformer, filtrer et composer des
-Observables :
+Les opérateurs permettent de transformer, filtrer et composer des Observables :
 
 ```javascript
 import { of } from 'rxjs';
@@ -337,11 +335,9 @@ observable.subscribe(value => {
 });
 
 // ✅ Préférer
-observable
-  .pipe(switchMap(value => anotherObservable))
-  .subscribe(otherValue => {
-    // Code plus propre
-  });
+observable.pipe(switchMap(value => anotherObservable)).subscribe(otherValue => {
+  // Code plus propre
+});
 ```
 
 ### 3. Gérer les erreurs
@@ -361,8 +357,7 @@ observable
 
 - **Documentation officielle** : [rxjs.dev](https://rxjs.dev/)
 - **Référence API** : [rxjs.dev/api](https://rxjs.dev/api)
-- **GitHub** :
-  [github.com/ReactiveX/rxjs](https://github.com/ReactiveX/rxjs)
+- **GitHub** : [github.com/ReactiveX/rxjs](https://github.com/ReactiveX/rxjs)
 - **Marble Diagrams** : [rxmarbles.com](https://rxmarbles.com/)
 - **Learn RxJS** : [learnrxjs.io](https://www.learnrxjs.io/)
 

@@ -2,11 +2,11 @@
 
 GitHub Action for automated npm version bump.
 
-This Action bumps the version in package.json and pushes it back to the
-repo. It is meant to be used on every successful merge to master but you'll
-need to configure that workflow yourself. You can look to the
-[`.github/workflows/push.yml`](./.github/workflows/push.yml) file in this
-project as an example.
+This Action bumps the version in package.json and pushes it back to the repo. It is
+meant to be used on every successful merge to master but you'll need to configure
+that workflow yourself. You can look to the
+[`.github/workflows/push.yml`](./.github/workflows/push.yml) file in this project as
+an example.
 
 **Attention**
 
@@ -14,8 +14,8 @@ Make sure you use the `actions/checkout@v2` (or later) action!
 
 **Private repos**
 
-To use this Action with `${{ secrets.GITHUB_TOKEN }}` in a private repo,
-you must set the `contents: write`
+To use this Action with `${{ secrets.GITHUB_TOKEN }}` in a private repo, you must set
+the `contents: write`
 [permission for the token](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
 to write to the package.json file specified in the workflow.
 
@@ -41,25 +41,22 @@ Remove the 'actions/setup-node@v1' step from your action.yml file
 ```
 
 ⚠️ **Windows** is not fully supported (see
-[#193](https://github.com/phips28/gh-action-bump-version/issues/193)), if
-someone uses windows, and wants to run this action, happy to review your PR
-;)
+[#193](https://github.com/phips28/gh-action-bump-version/issues/193)), if someone
+uses windows, and wants to run this action, happy to review your PR ;)
 
 ### Workflow
 
-- Based on the commit messages, increment the version from the latest
-  release.
+- Based on the commit messages, increment the version from the latest release.
   - If the string "BREAKING CHANGE", "major" or the Attention pattern
-    `refactor!: drop support for Node 6` is found anywhere in any of the
-    commit messages or descriptions the major version will be incremented.
-  - If a commit message begins with the string "feat" or includes "minor"
-    then the minor version will be increased. This works for most common
-    commit metadata for feature additions: `"feat: new API"` and
-    `"feature: new API"`.
-  - If a commit message contains the word "pre-alpha" or "pre-beta" or
-    "pre-rc" then the pre-release version will be increased (for example
-    specifying pre-alpha: 1.6.0-alpha.1 -> 1.6.0-alpha.2 or, specifying
-    pre-beta: 1.6.0-alpha.1 -> 1.6.0-beta.0)
+    `refactor!: drop support for Node 6` is found anywhere in any of the commit
+    messages or descriptions the major version will be incremented.
+  - If a commit message begins with the string "feat" or includes "minor" then the
+    minor version will be increased. This works for most common commit metadata for
+    feature additions: `"feat: new API"` and `"feature: new API"`.
+  - If a commit message contains the word "pre-alpha" or "pre-beta" or "pre-rc" then
+    the pre-release version will be increased (for example specifying pre-alpha:
+    1.6.0-alpha.1 -> 1.6.0-alpha.2 or, specifying pre-beta: 1.6.0-alpha.1 ->
+    1.6.0-beta.0)
   - All other changes will increment the patch version.
 - Push the bumped npm version in package.json back into the repo.
 - Push a tag for the new version back into the repo.
@@ -68,8 +65,8 @@ someone uses windows, and wants to run this action, happy to review your PR
 
 #### **wording:**
 
-Customize the messages that trigger the version bump. It must be a string,
-case sensitive, comma separated (optional). Example:
+Customize the messages that trigger the version bump. It must be a string, case
+sensitive, comma separated (optional). Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -79,16 +76,15 @@ case sensitive, comma separated (optional). Example:
   with:
     minor-wording: 'add,Adds,new'
     major-wording: 'MAJOR,cut-major'
-    patch-wording:
-      'patch,fixes' # Providing patch-wording will override commits
+    patch-wording: 'patch,fixes' # Providing patch-wording will override commits
       # defaulting to a patch bump.
     rc-wording: 'RELEASE,alpha'
 ```
 
 #### **version-type:**
 
-Override the version type taken from the commit message. Usefull when
-manually running workflow via workflow_dispatch
+Override the version type taken from the commit message. Usefull when manually
+running workflow via workflow_dispatch
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -114,8 +110,8 @@ Set a default version bump to use (optional - defaults to patch). Example:
 
 #### **preid:**
 
-Set a preid value will building prerelease version (optional - defaults to
-'rc'). Example:
+Set a preid value will building prerelease version (optional - defaults to 'rc').
+Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -168,9 +164,8 @@ The tag is not added to the git repository (optional). Example:
 
 #### **skip-commit:**
 
-No commit is made after the version is bumped (optional). Must be used in
-combination with `skip-tag`, since if there's no commit, there's nothing to
-tag. Example:
+No commit is made after the version is bumped (optional). Must be used in combination
+with `skip-tag`, since if there's no commit, there's nothing to tag. Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -184,8 +179,8 @@ tag. Example:
 
 #### **skip-push:**
 
-If true, skip pushing any commits or tags created after the version bump
-(optional). Example:
+If true, skip pushing any commits or tags created after the version bump (optional).
+Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -198,8 +193,7 @@ If true, skip pushing any commits or tags created after the version bump
 
 #### **PACKAGEJSON_DIR:**
 
-Param to parse the location of the desired package.json (optional).
-Example:
+Param to parse the location of the desired package.json (optional). Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -223,9 +217,8 @@ Param to use another file for detect version (optional). Example:
 
 #### **TARGET-BRANCH:**
 
-Set a custom target branch to use when bumping the version. Useful in cases
-such as updating the version on master after a tag has been set (optional).
-Example:
+Set a custom target branch to use when bumping the version. Useful in cases such as
+updating the version on master after a tag has been set (optional). Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -238,8 +231,8 @@ Example:
 
 #### **commit-message:**
 
-Set a custom commit message for version bump commit. Useful for skipping
-additional workflows run on push. Example:
+Set a custom commit message for version bump commit. Useful for skipping additional
+workflows run on push. Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -252,13 +245,12 @@ additional workflows run on push. Example:
 
 #### **bump-policy:**
 
-Set version bump ignore policy. Useful for pull requests between branches
-with version bumps. Options are as follows:
+Set version bump ignore policy. Useful for pull requests between branches with
+version bumps. Options are as follows:
 
-- `'all'` (default): checks all commit messages and skips bump if any
-  previous bumps found
-- `'ignore'`: always bump regardless of whether bumps included in commit
-  messages
+- `'all'` (default): checks all commit messages and skips bump if any previous bumps
+  found
+- `'ignore'`: always bump regardless of whether bumps included in commit messages
 - `'last-commit'`: bump if last commit was not version bump
 
 Example:
@@ -274,8 +266,7 @@ Example:
 
 #### **check-last-commit-only:**
 
-Set check-last-commit-only to only read last commit's message (optional).
-Example:
+Set check-last-commit-only to only read last commit's message (optional). Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -288,9 +279,8 @@ Example:
 
 #### **custom-git-domain:**
 
-Set a custom domain of the git instance (optional). This is only needed,
-when using self-hosted instances of GitHub or alternative git provider
-(e.g. Gitea). Example:
+Set a custom domain of the git instance (optional). This is only needed, when using
+self-hosted instances of GitHub or alternative git provider (e.g. Gitea). Example:
 
 ```yaml
 - name: 'Automated Version Bump'
@@ -303,8 +293,8 @@ when using self-hosted instances of GitHub or alternative git provider
 
 #### [DEPRECATED] **push:**
 
-**DEPRECATED** Set false you want to avoid pushing the new version
-tag/package.json. Example:
+**DEPRECATED** Set false you want to avoid pushing the new version tag/package.json.
+Example:
 
 ```yaml
 - name: 'Automated Version Bump'
