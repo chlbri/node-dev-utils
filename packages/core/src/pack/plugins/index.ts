@@ -1,6 +1,6 @@
-import { clean } from "../../rolldown-config/plugins/clean";
-import { circulars } from "./circulars";
-import { sourcemaps } from "./sourcemaps";
+import { clean } from '../../rolldown-config/plugins/clean';
+import { circulars } from './circulars';
+import { sourcemaps } from './sourcemaps';
 
 /**
  * Registry mapping plugin keys to their factory functions.

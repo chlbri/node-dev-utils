@@ -72,6 +72,7 @@ describe('vitest - exclude', () => {
     'src/pack/output.ts',
     'src/pack/plugins/circulars.ts',
     'src/pack/plugins/index.ts',
+    'src/pack/plugins/sourcemaps.ts',
     'src/pack/project.ts',
     'src/pack/types.ts',
     'src/plugins/hmr.ts',

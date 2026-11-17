@@ -9,8 +9,8 @@
 
 </summary>
 
-- Add: `sourcemaps` plugin in `pack` that composes chained source maps into a
-  single map with `@ampproject/remapping`
+- Add: `sourcemaps` plugin in `pack` that composes chained source maps into a single
+  map with `@ampproject/remapping`
 - Add: enable `sourcemaps` in the default `pack` `defineConfig.default` plugin
   pipeline and expose it through `DEFAULT_PLUGINS`
 - Fix: remove an unused import from the `circulars` plugin
