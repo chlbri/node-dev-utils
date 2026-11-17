@@ -5,6 +5,25 @@
 <details>
 <summary>
 
+## **[1.5.4] - 17/11/2026** => _11:08_
+
+</summary>
+
+- Fix: re-export all `createTests.types` types (including `ReturnR`) from
+  `createTests` so consumers can emit declarations for inferred `createTests` /
+  `createTests.withImplementation` results without TS2883
+- Refactor: apply formatter to the `pack` plugin sources
+- Dependencies: update `glob` to `^14.0.6`, `oxc-transform` to `^0.159.0`, `rolldown`
+  to `^1.3.2`, and `vite-plus` to `^1.6.0`
+- Update: bump package version to `1.5.4`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.5.3] - 16/11/2026** => _23:59_
 
 </summary>

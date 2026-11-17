@@ -7,8 +7,7 @@ import { useErrorAsyncEach } from './each/error';
 import { useEachAsync } from './each/pass';
 import { toStringFlat } from './toStringFlat';
 
-export type { _CreateTests_F };
-
+export type * from './createTests.types';
 const _create: _CreateTests_F = (func, transform, toError, name) => {
   return {
     acceptation: () => useTFA(func, name),

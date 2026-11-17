@@ -246,6 +246,22 @@ const { acceptation, success } = createTests.withImplementation(myFn, {
 | `transform`     | `NextFn<F> \| undefined`    | Optional return-value transformer                        |
 | `toError`       | `ToError_F<F> \| undefined` | Optional error deriver                                   |
 
+#### Typing wrappers
+
+`createTests` and `createTests.withImplementation` return a `ReturnR<F>` object.
+`ReturnR` is exported so you can annotate reusable wrappers explicitly, which keeps
+declaration emit portable (avoids TS2883):
+
+```typescript
+import type { ReturnR } from '@bemedev/dev-utils/vitest-extended';
+
+export const createValibotTests: ReturnR<typeof validate> =
+  createTests.withImplementation(validate, {
+    name: 'valibot',
+    instanciation: async () => realValidate,
+  });
+```
+
 ---
 
 ### `doneTest(invite, fn, options?)`

@@ -22,7 +22,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "declarationMap": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
   },
-  "exclude": ["**/vite.config.ts", "**/vitest.config.ts"]
+  "exclude": ["**/vite.config.ts", "**/vitest.config.ts"],
 }
