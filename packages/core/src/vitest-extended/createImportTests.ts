@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+
 import { describe, expect, test } from 'vitest';
 
 import { toStringFlat } from './toStringFlat';
@@ -43,7 +45,7 @@ export const createImportTests = (
 ): CreatePackageImportTest_F => {
   return args => {
     const path = args.path;
-    const target = path ? `${packageName}/${path}` : packageName;
+    const target = path ? join(packageName, path) : packageName;
     const invite = `Importing from ${target}`;
 
     const testFn = async (fn: string) => {

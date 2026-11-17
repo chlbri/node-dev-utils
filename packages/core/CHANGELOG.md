@@ -5,6 +5,21 @@
 <details>
 <summary>
 
+## **[1.6.1] - 17/11/2026** => _18:28_
+
+</summary>
+
+- Refactor: compose the `createImportTests` import target with `node:path`'s
+  `join` instead of a `${packageName}/${path}` template string
+- Update: bump package version to `1.6.1`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.6.0] - 17/11/2026** => _17:50_
 
 </summary>
