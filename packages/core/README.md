@@ -542,6 +542,12 @@ Produces a Vite+ Pack configuration with the default plugin pipeline:
 
 1. **circulars** — suppresses warnings for known circular type files
 2. **clean** — removes stale JS outputs for type-only entries
+3. **sourcemaps** — composes chained source maps into a single map
+
+The `sourcemaps` plugin runs after the bundle is written. When sourcemaps are
+enabled, it uses `@ampproject/remapping` to compose the maps of the generated
+`.js` files with the maps of their sources, flattening the chain into a single
+map. It is also available through `DEFAULT_PLUGINS` for custom pipelines.
 
 ```typescript
 import { defineConfig } from '@bemedev/dev-utils/pack';

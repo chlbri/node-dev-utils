@@ -1,5 +1,6 @@
-import { clean } from '../../rolldown-config/plugins/clean';
-import { circulars } from './circulars';
+import { clean } from "../../rolldown-config/plugins/clean";
+import { circulars } from "./circulars";
+import { sourcemaps } from "./sourcemaps";
 
 /**
  * Registry mapping plugin keys to their factory functions.
@@ -8,7 +9,7 @@ import { circulars } from './circulars';
  * cleaning (`clean`) and dependency externals (`external`), so only the
  * circular dependencies plugin is exposed here.
  */
-export const DEFAULT_PLUGINS = { circulars, clean } as const;
+export const DEFAULT_PLUGINS = { circulars, clean, sourcemaps } as const;
 
 /**
  * Default ordering sequence for Vite+ Pack plugins.

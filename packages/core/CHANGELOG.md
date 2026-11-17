@@ -5,6 +5,26 @@
 <details>
 <summary>
 
+## **[1.5.3] - 16/11/2026** => _23:59_
+
+</summary>
+
+- Add: `sourcemaps` plugin in `pack` that composes chained source maps into a
+  single map with `@ampproject/remapping`
+- Add: enable `sourcemaps` in the default `pack` `defineConfig.default` plugin
+  pipeline and expose it through `DEFAULT_PLUGINS`
+- Fix: remove an unused import from the `circulars` plugin
+- Refactor: apply formatter to `pack` sources
+- Dependencies: add `@ampproject/remapping`
+- Update: bump package version to `1.5.3`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.5.2] - 06/11/2026** => _17:50_
 
 </summary>

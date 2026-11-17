@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/dev-utils",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "A collection of utilities for Node.js development, including build tools, testing utilities, and configuration management.",
   "keywords": [
     "build-tools",
@@ -96,6 +96,7 @@
     "rolldown": "rolldown -c"
   },
   "dependencies": {
+    "@ampproject/remapping": "^2.3.0",
     "@typescript/typescript6": "^6.0.2",
     "cmd-ts": "^0.15.0",
     "edit-json-file": "^1.8.1",
