@@ -5,6 +5,26 @@
 <details>
 <summary>
 
+## **[1.6.2] - 18/11/2026** => _14:31_
+
+</summary>
+
+- Docs: announce that version `2.0.0` will use **Vite+ only** — the
+  `@bemedev/dev-utils/rolldown` export and the `rolldown` peer dependency will be
+  removed in `2.0.0`
+- Docs: add a prominent breaking-change banner to the README with a two-step
+  migration guide from `./rolldown` to `./pack`
+- Docs: clarify the peer dependencies, marking `rolldown` as tied to the deprecated
+  export and `vite-plus` as required by `pack`
+- Update: bump package version to `1.6.2`
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[1.6.1] - 17/11/2026** => _18:28_
 
 </summary>

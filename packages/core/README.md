@@ -3,21 +3,63 @@
 A collection of utilities for Node.js development, including build tools, testing
 utilities, and configuration management.
 
+---
+
+## 🚨 BREAKING CHANGE AHEAD — v2.0.0 WILL USE VITE+ ONLY
+
+> **The next major release (`2.0.0`) drops Rolldown completely and builds
+> exclusively with [`vite-plus`](https://www.npmjs.com/package/vite-plus).**
+>
+> **If you import `@bemedev/dev-utils/rolldown`, you must migrate before upgrading.**
+
+| In `1.x` (today)                              | In `2.0.0`                     |
+| --------------------------------------------- | ------------------------------ |
+| `@bemedev/dev-utils/rolldown` is available    | ❌ **Removed** — no replacement |
+| `rolldown` is a peer dependency               | ❌ **Dropped** — no longer used |
+| `@bemedev/dev-utils/pack` (Vite+) is optional | ✅ **The only build API**       |
+
+### Migration in two steps
+
+**1. Replace the `./rolldown` import with `./pack`:**
+
+```diff
+- import { defineConfig } from '@bemedev/dev-utils/rolldown';
++ import { defineConfig } from '@bemedev/dev-utils/pack';
+```
+
+**2. Move the config into the `pack` field of your Vite+ config:**
+
+```typescript
+// vite.config.ts
+import { defineConfig as defineViteConfig } from 'vite-plus';
+import { defineConfig as definePackConfig } from '@bemedev/dev-utils/pack';
+
+export default defineViteConfig({
+  pack: definePackConfig.default({ dir: 'lib', sourcemap: true }),
+});
+```
+
+> **Timeline:** the `./rolldown` export keeps working for the whole `1.x` line, so
+> you can migrate at your own pace. Starting with `2.0.0`, this package will **only**
+> use Vite+: no Rolldown, no dual build pipeline, one single way to build.
+
+---
+
 ## HOTFIX fix for version 1.0.*
 
 > It doesn't type declarations well, if you're not put directly the output type
 
 ## Modules
 
-| Module                              | Description                                     |
-| ----------------------------------- | ----------------------------------------------- |
-| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude    |
-| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest                |
-| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory (legacy) |
-| [`pack`](#pack)                     | Vite+ Pack configuration factory                |
-| [`buildTests`](#buildtests)         | CLI tooling to build and test packages          |
-| [`plugins`](#plugins)               | Vite development helper plugins                 |
-| [`utils`](#utils)                   | Utility functions and helpers                   |
+| Module                              | Description                                               |
+| ----------------------------------- | --------------------------------------------------------- |
+| [`vitestExclude`](#vitestexclude)   | Vitest plugin for glob-based include/exclude              |
+| [`vitestExtended`](#vitestextended) | Extended test helpers for Vitest                          |
+| [`rolldownConfig`](#rolldownconfig) | Rolldown bundler configuration factory (removed in 2.0.0) |
+| [`pack`](#pack)                     | Vite+ Pack configuration factory                          |
+| [`buildTests`](#buildtests)         | CLI tooling to build and test packages                    |
+| [`plugins`](#plugins)               | Vite development helper plugins                           |
+| [`utils`](#utils)                   | Utility functions and helpers                             |
 
 > **Note (v0.8.1):** The `./vitest-alias` export has been removed. Path alias
 > resolution is now handled natively by Vite via `resolve.alias` with
@@ -25,8 +67,10 @@ utilities, and configuration management.
 > `aliasTs()` / `createAlias()` usage and configure aliases directly in your `vite` /
 > `vitest` config.
 
-> **NB (next version):** The next version will use **Vite+ only**. The standalone
-> `./rolldown` export (`@bemedev/dev-utils/rolldown`) will be dropped; migrate to the
+> **NB (v2.0.0):** see the
+> [breaking-change banner](#-breaking-change-ahead--v200-will-use-vite-only) at the
+> top of this README. The standalone `./rolldown` export
+> (`@bemedev/dev-utils/rolldown`) will be removed in `2.0.0`; migrate to the
 > [`pack`](#pack) export before upgrading.
 
 <br/>
@@ -41,8 +85,9 @@ npm install @bemedev/dev-utils
 yarn add @bemedev/dev-utils
 ```
 
-**Peer dependencies:** `rolldown ^1.3.2`, `vitest 5.1.0`. `vite-plus ^1.7.0` is an
-optional peer dependency, only required for the `pack` export.
+**Peer dependencies:** `vitest 5.1.0`. `rolldown ^1.3.2` is only required by the
+deprecated `rolldown` export (removed in `2.0.0`), while `vite-plus ^1.7.0` is an
+optional peer dependency required by the `pack` export.
 
 <br/>
 
@@ -463,8 +508,10 @@ export default defineProject({
 Rolldown bundler configuration factory with built-in plugins for TypeScript
 declarations, circular dependency detection, and tree-shaking externals.
 
-> **Deprecated:** This export will be dropped in the next version, which uses Vite+
-> only. Migrate to the [`pack`](#pack) export.
+> **Deprecated:** This export will be **removed in `2.0.0`**, which uses Vite+ only.
+> Migrate to the [`pack`](#pack) export now — see the
+> [breaking-change banner](#-breaking-change-ahead--v200-will-use-vite-only) at the
+> top of this README.
 
 ### `defineConfig(additionals?)`
 
